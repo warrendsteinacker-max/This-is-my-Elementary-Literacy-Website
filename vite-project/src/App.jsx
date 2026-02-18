@@ -52,7 +52,8 @@ function App() {
           <Link to="/mod3" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Module 3</Link>
           <Link to="/mod4" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Module 4</Link>
           <Link to="/mod5" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Module 5</Link> 
-          <Link to="/mod6" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Module 6</Link>        
+          <Link to="/mod6" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Module 6</Link>
+          <Link to="/demo" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Module demo</Link>        
         </nav>
 
         <div style={{ padding: '20px' }}>
@@ -66,6 +67,7 @@ function App() {
             <Route path="/mod4" element={<Mod4 />} />
             <Route path="/mod5" element={<Mod5 />}/>
             <Route path="/mod6" element={<Mod6 />}/>
+            <Route path="/demo" element={<Mod6 />}/>
             
             
             {/* 'path="*"' is your safety net; it catches broken links and redirects to Home */}
