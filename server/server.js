@@ -12,10 +12,6 @@ app.use(express.json())
 
 app.use(cors({origin: '*'}))
 
-const genAI = GooleGenAI({
-    apiKey: process.env.AI_KEY
-});
-
 app.use('/api', routers)
 
 app.listen(3002, () => {
