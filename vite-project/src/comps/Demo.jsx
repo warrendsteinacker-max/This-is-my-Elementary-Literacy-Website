@@ -43,8 +43,9 @@ const Demo = () => {
     const getdata = async() => {
           try{
             const newN = N + 1
+            console.log(newN)
             setN(newN)
-            const res = await fetch(`https://jsonplaceholder.typicode.com/posts${N}`)
+            const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${N}`)
 
             if(!res.ok){
               throw new Error('fetch failed')
