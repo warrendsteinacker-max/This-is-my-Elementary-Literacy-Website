@@ -213,9 +213,26 @@ const MeAI = () => {
             setL(false);
         }
     };
-
-    if (L) return <h3 style={{ color: 'black', textAlign: 'center' }}>Loading...</h3>;
-
+////////////////////////change this to img/////////////////////////////////////////////////
+    if (L) {
+    return (
+        <div style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            height: '400px',
+            flexDirection: 'column',
+            gap: '15px'
+        }}>
+            <img 
+                src="./spinner.png" 
+                alt="Loading..." 
+                style={{ width: '50px', height: '50px' }} 
+            />
+            <p style={{ color: 'white', letterSpacing: '1px' }}>ANALYZING DATA...</p>
+        </div>
+    );
+}
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', padding: '40px' }}>
             
@@ -243,7 +260,7 @@ const MeAI = () => {
                 borderRadius: '10px' 
             }}>
                 {D ? (
-                    <p style={{ color: 'white', padding: '20px' }}>{D}</p>
+                    <pre style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word', color: 'white', padding: '20px', fontFamily: 'Avenir', display: 'flex', width: '90%' }}>{D}</pre>
                 ) : (
                     <h3 style={{ color: '#666', padding: '20px', textAlign: 'center' }}>
                         Ask Me Anything About These Assignments

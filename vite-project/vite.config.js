@@ -17,5 +17,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/this-is-my-website-for-el/', // This matches your repo name exactly
+  base: '/This-is-my-Elementary-Literacy-Website/', // This matches your repo name exactly
 })

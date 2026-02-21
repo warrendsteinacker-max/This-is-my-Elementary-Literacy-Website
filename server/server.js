@@ -17,31 +17,7 @@ app.listen(3002, () => {
 })
 
 
-const x = {aa: 'a', bb: 'b'}
 
-console.log(x)
-
-Object.values(x).forEach((key) => console.log(key))
-
-const shalownewx = Object.assign({}, x) 
-
-const secshalownewx = {...shalownewx}
-
-shalownewx.aa = 'na'
-
-console.log(x)
-
-console.log(secshalownewx)
-
-console.log(shalownewx)
-
-const xx = new Map()
-
-xx.set(1, x)
-
-xx.set(2, 3)
-
-console.log(xx)
 
 
 
