@@ -21,14 +21,12 @@ import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 function App() {
   return (
     <>
-      {/* We use HashRouter without a basename for maximum compatibility 
-        with private networks (Tailscale) and GitHub Pages.
-      */}
-      <Router> 
-        <p style={{ color: 'black', fontWeight: 'bold', textAlign: 'center' }}>
-          Use this to navigate between pages
+      <Router>
+        <div style={{backgroundColor: 'black', borderRadius: '10px'}}> 
+        <p style={{ color: 'black', fontWeight: 'bold' , color: 'whitesmoke'}}>
+        Navigation
         </p>
-        
+        </div>
         <nav style={{
           borderRadius: '10px', 
           position: 'sticky', 

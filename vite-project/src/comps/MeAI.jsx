@@ -214,13 +214,13 @@ const MeAI = () => {
         }
     };
 
-    if (L) return <h3 style={{ color: '#333', textAlign: 'center' }}>Loading...</h3>;
+    if (L) return <h3 style={{ color: 'black', textAlign: 'center' }}>Loading...</h3>;
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', padding: '40px' }}>
             
             {/* Styled Dropdown */}
-            <h3>Use the Dropdown Below to Select What Module you Want to Learn About</h3>
+            <h3 style={{color: 'black'}}>Use the Dropdown Below to Select What Module you Want to Learn About</h3>
             <select 
                 className="black-input" 
                 value={M} 
