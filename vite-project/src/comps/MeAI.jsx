@@ -144,8 +144,8 @@ const MeAI = () => {
     if (L) return <h3 style={{ color: 'white' }}>Loading...</h3>;
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', color: 'white', appearance: 'none', outline: 'none' }}>
-            <div style={{ position: 'absolute', top: '5%', left: '2%' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', color: 'white' }}>
+            <div style={{ position: 'absolute', top: '5%', left: '2%', appearance: 'none' }}>
                 <select value={M} onChange={(e) => setM(e.target.value)}>
                     <option value='mod1'>mod1</option>
                     <option value='mod2'>mod2</option>
@@ -160,15 +160,15 @@ const MeAI = () => {
             </div>
 
             {D ? (
-                <div style={{ width: '500px', height: '500px', backgroundColor: 'black', overflowY: 'auto' }}>
+                <div style={{ width: '800px', height: '500px', backgroundColor: 'black', overflowY: 'auto', borderRadius: '10px' }}>
                     <p style={{ color: 'white', padding: '10px' }}>{D}</p>
                 </div>
             ) : (
                 <h3 style={{ color: 'white' }}>Ask Me Anything about These Assignments For the Selected Module</h3>
             )}
 
-            <form onSubmit={submiteToB}>
-                <textarea value={Q} onChange={(e) => setQ(e.target.value)} />
+            <form onSubmit={submiteToB} style={{display: 'flex'}}>
+                <textarea value={Q} onChange={(e) => setQ(e.target.value)} style={{width: '800px', placeHolder: 'Got a Qustion?', borderRadius: '10px', backgroundColor: 'black'}}/>
                 <button type='submit' style={{marginLeft: '20px', marginBottom: '20px'}}>Submit</button>
             </form>
             <h3>hello</h3>
