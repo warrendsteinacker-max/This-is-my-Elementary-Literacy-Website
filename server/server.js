@@ -19,11 +19,19 @@ app.listen(3002, () => {
 
 const x = {aa: 'a', bb: 'b'}
 
+console.log(x)
+
 Object.values(x).forEach((key) => console.log(key))
 
 const shalownewx = Object.assign({}, x) 
 
+x.aa = 'na'
+
+console.log(x)
+
 console.log(shalownewx)
+
+
 
 
 
