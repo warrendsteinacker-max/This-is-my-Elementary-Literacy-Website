@@ -30,8 +30,7 @@ function App() {
         <nav style={{
           borderRadius: '10px', 
           position: 'sticky', 
-          top: 0, 
-          zIndex: 1000, 
+          top: 0,  
           display: 'flex', 
           gap: '20px', 
           justifyContent: 'center', 
