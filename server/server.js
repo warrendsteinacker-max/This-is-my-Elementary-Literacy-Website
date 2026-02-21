@@ -25,9 +25,13 @@ Object.values(x).forEach((key) => console.log(key))
 
 const shalownewx = Object.assign({}, x) 
 
-x.aa = 'na'
+const secshalownewx = {...shalownewx}
+
+shalownewx.aa = 'na'
 
 console.log(x)
+
+console.log(secshalownewx)
 
 console.log(shalownewx)
 
