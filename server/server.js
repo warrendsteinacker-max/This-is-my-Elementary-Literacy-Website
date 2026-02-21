@@ -35,6 +35,14 @@ console.log(secshalownewx)
 
 console.log(shalownewx)
 
+const xx = new Map()
+
+xx.set(1, x)
+
+xx.set(2, 3)
+
+console.log(xx)
+
 
 
 
