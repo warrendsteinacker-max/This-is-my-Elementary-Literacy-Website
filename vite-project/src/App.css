@@ -101,3 +101,42 @@
 .read-the-docs {
   color: #888;
 }
+
+/* The Black-out Theme */
+.black-input {
+  background-color: black;
+  color: white; /* Text color */
+  border: 1px solid #333; /* Dark border so it doesn't disappear */
+  padding: 12px;
+  border-radius: 10px;
+  font-family: inherit;
+}
+
+/* Remove the lines (resize handle) from textarea */
+textarea.black-input {
+  resize: none; 
+  outline: none;
+}
+
+/* Stylish Black Button */
+.black-button {
+  background-color: black;
+  color: white;
+  border: 1px solid #444;
+  padding: 10px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.black-button:hover {
+  background-color: #222; /* Subtle change on hover */
+  border-color: #666;
+}
+
+/* The Dropdown styling */
+select.black-input {
+  cursor: pointer;
+  appearance: none; /* Removes default browser arrow in some browsers */
+  padding-right: 30px;
+}
