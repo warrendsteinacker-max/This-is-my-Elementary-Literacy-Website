@@ -19,7 +19,7 @@ app.listen(3002, () => {
 
 const x = {aa: 'a', bb: 'b'}
 
-Object.keys(x).forEach((key) => console.log(key))
+Object.values(x).forEach((key) => console.log(key))
 
 
 
