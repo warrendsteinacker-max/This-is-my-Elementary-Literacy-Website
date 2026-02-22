@@ -16,6 +16,9 @@ app.listen(3002, () => {
     console.log('connected to server')
 })
 
+// Keep your existing code, just add this:
+export default app;
+
 
 
 
