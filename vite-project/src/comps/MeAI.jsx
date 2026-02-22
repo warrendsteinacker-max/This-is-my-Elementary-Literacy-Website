@@ -200,7 +200,14 @@ const MeAI = () => {
                 'mod7': '7', 'mod8': '8', 'mod': '9'
             };
             const route = endpointMap[M];
-            const res = await fetch(`http://localhost:3002/${route}`, {
+
+            // const res = await fetch(`http://localhost:3002/${route}`, {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({ Q: Q })
+            // });
+
+            const res = await fetch(`/${route}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ Q: Q })
