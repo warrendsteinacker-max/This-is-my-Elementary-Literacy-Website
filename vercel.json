@@ -7,7 +7,7 @@
     },
     {
       "source": "/(.*)",
-      "destination": "/vite-project/dist/$1"
+      "destination": "/vite-project/dist/index.html"
     }
   ]
 }
