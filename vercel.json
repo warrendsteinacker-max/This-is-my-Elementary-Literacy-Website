@@ -6,6 +6,10 @@
       "destination": "/server/server.js"
     },
     {
+      "source": "/assets/(.*)",
+      "destination": "/vite-project/dist/assets/$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/vite-project/dist/index.html"
     }
