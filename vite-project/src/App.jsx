@@ -23,7 +23,7 @@ function App() {
     <>
       <Router>
         <div style={{backgroundColor: 'black', borderRadius: '10px'}}> 
-        <p style={{ color: 'black', fontWeight: 'bold' , color: 'whitesmoke'}}>
+        <p style={{fontWeight: 'bold' , color: 'whitesmoke'}}>
         Navigation
         </p>
         </div>
