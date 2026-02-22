@@ -207,7 +207,7 @@ const MeAI = () => {
             //     body: JSON.stringify({ Q: Q })
             // });
 
-            const res = await fetch(`/${route}`, {
+            const res = await fetch(`/api/${route}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ Q: Q })
