@@ -88,6 +88,7 @@ const TiktacG = () => {
   const [T, setT] = useState(true)
   const [C, setC] = useState(0)
   const [E, setE] = useState(false)
+  const [landingP, setP] = useState(true)
 
 const lines = [
   [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
@@ -107,7 +108,7 @@ const winner = winningLine ? squares[winningLine[0]] : null;
     const newSquares = squares.slice()
 
     if(T){
-      if(E){
+      if(newSquares[i]){
         setE(true)
       }
     newSquares[i] = 'X'
@@ -117,7 +118,7 @@ const winner = winningLine ? squares[winningLine[0]] : null;
     setE(false)
     }
     else{
-      if(E){
+      if(newSquares[i]){
         setE(true)
       }
     newSquares[i] = 'O'
@@ -129,13 +130,16 @@ const winner = winningLine ? squares[winningLine[0]] : null;
   } 
 
   if(winner){
-    return T ? <button onClick={() => setS(Array(9).fill(null))}>X Won Start New Game</button>:<button onClick={() => setS(Array(9).fill(null))}>O Won Start New Game</button> 
+    setP(false)
+    return T ? <button onClick={() => { setP(true); setS(Array(9).fill(null)) }}>X Won Start New Game</button>:<button onClick={() => setS(Array(9).fill(null))}>O Won Start New Game</button> 
   }
 
   if(C === 9){
-    return <button onClick={() => setS(Array(9).fill(null))}>There Was a Draw Start New Game</button>
+    setP(false)
+    return <button onClick={() => {setP(true); setS(Array(9).fill(null))}}>There Was a Draw Start New Game</button>
   }
 
+  if(landingP){
   return(<>
         <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridTemplateRows: 'repeat(3, 1fr)', border: '5px solid black', width: '1000px', height: '1000px'}}>
           {squares.map((val, i)=><div onClick={() => playclick(i)} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', border: '5px solid black', color: 'black'}} key={i}>{val}</div>)}
@@ -143,6 +147,7 @@ const winner = winningLine ? squares[winningLine[0]] : null;
         <button onClick={() => setS(Array(9).fill(null))}>Start New Game</button>
         {E ? <h3>Can not mark were there is already one try again</h3> : <h3>Dont mark were there are marks</h3>}
         </>)
+  }
 }
 
 export default TiktacG
