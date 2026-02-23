@@ -86,12 +86,18 @@ const TiktacG = () => {
 
   const [squares, setS] = useState(Array(9).fill(null))
 
+  const winner = [[1,2,3],[4,5,6],[7,8,9],[3,6,9],[2,5,8],[1,4,7],[1,5,9],[3,5,7]].find([a,b,c] = squares[a] && squares[b] === squares[b] && squares[c] === squares[c])
 
+  const playclick = (i) => {
+
+    const newSquares = squares.slice()
+  } 
 
   return(<>
         <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridTemplateRows: 'repeat(3, 1fr)', border: '5px solid black', width: '1000px', height: '1000px'}}>
           {squares.map((val, i)=><div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', border: '5px solid black'}} key={i}>{val}</div>)}
         </div>
+        <button onClick={}>Start New Game</button>
         </>)
 }
 
