@@ -85,19 +85,63 @@ import {useState} from 'react'
 const TiktacG = () => {
 
   const [squares, setS] = useState(Array(9).fill(null))
+  const [T, setT] = useState(true)
+  const [C, setC] = useState(0)
+  const [E, setE] = useState(false)
 
-  const winner = [[1,2,3],[4,5,6],[7,8,9],[3,6,9],[2,5,8],[1,4,7],[1,5,9],[3,5,7]].find([a,b,c] = squares[a] && squares[b] === squares[b] && squares[c] === squares[c])
+const lines = [
+  [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+  [0, 3, 6], [1, 4, 7], [2, 5, 8], // Cols
+  [0, 4, 8], [2, 4, 6]             // Diagonals
+];
+
+// Use .find() to see if any line has the same non-null value
+const winningLine = lines.find(([a, b, c]) => 
+  squares[a] && squares[a] === squares[b] && squares[a] === squares[c]
+);
+
+const winner = winningLine ? squares[winningLine[0]] : null;
 
   const playclick = (i) => {
 
     const newSquares = squares.slice()
+
+    if(T){
+      if(E){
+        setE(true)
+      }
+    newSquares[i] = 'X'
+    setS(newSquares)
+    setT(!T)
+    setC((C) => C + 1)
+    setE(false)
+    }
+    else{
+      if(E){
+        setE(true)
+      }
+    newSquares[i] = 'O'
+    setS(newSquares)
+    setT(!T)
+    setC((C) => C + 1)
+    setE(false)
+    }
   } 
+
+  if(winner){
+    return T ? <button onClick={() => setS(Array(9).fill(null))}>X Won Start New Game</button>:<button onClick={() => setS(Array(9).fill(null))}>O Won Start New Game</button> 
+  }
+
+  if(C === 9){
+    return <button onClick={() => setS(Array(9).fill(null))}>There Was a Draw Start New Game</button>
+  }
 
   return(<>
         <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridTemplateRows: 'repeat(3, 1fr)', border: '5px solid black', width: '1000px', height: '1000px'}}>
-          {squares.map((val, i)=><div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', border: '5px solid black'}} key={i}>{val}</div>)}
+          {squares.map((val, i)=><div onClick={() => playclick(i)} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', border: '5px solid black', color: 'black'}} key={i}>{val}</div>)}
         </div>
-        <button onClick={}>Start New Game</button>
+        <button onClick={() => setS(Array(9).fill(null))}>Start New Game</button>
+        {E ? <h3>Can not mark were there is already one try again</h3> : <h3>Dont mark were there are marks</h3>}
         </>)
 }
 
