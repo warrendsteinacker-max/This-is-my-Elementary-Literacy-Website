@@ -87,7 +87,7 @@ const TiktacG = () => {
   const [squares, setS] = useState(Array(9).fill(null))
   const [T, setT] = useState(true)
   const [C, setC] = useState(0)
-  const [E, setE] = useState(false)
+  const [Won, setW] = useState(Boolean)
 
 const lines = [
   [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
@@ -114,7 +114,7 @@ const winner = lines.find(([a, b, c]) =>
     setS(newSquares)
     setT(!T)
     setC((C) => C + 1)
-    setE(false)
+    setW(true)
     }
     else{
       if(newSquares[i]){
@@ -125,7 +125,7 @@ const winner = lines.find(([a, b, c]) =>
             setS(newSquares)
             setT(!T)
             setC((C) => C + 1)
-            setE(false)
+            setW(false)
       }
     }
   } 
@@ -136,7 +136,7 @@ const winner = lines.find(([a, b, c]) =>
   }
 
   if(winner){
-    return <button onClick={() => {setS(Array(9).fill(null)); setC(0)}}>some One Won Start New Game</button>
+    return <button onClick={() => {setS(Array(9).fill(null)); setC(0)}}>{Won ? 'X Won Start New Game' : 'O Won Start New Game'}</button>
   }
 
 
