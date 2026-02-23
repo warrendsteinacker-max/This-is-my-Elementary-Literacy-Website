@@ -80,73 +80,90 @@
 ////////////
 
 
+// import {useState} from 'react'
+
+// const TiktacG = () => {
+
+//   const [squares, setS] = useState(Array(9).fill(null))
+//   const [T, setT] = useState(true)
+//   const [C, setC] = useState(0)
+//   const [Won, setW] = useState(Boolean)
+
+// const lines = [
+//   [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+//   [0, 3, 6], [1, 4, 7], [2, 5, 8], // Cols
+//   [0, 4, 8], [2, 4, 6]             // Diagonals
+// ];
+
+// // Use .find() to see if any line has the same non-null value
+// const winner = lines.find(([a, b, c]) => 
+//   squares[a] && squares[a] === squares[b] && squares[a] === squares[c]
+// );
+
+// // const winner = winningLine ? squares[winningLine[0]] : null;
+
+//   const playclick = (i) => {
+
+//     const newSquares = squares.slice()
+
+//     if(T){
+//       if(newSquares[i]){
+//         return null
+//       }
+//     newSquares[i] = 'X'
+//     setS(newSquares)
+//     setT(!T)
+//     setC((C) => C + 1)
+//     setW(true)
+//     }
+//     else{
+//       if(newSquares[i]){
+//         return null
+//       }
+//       else{
+//             newSquares[i] = 'O'
+//             setS(newSquares)
+//             setT(!T)
+//             setC((C) => C + 1)
+//             setW(false)
+//       }
+//     }
+//   } 
+
+
+//   if(C === 9){
+//     return <button onClick={() => {setS(Array(9).fill(null)); setC(0)}}>There Was a Draw Start New Game</button>
+//   }
+
+//   if(winner){
+//     return <button onClick={() => {setS(Array(9).fill(null)); setC(0)}}>{Won ? 'X Won Start New Game' : 'O Won Start New Game'}</button>
+//   }
+
+
+//   return(<>
+//         <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridTemplateRows: 'repeat(3, 1fr)', border: '5px solid black', width: '1000px', height: '1000px'}}>
+//           {squares.map((val, i)=><div onClick={() => playclick(i)} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', border: '5px solid black', color: 'black'}} key={i}>{val}</div>)}
+//         </div>
+//         <button onClick={() => setS(Array(9).fill(null))}>Start New Game</button>
+//         </>)
+
+// }
+
+// export default TiktacG
+
+
+
 import {useState} from 'react'
 
-const TiktacG = () => {
+const seacrchB = () => {
 
-  const [squares, setS] = useState(Array(9).fill(null))
-  const [T, setT] = useState(true)
-  const [C, setC] = useState(0)
-  const [Won, setW] = useState(Boolean)
+    const data = [{name: 'warren', dep: 'is doc'}, {name: 'stein', dep: 'is clerk'}, {name: 'steinacker', dep: 'is me'}]
 
-const lines = [
-  [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-  [0, 3, 6], [1, 4, 7], [2, 5, 8], // Cols
-  [0, 4, 8], [2, 4, 6]             // Diagonals
-];
-
-// Use .find() to see if any line has the same non-null value
-const winner = lines.find(([a, b, c]) => 
-  squares[a] && squares[a] === squares[b] && squares[a] === squares[c]
-);
-
-// const winner = winningLine ? squares[winningLine[0]] : null;
-
-  const playclick = (i) => {
-
-    const newSquares = squares.slice()
-
-    if(T){
-      if(newSquares[i]){
-        return null
-      }
-    newSquares[i] = 'X'
-    setS(newSquares)
-    setT(!T)
-    setC((C) => C + 1)
-    setW(true)
-    }
-    else{
-      if(newSquares[i]){
-        return null
-      }
-      else{
-            newSquares[i] = 'O'
-            setS(newSquares)
-            setT(!T)
-            setC((C) => C + 1)
-            setW(false)
-      }
-    }
-  } 
-
-
-  if(C === 9){
-    return <button onClick={() => {setS(Array(9).fill(null)); setC(0)}}>There Was a Draw Start New Game</button>
-  }
-
-  if(winner){
-    return <button onClick={() => {setS(Array(9).fill(null)); setC(0)}}>{Won ? 'X Won Start New Game' : 'O Won Start New Game'}</button>
-  }
-
+  
+  const [searched, setS] = useState(data)
 
   return(<>
-        <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridTemplateRows: 'repeat(3, 1fr)', border: '5px solid black', width: '1000px', height: '1000px'}}>
-          {squares.map((val, i)=><div onClick={() => playclick(i)} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', border: '5px solid black', color: 'black'}} key={i}>{val}</div>)}
-        </div>
-        <button onClick={() => setS(Array(9).fill(null))}>Start New Game</button>
+        <input placeholder='search somthing' onChange={(e) => setS(e.target.value)}/>
+
         </>)
-
 }
-
-export default TiktacG
