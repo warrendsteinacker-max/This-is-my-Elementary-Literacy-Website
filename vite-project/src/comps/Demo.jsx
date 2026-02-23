@@ -89,6 +89,8 @@ const TiktacG = () => {
 
 
   return(<>
-        <div style={{display: 'grid', gridTemplateColmns: 'repeat()'}}></div>
+        <div style={{display: 'grid', gridTemplateColmns: 'repeat(3, 1fr)', gridTemplateRows: 'repeat(3, 1fr)'}}>
+          {squares.map((val, i)=><div key={i}>{val}</div>)}
+        </div>
         </>)
 }
