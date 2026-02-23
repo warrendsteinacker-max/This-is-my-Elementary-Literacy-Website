@@ -160,10 +160,14 @@ const seacrchB = () => {
     const data = [{name: 'warren', dep: 'is doc', id: 1}, {name: 'stein', dep: 'is clerk', id: 2}, {name: 'steinacker', dep: 'is me', id: 3}]
 
   
-  const [searched, setS] = useState(data)
+  const [searched, setS] = useState('')
+
+    const filltered = data.filter((item) => item.name.toLowerCase().includes(searched.toLowerCase()))
 
   return(<>
         <input placeholder='search somthing' onChange={(e) => setS(e.target.value)}/>
-        {searched.map(() => <div key={searched.id} style={{display: 'flex', alignItems: 'center'}}><h3></h3><p></p></div>)}
+        {filltered.map((item) => <div key={item.id} style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}><h3>{item.name}</h3><p>{item.dep}</p></div>)}
         </>)
 }
+
+export default seacrchB
