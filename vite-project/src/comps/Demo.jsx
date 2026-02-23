@@ -182,12 +182,12 @@ const todolist = () => {
 
   const [data, setD] = useState([])
 
-  const [Istate, setS] = useState({
+  const Istate = {
       name: '',
       dep: '',
       done: false,
       id: 0 
-  })
+  }
 
   const reducer = (state, action) => {
     switch(action.type){
@@ -195,6 +195,8 @@ const todolist = () => {
         return {...state, name: action.payload}
       case 'dep':
         return {...state, dep: action.payload}
+      case 'resetn':
+        return {...state, id: 0}
       default:
         return state
     }
@@ -202,30 +204,36 @@ const todolist = () => {
 
   const [state, dispatch] = useReducer(reducer, Istate)
 
-  const submitD = (state) => {
+  const submitD = (e) => {
+    e.preventDefault()
     setD((data) => [...data, {...state, id: state.length + 1}])
     dispatch({type: 'dep', payload: ''})
     dispatch({type: 'name', payload: ''})
+    dispatch({type: 'resetn'})
+    console.log(data)
   }
 
-  const deleteD = (e) => {
-    const newd = data.filter((item) => item.id !== e.target.value)
+  const deleteD = (id) => {
+    const newd = data.filter((item) => item.id !== id)
     setD(newd)
   }
 
-  const completT = (e) => {
-    const item = data.find((i) => i.id === e.target.value )
-    item.done = !item.done
-  }
+  // const completT = (e) => {
+  //   const item = data.find((i) => i.id === id)
+  //   item.done = !item.done
+  // }
 
   return(<>
-        <form onSubmit={() => submitD(state)}>
-          <input onChange={dispatch({type: 'dep', payload: e.target.value})}/>
-          <input onChange={dispatch({type: 'name', payload: e.target.value})}/>
+        <form onSubmit={submitD} style={{display: 'flex', flexDirection: 'column'}}>
+          <input onChange={(e) => dispatch({type: 'dep', payload: e.target.value})}/>
+          <input onChange={(e) => dispatch({type: 'name', payload: e.target.value})}/>
           <button type='submit'>make to do</button>
         </form>
-        {data.map((item) => <div key={}></div>)}
+        {data.map((item) => <div key={item.id} style={{display: 'flex', alignItems: 'center', flexdirection: 'column'}}><h3>{item.name}</h3><h3>{item.dep}</h3><button onClick={() => deleteD(item.id)}>delete</button></div>)}
         </>)
 
 
 }
+
+
+export default todolist
