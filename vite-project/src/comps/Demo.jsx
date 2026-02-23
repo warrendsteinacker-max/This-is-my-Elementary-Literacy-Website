@@ -153,21 +153,79 @@
 
 
 
-import {useState} from 'react'
 
-const seacrchB = () => {
 
-    const data = [{name: 'warren', dep: 'is doc', id: 1}, {name: 'stein', dep: 'is clerk', id: 2}, {name: 'steinacker', dep: 'is me', id: 3}]
+
+// import {useState} from 'react'
+
+// const seacrchB = () => {
+
+//     const data = [{name: 'warren', dep: 'is doc', id: 1}, {name: 'stein', dep: 'is clerk', id: 2}, {name: 'steinacker', dep: 'is me', id: 3}]
 
   
-  const [searched, setS] = useState('')
+//   const [searched, setS] = useState('')
 
-    const filltered = data.filter((item) => item.name.toLowerCase().includes(searched.toLowerCase()))
+//     const filltered = data.filter((item) => item.name.toLowerCase().includes(searched.toLowerCase()))
+
+//   return(<>
+//         <input placeholder='search somthing' onChange={(e) => setS(e.target.value)}/>
+//         {filltered.map((item) => <div key={item.id} style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}><h3>{item.name}</h3><p>{item.dep}</p></div>)}
+//         </>)
+// }
+
+// export default seacrchB
+
+
+import {useState, useReducer} from 'react'
+
+const todolist = () => {
+
+  const [data, setD] = useState([])
+
+  const [Istate, setS] = useState({
+      name: '',
+      dep: '',
+      done: false,
+      id: 0 
+  })
+
+  const reducer = (state, action) => {
+    switch(action.type){
+      case 'name':
+        return {...state, name: action.payload}
+      case 'dep':
+        return {...state, dep: action.payload}
+      default:
+        return state
+    }
+  }
+
+  const [state, dispatch] = useReducer(reducer, Istate)
+
+  const submitD = (state) => {
+    setD((data) => [...data, {...state, id: state.length + 1}])
+    dispatch({type: 'dep', payload: ''})
+    dispatch({type: 'name', payload: ''})
+  }
+
+  const deleteD = (e) => {
+    const newd = data.filter((item) => item.id !== e.target.value)
+    setD(newd)
+  }
+
+  const completT = (e) => {
+    const item = data.find((i) => i.id === e.target.value )
+    item.done = !item.done
+  }
 
   return(<>
-        <input placeholder='search somthing' onChange={(e) => setS(e.target.value)}/>
-        {filltered.map((item) => <div key={item.id} style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}><h3>{item.name}</h3><p>{item.dep}</p></div>)}
+        <form onSubmit={() => submitD(state)}>
+          <input onChange={dispatch({type: 'dep', payload: e.target.value})}/>
+          <input onChange={dispatch({type: 'name', payload: e.target.value})}/>
+          <button type='submit'>make to do</button>
+        </form>
+        {data.map((item) => <div key={}></div>)}
         </>)
-}
 
-export default seacrchB
+
+}
