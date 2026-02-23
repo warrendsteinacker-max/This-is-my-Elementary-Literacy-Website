@@ -89,8 +89,10 @@ const TiktacG = () => {
 
 
   return(<>
-        <div style={{display: 'grid', gridTemplateColmns: 'repeat(3, 1fr)', gridTemplateRows: 'repeat(3, 1fr)'}}>
-          {squares.map((val, i)=><div key={i}>{val}</div>)}
+        <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridTemplateRows: 'repeat(3, 1fr)', border: '5px solid black', width: '1000px', height: '1000px'}}>
+          {squares.map((val, i)=><div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', border: '5px solid black'}} key={i}>{val}</div>)}
         </div>
         </>)
 }
+
+export default TiktacG
