@@ -389,20 +389,32 @@
 import {useEffect, useState} from 'react'
 
 
-const [currentG, setCg] = useState([])
 
-const words = ['cat', 'fat', 'man']
+const newP = () => {
+
+
+const words = ['cat', 'fat', 'man', 'dart']
+const [currentG, setCg] = useState([])
+const [win, setW] = useState(false)
+const [count, setC] = useState(0)
+const word = words.at(count)
+const display = Array(word.length).fill('')
+
+
+
 
 useEffect(()=>{
   const wordlef = (e) => {
     const key = e.key.toLowerCase()
-    const keyL = v.length
-    // const CgL = currentG.length
-    const word = words[0]
+    const keyL = key.length
     const display = Array(word.length).fill('')
-    if(vL === 1){
-      if(v === wordToG[CgL + 1]){
-        display[CgL + 1] = key
+    const CgL = currentG.length
+    if(keyL === 1){
+      if(key === word[CgL]){
+        if(currentG.length + 1 === word.length){
+          setW(true)
+          return
+        }
         setCg((currentG)=>[...currentG, e.key])
         console.log(currentG)
       }
@@ -412,9 +424,15 @@ useEffect(()=>{
   document.addEventListener('keydown', wordlef)
 
   return () => {document.removeEventListener('keydown', wordlef)}
-}, [currentG])
+}, [currentG, win, word])
 
-return(<>{display.map((item, i) => <div style={{border: '5px solid black'}} key={i}>{item}</div>)}</>)
+if(win){
+  return <><h3>you won</h3><button onClick={()=>{setCg([]); setW(false); setC((count) => count + 1)}}>start new game</button></>
+}
+
+return(<>{display.map((_, i) => <div style={{border: '5px solid black'}} key={i}>{currentG[i] || ''}</div>)}</>)
+
+}
 
 // , [wordToG], [currentG], [win]
 
