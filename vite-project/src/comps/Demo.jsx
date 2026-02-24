@@ -176,64 +176,84 @@
 // export default seacrchB
 
 
-import {useState, useReducer} from 'react'
+// import {useState, useReducer} from 'react'
 
-const todolist = () => {
+// const todolist = () => {
 
-  const [data, setD] = useState([])
+//   const [data, setD] = useState([])
 
-  const Istate = {
-      name: '',
-      dep: '',
-      done: false,
-      id: 0 
-  }
+//   const Istate = {
+//       name: '',
+//       dep: '',
+//       done: false,
+//       id: 0 
+//   }
 
-  const reducer = (state, action) => {
-    switch(action.type){
-      case 'name':
-        return {...state, name: action.payload}
-      case 'dep':
-        return {...state, dep: action.payload}
-      case 'resetn':
-        return {...state, id: 0}
-      default:
-        return state
-    }
-  }
+//   const reducer = (state, action) => {
+//     switch(action.type){
+//       case 'name':
+//         return {...state, name: action.payload}
+//       case 'dep':
+//         return {...state, dep: action.payload}
+//       case 'resetn':
+//         return {...state, id: 0}
+//       default:
+//         return state
+//     }
+//   }
 
-  const [state, dispatch] = useReducer(reducer, Istate)
+//   const [state, dispatch] = useReducer(reducer, Istate)
 
-  const submitD = (e) => {
-    e.preventDefault()
-    setD((data) => [...data, {...state, id: state.length + 1}])
-    dispatch({type: 'dep', payload: ''})
-    dispatch({type: 'name', payload: ''})
-    dispatch({type: 'resetn'})
-    console.log(data)
-  }
+//   const submitD = (e) => {
+//     e.preventDefault()
+//     setD((data) => [...data, {...state, id: data.length + 1}])
+//     dispatch({type: 'dep', payload: ''})
+//     dispatch({type: 'name', payload: ''})
+//     dispatch({type: 'resetn'})
+//     console.log(data)
+//   }
 
-  const deleteD = (id) => {
-    const newd = data.filter((item) => item.id !== id)
-    setD(newd)
-  }
+//   const deleteD = (id) => {
+//     const newd = data.filter((item) => item.id !== id)
+//     setD(newd)
+//   }
 
-  // const completT = (e) => {
-  //   const item = data.find((i) => i.id === id)
-  //   item.done = !item.done
-  // }
+//   const completT = (id) => {
+//     setD(data.map((item) => item.id === id ? {...item, done: !item.done} : item))
+//   }
 
-  return(<>
-        <form onSubmit={submitD} style={{display: 'flex', flexDirection: 'column'}}>
-          <input onChange={(e) => dispatch({type: 'dep', payload: e.target.value})}/>
-          <input onChange={(e) => dispatch({type: 'name', payload: e.target.value})}/>
-          <button type='submit'>make to do</button>
-        </form>
-        {data.map((item) => <div key={item.id} style={{display: 'flex', alignItems: 'center', flexdirection: 'column'}}><h3>{item.name}</h3><h3>{item.dep}</h3><button onClick={() => deleteD(item.id)}>delete</button></div>)}
-        </>)
+//   return(<>
+//         {/* <div style={{display: 'flex', alignItems: 'center', flexdirection: 'column'}}> */}
+//         <form onSubmit={submitD} style={{display: 'flex', flexDirection: 'column'}}>
+//           <input value={state.dep} onChange={(e) => dispatch({type: 'dep', payload: e.target.value})}/>
+//           <input value={state.name} onChange={(e) => dispatch({type: 'name', payload: e.target.value})}/>
+//           <button type='submit'>make to do</button>
+//         </form>
+//         <div style={{position: 'absolute', left: '45%', top: '50%', backgroundColor: 'black'}}>
+//         {data.map((item) => <div key={item.id} style={{display: 'flex', alignItems: 'center', flexdirection: 'column', padding: '50px'}}><div style={{backgroundColor: 'red', margin: '50px'}}><h3>{item.name}</h3></div><div style={{backgroundColor: 'blue', margin: '50px'}}><h3>{item.dep}</h3></div><button onClick={() => deleteD(item.id)}>delete</button><button onClick={() => completT(item.id)}>mark</button>{item.done ? <div style={{backgroundColor: 'green', borderRadius: '100%', width: '20px', height: '20px'}}></div> : <div style={{backgroundColor: 'red', borderRadius: '100%', width: '20px', height: '20px'}}></div>}</div>)}
+//         </div>
+//         {/* </div> */}
+//         </>)
 
 
-}
+// }
 
 
-export default todolist
+// export default todolist
+
+
+import {useState, useEffect} from 'react'
+
+
+const [currentg, setG] = useState('')
+const [wordtoG, setWtg] = useState('cat')
+const [wordgD, setWgd] = useState(Array(Number(wordtoG.length)).fill(''))
+const [win, setW] = useState(false)
+
+useEffect((e) => {
+
+  if(e.key === Enter && wordtoG.legth === currentg.length){
+    
+  };
+
+})
