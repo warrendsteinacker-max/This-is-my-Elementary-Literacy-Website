@@ -242,20 +242,52 @@
 // export default todolist
 
 
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 
+const wordle = () => {
 
 const [currentg, setG] = useState('')
 const [wordtoG, setWtg] = useState('cat')
-const [wordgD, setWgd] = useState(Array(Number(wordtoG.length)).fill(''))
+const [wordgD, setWgdisplay] = useState([])
 const [win, setW] = useState(false)
 
-useEffect((e) => {
+
+
+const wordlef = (e) => {
+
+  if(e.key){
+    setG(currentg + e.key)
+  }
 
   if(e.key === Enter && wordtoG.legth === currentg.length){
-    
+    setW(true)
   };
 
-  if(wordtoG.slice())
+  if(e.key === Backspace){
+    setG(currentg.slice(0, -1))
+    setWgdisplay(wordgD.slice(0, -1))
+  }
 
-})
+  if(wordtoG.slice(Number(currentg.length), Number(currentg.length + 1)).includes(currentg)){
+    wordgD.unshift(currentg.charAt(Number(currentg.length)))
+  }
+}
+
+if(win){
+  return <h3>you got it</h3>
+}
+
+return(<>
+      
+      {wordgD.map((val) => <div>{val}</div>)}
+
+      <input onChange={wordlef}/>
+
+      </>)
+
+
+}
+
+
+
+
