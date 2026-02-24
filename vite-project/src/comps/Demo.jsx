@@ -242,28 +242,109 @@
 // export default todolist
 
 
-import {useState, useEffect} from 'react'
+// import {useState, useEffect} from 'react'
 
-const wordle = () => {
+// const wordle = () => {
 
+// const [currentg, setG] = useState('')
+// const [wordtoG, setWtg] = useState('cat')
+// const [wordgD, setWgdisplay] = useState([])
+// const [win, setW] = useState(false)
+
+
+// useEffect((e) => {
+//   const wordlef = (e) => {
+
+//     if(e.key.length === 1){
+//       const newG = currentg + e.key
+//       setG(newG)
+//       console.log(currentg)
+//       console.log(wordgD)
+//     }
+
+//     if(e.key === 'Enter'){
+//       if(wordtoG.legnth === currentg.length){
+//         setW(true)
+//         console.log('win')
+//     }};
+
+//     if(e.key === 'Backspace'){
+//       setG(currentg.slice(0, -1))
+//       setWgdisplay(wordgD.slice(0, -1))
+//       console.log(currentg)
+//       console.log(wordgD)
+//     }
+
+//     if(wordtoG[currentg.length] === newG){
+//       // wordgD.unshift(currentg.charAt(Number(currentg.length)))
+//       setWgdisplay([...wordgD, newG])
+//       console.log(wordgD)
+//     }
+//   }
+//   document.addEventListener('keydown', wordlef)
+//   return () => document.removeEventListener('keydown', wordlef)
+// })
+
+// if(win){
+//   return <h3>you got it</h3>
+// }
+
+// return(<>
+      
+//       {wordgD.map((val, i) => <div key={i}>{val}</div>)}
+
+//       <input/>
+
+//       </>)
+
+
+// }
+
+// export default wordle
+
+
+
+
+
+
+import {useState} from 'react'
+
+
+
+// useEffect(() => {
+
+// }, )
+
+
+
+const Newp = () => {
+
+
+const [spaces, setP] = useState(Array(3).fill(''))
 const [currentg, setG] = useState('')
-const [wordtoG, setWtg] = useState('cat')
+const [index, setRw] = useState(0) 
+const [words, setWords] = useState(['cat', 'fat', 'mad']) 
+const [wordtoG, setWtg] = useState(words[index])
 const [wordgD, setWgdisplay] = useState([])
 const [win, setW] = useState(false)
 
-
-useEffect((e) => {
-  const wordlef = (e) => {
+    const wordlef = (e) => {
+    const Tcar = e.key.toLowerCase()  
+    const newG = currentg + Tcar
 
     if(e.key.length === 1){
-      const newG = currentg + e.key
       setG(newG)
-      console.log(currentg)
+      console.log(newG)
+      if(wordtoG[currentg.length] === Tcar){
+      // wordgD.unshift(currentg.charAt(Number(currentg.length)))
+      console.log('word display')
+      setWgdisplay([...wordgD, Tcar])
       console.log(wordgD)
+    }
     }
 
     if(e.key === 'Enter'){
-      if(wordtoG.legnth === currentg.length){
+      if(wordtoG.length === currentg.length){
         setW(true)
         console.log('win')
     }};
@@ -275,33 +356,25 @@ useEffect((e) => {
       console.log(wordgD)
     }
 
-    if(wordtoG[currentg.length] === newG){
-      // wordgD.unshift(currentg.charAt(Number(currentg.length)))
-      setWgdisplay([...wordgD, newG])
-      console.log(wordgD)
-    }
   }
-  document.addEventListener('keydown', wordlef)
-  return () => document.removeEventListener('keydown', wordlef)
-})
 
-if(win){
-  return <h3>you got it</h3>
+  if(win){
+    return <><h3>you won</h3><button onClick={() => {setRw(Math.floor(Math.random * 3)); setW(false)}}>Play Again</button></>
+  }
+
+  
+  return(<>
+        <div style={{display: 'flex', margin: '0px', border: '5px solid black', width: 'fit-content'}}>
+        {spaces.map((_, i) => <div key={i} style={{border: '5px solid black', width: '200px', height: '200px', backgroundColor: wordgD[i] ? 'green':'red'}}>{wordgD[i]}</div>)}
+        </div>
+        <form onSubmit={() => {console.log('hello')}}>
+          <input onKeyDown={wordlef}/>
+        </form>
+
+        </>)
 }
 
-return(<>
-      
-      {wordgD.map((val, i) => <div key={i}>{val}</div>)}
 
-      <input/>
-
-      </>)
-
-
-}
-
-export default wordle
-
-
+export default Newp
 
 
