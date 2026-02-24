@@ -307,80 +307,115 @@
 
 
 
-import {useState} from 'react'
+// import {useState} from 'react'
 
 
 
-// useEffect(() => {
+// // useEffect(() => {
 
-// }, )
-
-
-
-const Newp = () => {
-
-
-const [currentg, setG] = useState('')
-const [index, setRw] = useState(0) 
-const [words, setWords] = useState(['cat', 'fart', 'mark'])
-const wordtoG = words[index]
-const L = wordtoG.split('')
-const s = L.length
-const [spaces, setP] = useState(Array(s).fill('')) 
-const [wordgD, setWgdisplay] = useState([])
-const [win, setW] = useState(false)
+// // }, )
 
 
 
+// const Newp = () => {
 
-    const wordlef = (e) => {
-    // e.preventDefault()
-    const Tcar = e.key.toLowerCase()  
-    const newG = currentg + Tcar
 
-    if(e.key.length === 1){
-      setG(newG)
-      console.log(newG)
-      if(wordtoG[currentg.length] === Tcar){
-      // wordgD.unshift(currentg.charAt(Number(currentg.length)))
-      console.log('word display')
-      setWgdisplay([...wordgD, Tcar])
-      console.log(wordgD)
-    }
-    }
+// const [currentg, setG] = useState('')
+// const [index, setRw] = useState(0) 
+// const [words, setWords] = useState(['cat', 'fart', 'mark'])
+// const wordtoG = words[index]
+// const s = wordtoG.length
+// const [spaces, setP] = useState(Array(Number(s)).fill('')) 
+// const [wordgD, setWgdisplay] = useState([])
 
-    if(e.key === 'Enter'){
-      if(wordtoG.length === currentg.length){
-        setW(true)
-        console.log('win')
-    }};
+// const [index, setRw] = useState(0)
+// const [win, setW] = useState(false)
 
-    if(e.key === 'Backspace'){
-      setG(currentg.slice(0, -1))
-      setWgdisplay(wordgD.slice(0, -1))
-      console.log(currentg)
-      console.log(wordgD)
-    }
 
-  }
 
-  if(win){
-    return <><h3>you won</h3><button onClick={() => {setRw(Math.floor(Math.random() * 3)); setW(false); setG('')}}>Play Again</button></>
-  }
+
+//     const wordlef = (e) => {
+//     // e.preventDefault()
+//     const Tcar = e.key.toLowerCase()  
+//     const newG = currentg + Tcar
+
+//     if(e.key.length === 1){
+//       setG(newG)
+//       console.log(newG)
+//       if(wordtoG[currentg.length] === Tcar){
+//       // wordgD.unshift(currentg.charAt(Number(currentg.length)))
+//       console.log('word display')
+//       setWgdisplay([...wordgD, Tcar])
+//       console.log(wordgD)
+//     }
+//     }
+
+//     if(e.key === 'Enter'){
+//       if(wordtoG.length === currentg.length){
+//         setW(true)
+//         console.log('win')
+//     }};
+
+//     if(e.key === 'Backspace'){
+//       setG(currentg.slice(0, -1))
+//       setWgdisplay(wordgD.slice(0, -1))
+//       console.log(currentg)
+//       console.log(wordgD)
+//     }
+
+//   }
+
+//   if(win){
+//     return <><h3>you won</h3><button onClick={() => {setRw(Math.floor(Math.random() * 3)); setW(false); setG('')}}>Play Again</button></>
+//   }
 
   
-  return(<>
-        <div style={{display: 'flex', margin: '0px', border: '5px solid black', width: 'fit-content'}}>
-        {spaces.map((_, i) => <div key={i} style={{border: '5px solid black', width: '200px', height: '200px', backgroundColor: wordgD[i] ? 'green':'red'}}>{wordgD[i]}</div>)}
-        </div>
-        <form onSubmit={() => {console.log('hello')}}>
-          <input onKeyDown={wordlef}/>
-        </form>
+//   return(<>
+//         <div style={{display: 'flex', margin: '0px', border: '5px solid black', width: 'fit-content'}}>
+//         {spaces.map((_, i) => <div key={i} style={{border: '5px solid black', width: '200px', height: '200px', backgroundColor: wordgD[i] ? 'green':'red'}}>{wordgD[i]}</div>)}
+//         </div>
+//         <form onSubmit={() => {console.log('hello')}}>
+//           <input onKeyDown={wordlef}/>
+//         </form>
 
-        </>)
-}
+//         </>)
+// }
 
 
-export default Newp
+// export default Newp
+
+
+
+import {useEffect, useState} from 'react'
+
+
+const [currentG, setCg] = useState([])
+
+const words = ['cat', 'fat', 'man']
+
+useEffect(()=>{
+  const wordlef = (e) => {
+    const key = e.key.toLowerCase()
+    const keyL = v.length
+    // const CgL = currentG.length
+    const word = words[0]
+    const display = Array(word.length).fill('')
+    if(vL === 1){
+      if(v === wordToG[CgL + 1]){
+        display[CgL + 1] = key
+        setCg((currentG)=>[...currentG, e.key])
+        console.log(currentG)
+      }
+    }
+  }
+
+  document.addEventListener('keydown', wordlef)
+
+  return () => {document.removeEventListener('keydown', wordlef)}
+}, [currentG])
+
+return(<>{display.map((item, i) => <div style={{border: '5px solid black'}} key={i}>{item}</div>)}</>)
+
+// , [wordToG], [currentG], [win]
 
 
