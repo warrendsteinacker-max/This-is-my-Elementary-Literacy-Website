@@ -256,4 +256,6 @@ useEffect((e) => {
     
   };
 
+  if(wordtoG.slice())
+
 })
