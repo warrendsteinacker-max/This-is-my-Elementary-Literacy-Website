@@ -320,15 +320,21 @@ import {useState} from 'react'
 const Newp = () => {
 
 
-const [spaces, setP] = useState(Array(3).fill(''))
 const [currentg, setG] = useState('')
 const [index, setRw] = useState(0) 
-const [words, setWords] = useState(['cat', 'fat', 'mad']) 
-const [wordtoG, setWtg] = useState(words[index])
+const [words, setWords] = useState(['cat', 'fart', 'mark'])
+const wordtoG = words[index]
+const L = wordtoG.split('')
+const s = L.length
+const [spaces, setP] = useState(Array(s).fill('')) 
 const [wordgD, setWgdisplay] = useState([])
 const [win, setW] = useState(false)
 
+
+
+
     const wordlef = (e) => {
+    // e.preventDefault()
     const Tcar = e.key.toLowerCase()  
     const newG = currentg + Tcar
 
@@ -359,7 +365,7 @@ const [win, setW] = useState(false)
   }
 
   if(win){
-    return <><h3>you won</h3><button onClick={() => {setRw(Math.floor(Math.random * 3)); setW(false)}}>Play Again</button></>
+    return <><h3>you won</h3><button onClick={() => {setRw(Math.floor(Math.random() * 3)); setW(false); setG('')}}>Play Again</button></>
   }
 
   
