@@ -242,7 +242,7 @@
 // export default todolist
 
 
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 const wordle = () => {
 
@@ -252,26 +252,38 @@ const [wordgD, setWgdisplay] = useState([])
 const [win, setW] = useState(false)
 
 
+useEffect((e) => {
+  const wordlef = (e) => {
 
-const wordlef = (e) => {
+    if(e.key.length === 1){
+      const newG = currentg + e.key
+      setG(newG)
+      console.log(currentg)
+      console.log(wordgD)
+    }
 
-  if(e.key){
-    setG(currentg + e.key)
+    if(e.key === 'Enter'){
+      if(wordtoG.legnth === currentg.length){
+        setW(true)
+        console.log('win')
+    }};
+
+    if(e.key === 'Backspace'){
+      setG(currentg.slice(0, -1))
+      setWgdisplay(wordgD.slice(0, -1))
+      console.log(currentg)
+      console.log(wordgD)
+    }
+
+    if(wordtoG[currentg.length] === newG){
+      // wordgD.unshift(currentg.charAt(Number(currentg.length)))
+      setWgdisplay([...wordgD, newG])
+      console.log(wordgD)
+    }
   }
-
-  if(e.key === Enter && wordtoG.legth === currentg.length){
-    setW(true)
-  };
-
-  if(e.key === Backspace){
-    setG(currentg.slice(0, -1))
-    setWgdisplay(wordgD.slice(0, -1))
-  }
-
-  if(wordtoG.slice(Number(currentg.length), Number(currentg.length + 1)).includes(currentg)){
-    wordgD.unshift(currentg.charAt(Number(currentg.length)))
-  }
-}
+  document.addEventListener('keydown', wordlef)
+  return () => document.removeEventListener('keydown', wordlef)
+})
 
 if(win){
   return <h3>you got it</h3>
@@ -279,14 +291,16 @@ if(win){
 
 return(<>
       
-      {wordgD.map((val) => <div>{val}</div>)}
+      {wordgD.map((val, i) => <div key={i}>{val}</div>)}
 
-      <input onChange={wordlef}/>
+      <input/>
 
       </>)
 
 
 }
+
+export default wordle
 
 
 
