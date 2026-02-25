@@ -523,6 +523,49 @@ const handler = useMemo(() => {
 
 
 
+const throttel = (fn, t) => {
+
+  let timer = false
+
+  return (...args) => {
+    if(timer) {return null}
+  
+    timer = true
+
+    fn(...args)
+    
+    setTimeout(() => {
+      timer = false
+    }, t)
+
+  }
+
+}
+
+
+const db = (fn, t) => {
+  let timer;
+
+  return (...args) => {
+
+    clearTimeout(timer)
+
+    timer = setTimeout(() => {
+      fn(...args)
+    }, t)
+  }
+} 
+
+
+
+
+
+
+
+
+
+
+
 const debounce = (fn, t) => {
   let timer;
 
