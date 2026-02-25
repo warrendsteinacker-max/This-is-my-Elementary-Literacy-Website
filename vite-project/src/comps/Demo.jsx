@@ -502,13 +502,38 @@ const searchedV = data.filter((item) => item?.name?.toLowerCase().includes(searc
 const debounce = (fn, t) => {
   let timer;
 
-  if(timer){
+  return (...args) => {
     
     clearTimeout(timer)
 
-    timer = setTimeout(() => {fn()}, t) 
+    timer = setTimeout(=>{
+        fn(...args)
+    }, t)
+
   }
-  else{
-    timer = setTimeout(() => {fn()}, t) 
+
+} 
+
+
+
+
+
+
+const throwoutl = (fn, t) => {
+  let wait = false;
+
+  return (...args) => {
+    
+    if(wait){return null}
+
+    wait = true
+
+    fn(...args);
+
+    setTimeout(()=>{
+      wait = false;  
+    }, t)
+
   }
+
 } 
