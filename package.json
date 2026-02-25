@@ -2,9 +2,11 @@
   "name": "assig-merged",
   "version": "1.0.0",
   "type": "module",
+
   "scripts": {
-    "build": "cd vite-project && vite build"
-  },
+  "build": "cd vite-project && npm install && npm run build"
+},
+
   "dependencies": {
     "react": "^19.2.0",
     "express": "^5.2.1",
