@@ -1,28 +1,19 @@
 {
   "version": 2,
   "builds": [
-    { 
-      "src": "api/server.js", 
-      "use": "@vercel/node" 
+    {
+      "src": "api/server.js",
+      "use": "@vercel/node"
     },
-    { 
-      "src": "vite-project/package.json", 
+    {
+      "src": "vite-project/package.json",
       "use": "@vercel/static-build",
       "config": { "distDir": "dist" }
     }
   ],
   "rewrites": [
-    { 
-      "source": "/api/(.*)", 
-      "destination": "/api/server.js" 
-    },
-    {
-      "source": "/assets/(.*)",
-      "destination": "/vite-project/dist/assets/$1"
-    },
-    { 
-      "source": "/(.*)", 
-      "destination": "/vite-project/dist/index.html" 
-    }
+    { "source": "/api/(.*)", "destination": "api/server.js" },
+    { "source": "/assets/(.*)", "destination": "vite-project/dist/assets/$1" },
+    { "source": "/(.*)", "destination": "vite-project/dist/index.html" }
   ]
 }
