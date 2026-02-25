@@ -593,49 +593,6 @@
 import {useEffect, useMemo, useState} from 'react'
 
 
-
-
-const IF = () => {
-
-
-const [D, setD] = useState([])
-const [L, setL] = useState(false)
-const [E, setE] = useState(false)
-const [offset, setOff] = useState(0)
-const [limit, setLim] = useState(10)
-
-
-
-const FetchMoreI = async() => {
-
-  try{
-
-    setL(true)
-    const res = await fetch(`api_url?limit=${limit}&offset=${offset}`)
-    const data = await res.json()
-
-    if(!res.ok){
-      throw new Error('could not fetch data')
-    }
-
-    if(data.length > 0){
-      setD((D) => [...D, ...data])
-      setOff(offset + limit)
-    }
-
-
-  }
-  catch(error){
-    console.error(error.message)
-    setE(true)
-  }
-  finally{
-    setL(false)
-  }
-
-}
-
-
   const Th = (fn, t) => {
     let wait = false;
 
@@ -655,6 +612,46 @@ const FetchMoreI = async() => {
 
   } 
 
+const IF = () => {
+
+
+const [D, setD] = useState([])
+const [L, setL] = useState(false)
+const [E, setE] = useState(false)
+const [offset, setOff] = useState(0)
+const limit = 10
+
+
+const FetchMoreI = async() => {
+
+  try{
+
+    setL(true)
+    const res = await fetch(`api_url?limit=${limit}&offset=${offset}`)
+    const data = await res.json()
+
+    if(!res.ok){
+      throw new Error('could not fetch data')
+    }
+
+    if(data.length > 0){
+      setD((D) => [...D, ...data])
+      setOff((offset) => offset + limit)
+    }
+
+
+  }
+  catch(error){
+    console.error(error.message)
+    setE(true)
+  }
+  finally{
+    setL(false)
+  }
+
+}
+
+
 // const THf = Th(() => {
 
 //   const {scrollTop, scrollHeigth, clientHeight} = document.documentElement
@@ -673,14 +670,16 @@ const FetchMoreI = async() => {
       FetchMoreI()
     }
 
-  }, 3000), [])
+  }, 3000), [L])
 
 
     useEffect(() => {
 
     window.addEventListner('scroll', THfm)
 
-    return () => window.RemoveEventListner('scroll', THfm)
+    FetchMoreI()
+
+    return () => window.removeEventListner('scroll', THfm)
 
   }, [])
 
@@ -690,7 +689,7 @@ const FetchMoreI = async() => {
 
 
   return(<>
-          {data.map((item) => <div key={item.id}>{item.name}</div>)}
+          {D.map((item) => <div key={item.id}>{item.name}</div>)}
         </>)
 }
 
