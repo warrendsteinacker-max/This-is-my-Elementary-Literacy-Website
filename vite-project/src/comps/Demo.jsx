@@ -696,56 +696,69 @@
 
 
 
-import {useState, useEffect} from 'react'
+// import {useState, useEffect} from 'react'
 
-const words = ['cat', 'dog', 'man']
+// const words = ['cat', 'dog', 'man']
 
-const Wordle = () => {
+// const Wordle = () => {
 
-  const [win, setW] = useState(false)
-  const [index, setI] = useState(0)
-  const [CG, setCG] = useState([])
-  const word = words.at(index)
-  const display = Array(word.length).fill('')
-
-
-
-  useEffect(() => {
-
-    const f = (e) => {
-
-      if(e.key.length === 1 && e.key === word.charAt(CG.length)){
-        setCG((CG) => [...CG, e.key])
-      }
-
-      // if(e.key.length === 1 && e.key === word.charAt(CG.length + 1)){
-      //   setCG((CG) => [...CG, e.key])
-      // }
-
-      if(e.key === 'Backspace'){
-        setCG((CG) => CG.slice(0, -1))
-      }
-
-      if(CG.length === word.length && e.key === 'Enter'){
-        setW(true)
-        }
-    }
-
-
-    window.addEventListener('keydown', f)
-
-    return () => window.removeEventListener('keydown', f)
-  }, [CG, win, word])
+//   const [win, setW] = useState(false)
+//   const [index, setI] = useState(0)
+//   const [CG, setCG] = useState([])
+//   const word = words.at(index)
+//   const display = Array(word.length).fill('')
 
 
 
-  if(win){
-    return <><h3>you won</h3><button onClick={() => {setW(false); setCG([]); setI(Math.floor(Math.random() * 3))}}>start new game</button></>
-  }
+//   useEffect(() => {
+
+//     const f = (e) => {
+
+//       if(e.key.length === 1 && e.key === word.charAt(CG.length)){
+//         setCG((CG) => [...CG, e.key])
+//       }
+
+//       // if(e.key.length === 1 && e.key === word.charAt(CG.length + 1)){
+//       //   setCG((CG) => [...CG, e.key])
+//       // }
+
+//       if(e.key === 'Backspace'){
+//         setCG((CG) => CG.slice(0, -1))
+//       }
+
+//       if(CG.length === word.length && e.key === 'Enter'){
+//         setW(true)
+//         }
+//     }
+
+
+//     window.addEventListener('keydown', f)
+
+//     return () => window.removeEventListener('keydown', f)
+//   }, [CG, win, word])
+
+
+
+//   if(win){
+//     return <><h3>you won</h3><button onClick={() => {setW(false); setCG([]); setI(Math.floor(Math.random() * 3))}}>start new game</button></>
+//   }
+
+//   return(<>
+//         <h3>press enter when you got the word</h3>
+//         {word.length > 0 && display.map((_, i)=> <div key={i} style={{backgroundColor: CG[i] ? 'green' : 'red'}}>{CG[i] || ''}</div>)}
+//         </>)
+// }
+
+
+const Tiktac = () => {
+
+
+
 
   return(<>
-        <h3>press enter when you got the word</h3>
-        {word.length > 0 && display.map((_, i)=> <div key={i} style={{backgroundColor: CG[i] ? 'green' : 'red'}}>{CG[i] || ''}</div>)}
+          <div style={{}}>
+          {display.map((item, i) => <div key={i} style={{border: '5px solid black'}} onClick={() => handleclick(i)}>{item}</div>)}
+          </div>
         </>)
 }
 
