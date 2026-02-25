@@ -476,6 +476,30 @@ const searchedV = data.filter((item) => item?.name?.toLowerCase().includes(searc
 
   }, [])
 
+  const debounce = (fn, t) => {
+  let timer;
+
+  return (...args) => {
+    
+    clearTimeout(timer)
+
+    timer = setTimeout(=>{
+        fn(...args)
+    }, t)
+
+  }
+
+} 
+
+// const onC = debounce((e) => {
+//   setS(e.target.value)
+// }, 1000)
+
+const handler = useMemo(() => {
+  return debounce() => {
+  setS(e.target.value)
+}, 1000), []);
+
 
   if(L){
     return <h3>...Loading</h3>
@@ -489,7 +513,7 @@ const searchedV = data.filter((item) => item?.name?.toLowerCase().includes(searc
       
       {searchedV.length > 0 && searchedV.map((item, i) => <div key={i}>{item.name}</div>)} 
 
-      <input placeholder='search' value={search} onChange={(e) => setS(e.target.value)}/>   
+      <input placeholder='search' value={search} onChange={handler}/>   
       
       
         </>)
