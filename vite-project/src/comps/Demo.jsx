@@ -1,35 +1,35 @@
-// // import React from 'react
+import React from 'react'
 
-// // const Demo = () => {
-// //   return (
-// //     <div 
-// //       style={{
-// //         height: '100vh', 
-// //         width: '100vw', 
-// //         backgroundColor: 'whitesmoke', 
-// //         position: 'relative', // Fixed spelling
-// //         overflow: 'hidden'    // Prevents scrollbars if the dot hits the edge
-// //       }}
-// //     >
-// //       {/* This is your moving dot */}
-// //       <div className="sin"></div>
+const Demo = () => {
+  return (
+    <div 
+      style={{
+        height: '100vh', 
+        width: '100vw', 
+        backgroundColor: 'whitesmoke', 
+        position: 'relative', // Fixed spelling
+        overflow: 'hidden'    // Prevents scrollbars if the dot hits the edge
+      }}
+    >
+      {/* This is your moving dot */}
+      <div className="sin"></div>
 
-// //       {/* Optional: Add a subtle path line or text */}
-// //       <div style={{
-// //         position: 'absolute', 
-// //         top: '50%', 
-// //         width: '100%', 
-// //         textAlign: 'center', 
-// //         color: '#ccc',
-// //         zIndex: 0
-// //       }}>
-// //         <h2>Wave Loading...</h2>
-// //       </div>
-// //     </div>
-// //   )
-// // }
+      {/* Optional: Add a subtle path line or text */}
+      <div style={{
+        position: 'absolute', 
+        top: '50%', 
+        width: '100%', 
+        textAlign: 'center', 
+        color: '#ccc',
+        zIndex: 0
+      }}>
+        <h2>Wave Loading...</h2>
+      </div>
+    </div>
+  )
+}
 
-// // export default Demo
+export default Demo
 
 
 
@@ -750,48 +750,48 @@
 // }
 
 
-const Tiktac = () => {
+// const Tiktac = () => {
 
-  const [T, setT] = useState(false)
-
-
-  const [display, setD] = useState(Array(9).fill(null))
-
-  const winner = [[0, 1, 2],[3, 4, 5],[6, 7, 8],[0, 3, 6],[1, 4, 7],[2, 5, 8],[0, 4, 8],[2, 4, 6]].find(([a,b,c]) => display[a] && display[a] ===  display[b] &&  display[a] ===  display[c])
+//   const [T, setT] = useState(false)
 
 
-  const handleclick = (i) => {
-    const newD = display.slice()
+//   const [display, setD] = useState(Array(9).fill(null))
 
-    if(T){
-      if(newD[i]){
-        return null
-      }
-      newD[i] = 'X'
-      setD(newD)
-      setT(false)
-    }
-    else{
-      if(newD[i]){
-        return null
-      }
-      newD[i] = 'O'
-      setD(newD)
-      setT(true)
-    }
+//   const winner = [[0, 1, 2],[3, 4, 5],[6, 7, 8],[0, 3, 6],[1, 4, 7],[2, 5, 8],[0, 4, 8],[2, 4, 6]].find(([a,b,c]) => display[a] && display[a] ===  display[b] &&  display[a] ===  display[c])
 
-  }
 
-  if(winner){
-    return <button onClick={() => setD(Array(9).fill(null))}>{T ? 'x won start new game' : 'o won start new game'}</button>
-  }
+//   const handleclick = (i) => {
+//     const newD = display.slice()
 
-  return(<>
-          <div style={{border: '5px solid black', gridTemplateColumns: 'repeat(3, 1fr)', gridTemplateRows: 'repeat(3, 1fr)', width: 'fit-content', display: 'grid'}}>
-          {display.map((item, i) => <div key={i} style={{border: '5px solid black'}} onClick={() => handleclick(i)}>{item}</div>)}
-          </div>
-        </>)
-}
+//     if(T){
+//       if(newD[i]){
+//         return null
+//       }
+//       newD[i] = 'X'
+//       setD(newD)
+//       setT(false)
+//     }
+//     else{
+//       if(newD[i]){
+//         return null
+//       }
+//       newD[i] = 'O'
+//       setD(newD)
+//       setT(true)
+//     }
+
+//   }
+
+//   if(winner){
+//     return <button onClick={() => setD(Array(9).fill(null))}>{T ? 'x won start new game' : 'o won start new game'}</button>
+//   }
+
+//   return(<>
+//           <div style={{border: '5px solid black', gridTemplateColumns: 'repeat(3, 1fr)', gridTemplateRows: 'repeat(3, 1fr)', width: 'fit-content', display: 'grid'}}>
+//           {display.map((item, i) => <div key={i} style={{border: '5px solid black'}} onClick={() => handleclick(i)}>{item}</div>)}
+//           </div>
+//         </>)
+// }
 
 
 
