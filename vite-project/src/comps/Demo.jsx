@@ -439,168 +439,210 @@
 
 
 
-import {useState, useEffect} from 'react'
+// import {useState, useEffect} from 'react'
 
-const displayFD = () => {
+// const displayFD = () => {
 
-const [data, setD] = useState([])
-const [L, setL] = useState(false)
-const [E, setE] = useState(false)
-const [search, setS] = useState('')
+// const [data, setD] = useState([])
+// const [L, setL] = useState(false)
+// const [E, setE] = useState(false)
+// const [search, setS] = useState('')
 
-const searchedV = data.filter((item) => item?.name?.toLowerCase().includes(search.toLowerCase()))
+// const searchedV = data.filter((item) => item?.name?.toLowerCase().includes(search.toLowerCase()))
 
-  useEffect(() => {
+//   useEffect(() => {
     
-    const f = async() => {
-      try{
-        setL(true)
-        const res = await fetch('api_url')    
-        if(!res.ok){
-          throw new Error('fetch failed')    
-        }
-        const data = await res.json()
-        setD(data)
-        setE(false)
-      }
-      catch(error){
-        console.error(error.message)
-        setE(true)
-      }
-      finally{
-        setL(false)
-      }
+//     const f = async() => {
+//       try{
+//         setL(true)
+//         const res = await fetch('api_url')    
+//         if(!res.ok){
+//           throw new Error('fetch failed')    
+//         }
+//         const data = await res.json()
+//         setD(data)
+//         setE(false)
+//       }
+//       catch(error){
+//         console.error(error.message)
+//         setE(true)
+//       }
+//       finally{
+//         setL(false)
+//       }
+//     }
+
+//     f()
+
+//   }, [])
+
+//   const debounce = (fn, t) => {
+//   let timer;
+
+//   return (...args) => {
+    
+//     clearTimeout(timer)
+
+//     timer = setTimeout(=>{
+//         fn(...args)
+//     }, t)
+
+//   }
+
+// } 
+
+// // const onC = debounce((e) => {
+// //   setS(e.target.value)
+// // }, 1000)
+
+// const handler = useMemo(() => {
+//   return debounce() => {
+//   setS(e.target.value)
+// }, 1000), []);
+
+
+//   if(L){
+//     return <h3>...Loading</h3>
+//   }
+
+//   return(<>
+  
+//       {E && <h3>error happened refresh page</h3>}
+
+//       {data.map((item, i)=><div key={i}><p>{item.dep}</p></div>)}
+      
+//       {searchedV.length > 0 && searchedV.map((item, i) => <div key={i}>{item.name}</div>)} 
+
+//       <input placeholder='search' value={search} onChange={handler}/>   
+      
+      
+//         </>)
+
+// }
+
+
+
+
+// const throttel = (fn, t) => {
+
+//   let timer = false
+
+//   return (...args) => {
+//     if(timer) {return null}
+  
+//     timer = true
+
+//     fn(...args)
+
+//     setTimeout(() => {
+//       timer = false
+//     }, t)
+
+//   }
+
+// }
+
+
+// const db = (fn, t) => {
+//   let timer;
+
+//   return (...args) => {
+
+//     clearTimeout(timer)
+
+//     timer = setTimeout(() => {
+//       fn(...args)
+//     }, t)
+//   }
+// } 
+
+
+
+
+
+
+
+
+
+
+
+// const debounce = (fn, t) => {
+//   let timer;
+
+//   return (...args) => {
+    
+//     clearTimeout(timer)
+
+//     timer = setTimeout(=>{
+//         fn(...args)
+//     }, t)
+
+//   }
+
+// } 
+
+
+
+
+
+
+
+
+
+
+import {useEffect, useMemo} from 'react'
+
+const IF = () => {
+
+
+const
+
+
+  const Th = (fn, t) => {
+    let wait = false;
+
+    return (...args) => {
+      
+      if(wait){return null}
+
+      wait = true
+
+      fn(...args);
+
+      setTimeout(()=>{
+        wait = false;  
+      }, t)
+
     }
 
-    f()
+  } 
+
+
+
+  const THfm = useMemo(Th(() => {
+
+    const {scrollTop, scrollHeight, clientHeight} = document.documentElement
+
+    if(scrollTop + clientHeight >= scrollHeight - 50){
+      FetchMoreI()
+    }
+
+  }, 3000), [])
+
+
+    useEffect(() => {
+
+    window.addEventListner('scroll')
 
   }, [])
 
-  const debounce = (fn, t) => {
-  let timer;
-
-  return (...args) => {
-    
-    clearTimeout(timer)
-
-    timer = setTimeout(=>{
-        fn(...args)
-    }, t)
-
-  }
-
-} 
-
-// const onC = debounce((e) => {
-//   setS(e.target.value)
-// }, 1000)
-
-const handler = useMemo(() => {
-  return debounce() => {
-  setS(e.target.value)
-}, 1000), []);
 
 
-  if(L){
-    return <h3>...Loading</h3>
-  }
 
-  return(<>
-  
-      {E && <h3>error happened refresh page</h3>}
 
-      {data.map((item, i)=><div key={i}><p>{item.dep}</p></div>)}
-      
-      {searchedV.length > 0 && searchedV.map((item, i) => <div key={i}>{item.name}</div>)} 
 
-      <input placeholder='search' value={search} onChange={handler}/>   
-      
-      
-        </>)
-
+  return()
 }
 
 
 
-
-const throttel = (fn, t) => {
-
-  let timer = false
-
-  return (...args) => {
-    if(timer) {return null}
-  
-    timer = true
-
-    fn(...args)
-    
-    setTimeout(() => {
-      timer = false
-    }, t)
-
-  }
-
-}
-
-
-const db = (fn, t) => {
-  let timer;
-
-  return (...args) => {
-
-    clearTimeout(timer)
-
-    timer = setTimeout(() => {
-      fn(...args)
-    }, t)
-  }
-} 
-
-
-
-
-
-
-
-
-
-
-
-const debounce = (fn, t) => {
-  let timer;
-
-  return (...args) => {
-    
-    clearTimeout(timer)
-
-    timer = setTimeout(=>{
-        fn(...args)
-    }, t)
-
-  }
-
-} 
-
-
-
-
-
-
-const throwoutl = (fn, t) => {
-  let wait = false;
-
-  return (...args) => {
-    
-    if(wait){return null}
-
-    wait = true
-
-    fn(...args);
-
-    setTimeout(()=>{
-      wait = false;  
-    }, t)
-
-  }
-
-} 
