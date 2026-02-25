@@ -232,7 +232,7 @@ const MeAI = () => {
             gap: '15px'
         }}>
             <img 
-                src="./spinner.png" 
+                src="/spinner.png" 
                 alt="Loading..." 
                 style={{ width: '50px', height: '50px' }} 
             />
