@@ -622,7 +622,7 @@ const [offset, setOff] = useState(0)
 const limit = 10
 
 
-const FetchMoreI = async() => {
+const FetchMoreI = useCallback(async() => {
 
   try{
 
@@ -649,7 +649,7 @@ const FetchMoreI = async() => {
     setL(false)
   }
 
-}
+}, [offset, L])
 
 
 // const THf = Th(() => {
@@ -670,18 +670,18 @@ const FetchMoreI = async() => {
       FetchMoreI()
     }
 
-  }, 3000), [L])
+  }, 3000), [FetchMoreI])
 
 
     useEffect(() => {
 
-    window.addEventListner('scroll', THfm)
+    window.addEventListener('scroll', THfm)
 
     FetchMoreI()
 
     return () => window.removeEventListner('scroll', THfm)
 
-  }, [])
+  }, [THfm])
 
 
 
