@@ -590,12 +590,50 @@
 
 
 
-import {useEffect, useMemo} from 'react'
+import {useEffect, useMemo, useState} from 'react'
+
+
+
 
 const IF = () => {
 
 
-const
+const [D, setD] = useState([])
+const [L, setL] = useState(false)
+const [E, setE] = useState(false)
+const [offset, setOff] = useState(0)
+const [limit, setLim] = useState(10)
+
+
+
+const FetchMoreI = async() => {
+
+  try{
+
+    setL(true)
+    const res = await fetch(`api_url?limit=${limit}&offset=${offset}`)
+    const data = await res.json()
+
+    if(!res.ok){
+      throw new Error('could not fetch data')
+    }
+
+    if(data.length > 0){
+      setD((D) => [...D, ...data])
+      setOff(offset + limit)
+    }
+
+
+  }
+  catch(error){
+    console.error(error.message)
+    setE(true)
+  }
+  finally{
+    setL(false)
+  }
+
+}
 
 
   const Th = (fn, t) => {
@@ -617,7 +655,15 @@ const
 
   } 
 
+// const THf = Th(() => {
 
+//   const {scrollTop, scrollHeigth, clientHeight} = document.documentElement
+  
+//   if(scrollTop + clientHeight >= scrollHeight - 50){
+//     FetchMoreI()
+//   }
+
+// }, 3000)
 
   const THfm = useMemo(Th(() => {
 
@@ -632,7 +678,9 @@ const
 
     useEffect(() => {
 
-    window.addEventListner('scroll')
+    window.addEventListner('scroll', THfm)
+
+    return () => window.RemoveEventListner('scroll', THfm)
 
   }, [])
 
@@ -641,7 +689,9 @@ const
 
 
 
-  return()
+  return(<>
+          {data.map((item) => <div key={item.id}>{item.name}</div>)}
+        </>)
 }
 
 
