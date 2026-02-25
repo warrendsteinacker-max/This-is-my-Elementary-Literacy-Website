@@ -32,7 +32,7 @@ const app = express()
 app.use(cors({origin: '*'}))
 app.use(express.json());
 
-app.use('/', routers)
+app.use('/api', routers)
 
 // ONLY run app.listen if we are NOT on Vercel
 // if (process.env.NODE_ENV !== 'production') {
