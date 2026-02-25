@@ -386,54 +386,129 @@
 
 
 
-import {useEffect, useState} from 'react'
+// import {useEffect, useState} from 'react'
 
 
 
-const newP = () => {
+// const newP = () => {
 
 
-const words = ['cat', 'fat', 'man', 'dart']
-const [currentG, setCg] = useState([])
-const [win, setW] = useState(false)
-const [count, setC] = useState(0)
-const word = words.at(count)
-const display = Array(word.length).fill('')
+// const words = ['cat', 'fat', 'man', 'dart']
+// const [currentG, setCg] = useState([])
+// const [win, setW] = useState(false)
+// const [count, setC] = useState(0)
+// const word = words.at(count)
+// const display = Array(word.length).fill('')
 
 
 
 
-useEffect(()=>{
-  const wordlef = (e) => {
-    const key = e.key.toLowerCase()
-    const keyL = key.length
-    const display = Array(word.length).fill('')
-    const CgL = currentG.length
-    if(keyL === 1){
-      if(key === word[CgL]){
-        if(currentG.length + 1 === word.length){
-          setW(true)
-          return
+// useEffect(()=>{
+//   const wordlef = (e) => {
+//     const key = e.key.toLowerCase()
+//     const keyL = key.length
+//     const display = Array(word.length).fill('')
+//     const CgL = currentG.length
+//     if(keyL === 1){
+//       if(key === word[CgL]){
+//         if(currentG.length + 1 === word.length){
+//           setW(true)
+//           return
+//         }
+//         setCg((currentG)=>[...currentG, e.key])
+//         console.log(currentG)
+//       }
+//     }
+//   }
+
+//   document.addEventListener('keydown', wordlef)
+
+//   return () => {document.removeEventListener('keydown', wordlef)}
+// }, [currentG, win, word])
+
+// if(win){
+//   return <><h3>you won</h3><button onClick={()=>{setCg([]); setW(false); setC((count) => count + 1)}}>start new game</button></>
+// }
+
+// return(<>{display.map((_, i) => <div style={{border: '5px solid black'}} key={i}>{currentG[i] || ''}</div>)}</>)
+
+// }
+
+// // , [wordToG], [currentG], [win]
+
+
+
+
+import {useState, useEffect} from 'react'
+
+const displayFD = () => {
+
+const [data, setD] = useState([])
+const [L, setL] = useState(false)
+const [E, setE] = useState(false)
+const [search, setS] = useState('')
+
+const searchedV = data.filter((item) => item?.name?.toLowerCase().includes(search.toLowerCase()))
+
+  useEffect(() => {
+    
+    const f = async() => {
+      try{
+        setL(true)
+        const res = await fetch('api_url')    
+        if(!res.ok){
+          throw new Error('fetch failed')    
         }
-        setCg((currentG)=>[...currentG, e.key])
-        console.log(currentG)
+        const data = await res.json()
+        setD(data)
+        setE(false)
+      }
+      catch(error){
+        console.error(error.message)
+        setE(true)
+      }
+      finally{
+        setL(false)
       }
     }
+
+    f()
+
+  }, [])
+
+
+  if(L){
+    return <h3>...Loading</h3>
   }
 
-  document.addEventListener('keydown', wordlef)
+  return(<>
+  
+      {E && <h3>error happened refresh page</h3>}
 
-  return () => {document.removeEventListener('keydown', wordlef)}
-}, [currentG, win, word])
+      {data.map((item, i)=><div key={i}><p>{item.dep}</p></div>)}
+      
+      {searchedV.length > 0 && searchedV.map((item, i) => <div key={i}>{item.name}</div>)} 
 
-if(win){
-  return <><h3>you won</h3><button onClick={()=>{setCg([]); setW(false); setC((count) => count + 1)}}>start new game</button></>
+      <input placeholder='search' value={search} onChange={(e) => setS(e.target.value)}/>   
+      
+      
+        </>)
+
 }
 
-return(<>{display.map((_, i) => <div style={{border: '5px solid black'}} key={i}>{currentG[i] || ''}</div>)}</>)
-
-}
-
-// , [wordToG], [currentG], [win]
 
 
+
+const debounce = (fn, t) => {
+  let timer;
+
+  if(timer){
+    
+    clearTimeout(timer)
+
+    timer = setTimeout(() => {fn()}, t) 
+  }
+  else{
+    timer = setTimeout(() => {fn()}, t) 
+  }
+} 
