@@ -723,7 +723,7 @@ const Wordle = () => {
       }
 
       if(e.key === 'Backspace'){
-        CG.slice(0, -1)
+        setCG((CG) => CG.slice(0, -1))
       }
 
       if(CG.length === word.length && e.key === 'Enter'){
@@ -732,9 +732,9 @@ const Wordle = () => {
     }
 
 
-    window.addEventListener('keydown', f())
+    window.addEventListener('keydown', f)
 
-    return () => window.removeEventListener('keydown', f())
+    return () => window.removeEventListener('keydown', f)
   }, [CG, win, word])
 
 
@@ -745,7 +745,7 @@ const Wordle = () => {
 
   return(<>
         <h3>press enter when you got the word</h3>
-        {display.map((_, i)=> <div key={i} style={{backgroundColor: {CG[i] ? 'green' : 'red'}}}>{CG[i] || ''}</div>)}
+        {display.map((_, i)=> <div key={i} style={{backgroundColor: CG[i] ? 'green' : 'red'}}>{CG[i] || ''}</div>)}
         </>)
 }
 
