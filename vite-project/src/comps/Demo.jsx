@@ -590,106 +590,162 @@
 
 
 
-import {useEffect, useMemo, useState} from 'react'
+// import {useEffect, useMemo, useState} from 'react'
 
 
-  const Th = (fn, t) => {
-    let wait = false;
+//   const Th = (fn, t) => {
+//     let wait = false;
 
-    return (...args) => {
+//     return (...args) => {
       
-      if(wait){return null}
+//       if(wait){return null}
 
-      wait = true
+//       wait = true
 
-      fn(...args);
+//       fn(...args);
 
-      setTimeout(()=>{
-        wait = false;  
-      }, t)
+//       setTimeout(()=>{
+//         wait = false;  
+//       }, t)
 
-    }
+//     }
 
-  } 
+//   } 
 
-const IF = () => {
-
-
-const [D, setD] = useState([])
-const [L, setL] = useState(false)
-const [E, setE] = useState(false)
-const [offset, setOff] = useState(0)
-const limit = 10
+// const IF = () => {
 
 
-const FetchMoreI = useCallback(async() => {
-
-  try{
-
-    setL(true)
-    const res = await fetch(`api_url?limit=${limit}&offset=${offset}`)
-    const data = await res.json()
-
-    if(!res.ok){
-      throw new Error('could not fetch data')
-    }
-
-    if(data.length > 0){
-      setD((D) => [...D, ...data])
-      setOff((offset) => offset + limit)
-    }
+// const [D, setD] = useState([])
+// const [L, setL] = useState(false)
+// const [E, setE] = useState(false)
+// const [offset, setOff] = useState(0)
+// const limit = 10
 
 
-  }
-  catch(error){
-    console.error(error.message)
-    setE(true)
-  }
-  finally{
-    setL(false)
-  }
+// const FetchMoreI = useCallback(async() => {
 
-}, [offset, L])
+//   try{
+
+//     setL(true)
+//     const res = await fetch(`api_url?limit=${limit}&offset=${offset}`)
+//     const data = await res.json()
+
+//     if(!res.ok){
+//       throw new Error('could not fetch data')
+//     }
+
+//     if(data.length > 0){
+//       setD((D) => [...D, ...data])
+//       setOff((offset) => offset + limit)
+//     }
 
 
-// const THf = Th(() => {
-
-//   const {scrollTop, scrollHeigth, clientHeight} = document.documentElement
-  
-//   if(scrollTop + clientHeight >= scrollHeight - 50){
-//     FetchMoreI()
+//   }
+//   catch(error){
+//     console.error(error.message)
+//     setE(true)
+//   }
+//   finally{
+//     setL(false)
 //   }
 
-// }, 3000)
+// }, [offset, L])
 
-  const THfm = useMemo(Th(() => {
 
-    const {scrollTop, scrollHeight, clientHeight} = document.documentElement
+// // const THf = Th(() => {
 
-    if(scrollTop + clientHeight >= scrollHeight - 50){
-      FetchMoreI()
+// //   const {scrollTop, scrollHeigth, clientHeight} = document.documentElement
+  
+// //   if(scrollTop + clientHeight >= scrollHeight - 50){
+// //     FetchMoreI()
+// //   }
+
+// // }, 3000)
+
+//   const THfm = useMemo(Th(() => {
+
+//     const {scrollTop, scrollHeight, clientHeight} = document.documentElement
+
+//     if(scrollTop + clientHeight >= scrollHeight - 50){
+//       FetchMoreI()
+//     }
+
+//   }, 3000), [FetchMoreI])
+
+
+//     useEffect(() => {
+
+//     window.addEventListener('scroll', THfm)
+
+//     FetchMoreI()
+
+//     return () => window.removeEventListner('scroll', THfm)
+
+//   }, [THfm])
+
+
+
+
+
+
+//   return(<>
+//           {D.map((item) => <div key={item.id}>{item.name}</div>)}
+//         </>)
+// }
+
+
+
+
+import {useState, useEffect} from 'react'
+
+const words = ['cat', 'dog', 'man']
+
+const Wordle = () => {
+
+  ocnst [win, setW] = usestate(false)
+  const [index, setI] = useState(0)
+  const [CG, setCG] = useState([])
+  const word = words.at(index)
+  const display = Array(word.length).fill('')
+
+
+
+  useEffect(() => {
+
+    const f = (e) => {
+
+      if(e.key.length === 1 && e.key === word.charAt(0)){
+        setCG((CG) => [...CG, e.key])
+      }
+
+      if(e.key.length === 1 && e.key === word.charAt(CG.length + 1)){
+        setCG((CG) => [...CG, e.key])
+      }
+
+      if(e.key === 'Backspace'){
+        CG.slice(0, -1)
+      }
+
+      if(CG.length === word.length && e.key === 'Enter'){
+        setW(true)
+        }
     }
 
-  }, 3000), [FetchMoreI])
 
+    window.addEventListener('keydown', f())
 
-    useEffect(() => {
-
-    window.addEventListener('scroll', THfm)
-
-    FetchMoreI()
-
-    return () => window.removeEventListner('scroll', THfm)
-
-  }, [THfm])
+    return () => window.removeEventListener('keydown', f())
+  }, [CG, win, word])
 
 
 
-
-
+  if(win){
+    return <><h3>you won</h3><button onClick={() => {setW(false); setCG([]); setI((I) => I = 1)}}>start new game</button></>
+  }
 
   return(<>
-          {D.map((item) => <div key={item.id}>{item.name}</div>)}
+        <h3>press enter when you got the word</h3>
+        {display.map((_, i)=> <div key={i} style={{backgroundColor: {CG[i] ? 'green' : 'red'}}}>{CG[i] || ''}</div>)}
         </>)
 }
 
