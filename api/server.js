@@ -36,10 +36,12 @@ app.use('/', routers)
 
 // ONLY run app.listen if we are NOT on Vercel
 // if (process.env.NODE_ENV !== 'production') {
-//     app.listen(3002, () => {
-//         console.log('Server running locally on port 3002')
-//     })
-// }
+// } 
+    
+    // app.listen(3002, () => {
+    //     console.log('Server running locally on port 3002')
+    // })
+
 
 // Vercel needs this export to handle the request
 export default app;

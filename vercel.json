@@ -1,14 +1,11 @@
+
+
 {
   "version": 2,
-  "cleanUrls": true,
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/api/server.js"
-    },
-    {
-      "source": "/assets/(.*)",
-      "destination": "/vite-project/dist/assets/$1"
+      "destination": "/server/server.js"
     },
     {
       "source": "/(.*)",
