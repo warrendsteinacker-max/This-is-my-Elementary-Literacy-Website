@@ -702,7 +702,7 @@ const words = ['cat', 'dog', 'man']
 
 const Wordle = () => {
 
-  ocnst [win, setW] = usestate(false)
+  const [win, setW] = useState(false)
   const [index, setI] = useState(0)
   const [CG, setCG] = useState([])
   const word = words.at(index)
@@ -714,13 +714,13 @@ const Wordle = () => {
 
     const f = (e) => {
 
-      if(e.key.length === 1 && e.key === word.charAt(0)){
+      if(e.key.length === 1 && e.key === word.charAt(CG.length)){
         setCG((CG) => [...CG, e.key])
       }
 
-      if(e.key.length === 1 && e.key === word.charAt(CG.length + 1)){
-        setCG((CG) => [...CG, e.key])
-      }
+      // if(e.key.length === 1 && e.key === word.charAt(CG.length + 1)){
+      //   setCG((CG) => [...CG, e.key])
+      // }
 
       if(e.key === 'Backspace'){
         setCG((CG) => CG.slice(0, -1))
@@ -740,12 +740,12 @@ const Wordle = () => {
 
 
   if(win){
-    return <><h3>you won</h3><button onClick={() => {setW(false); setCG([]); setI((I) => I = 1)}}>start new game</button></>
+    return <><h3>you won</h3><button onClick={() => {setW(false); setCG([]); setI(Math.floor(Math.random() * 3))}}>start new game</button></>
   }
 
   return(<>
         <h3>press enter when you got the word</h3>
-        {display.map((_, i)=> <div key={i} style={{backgroundColor: CG[i] ? 'green' : 'red'}}>{CG[i] || ''}</div>)}
+        {word.length > 0 && display.map((_, i)=> <div key={i} style={{backgroundColor: CG[i] ? 'green' : 'red'}}>{CG[i] || ''}</div>)}
         </>)
 }
 
