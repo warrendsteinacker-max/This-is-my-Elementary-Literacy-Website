@@ -794,4 +794,59 @@ export default Demo
 // }
 
 
+import {throttelf} from './throttelf'
+
+const Newc = () => {
+
+  const fetchd = async(offset, limit) => {
+
+    const res = await fetch(`api_url?offset=${offset}&limit=${limit}`)
+
+    if(!res.ok){
+      throw new Error('res not good')
+    }
+
+    return res.json()
+  }
+
+  const {data, error, loading, hasData} = throttelf(fetchd, 10)
+
+  return(<></>)
+
+}
+
+
+
+
+
+import {useEffect, useState, useCallback} from 'react'
+
+const Th = (fn, t) => {
+  let timer = false
+
+  return (...args) =>{
+
+    if(timer){
+      return null
+    }
+    fn(...args)
+
+    timer = true
+
+    setTimeout(() => {
+      timer = false
+    }, t)
+    
+  }
+}
+
+const Throttelf = () => {
+
+
+  return{data, error, loading, hasData}
+}
+
+
+
+
 
