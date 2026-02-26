@@ -795,126 +795,185 @@ export default Demo
 
 // file one
 
-import {throttelf} from './throttelf'
+// import {throttelf} from './throttelf'
 
-const Newc = () => {
+// const Newc = () => {
 
-  const fetchd = async(offset, limit) => {
+//   const fetchd = async(offset, limit) => {
 
-    const res = await fetch(`api_url?offset=${offset}&limit=${limit}`)
+//     const res = await fetch(`api_url?offset=${offset}&limit=${limit}`)
 
-    if(!res.ok){
-      throw new Error('res not good')
-    }
+//     if(!res.ok){
+//       throw new Error('res not good')
+//     }
 
-    return res.json()
-  }
+//     return res.json()
+//   }
 
-  const {data, error, loading, hasData} = throttelf(fetchd, 10)
+//   const {data, error, loading, hasData} = throttelf(fetchd, 10)
 
-  if(loading){
-    return <h3>...loading</h3>
-  }
+//   if(loading){
+//     return <h3>...loading</h3>
+//   }
 
-  return(<>
+//   return(<>
 
-          {error && <h3>error happened</h3>}
-          {hasData && <h3>no more items</h3>}
-          {data.map((item) => <div key={item.id}>{item.name}</div>)}
+//           {error && <h3>error happened</h3>}
+//           {hasData && <h3>no more items</h3>}
+//           {data.map((item) => <div key={item.id}>{item.name}</div>)}
 
-        </>)
+//         </>)
 
-}
+// }
 
 
 
-// file two
+// // file two
+
+// import {useEffect, useState, useCallback, useMemo} from 'react'
+
+// const Th = (fn, t) => {
+//   let timer = false
+
+//   return (...args) =>{
+
+//     if(timer){
+//       return null
+//     }
+//     fn(...args)
+
+//     timer = true
+
+//     setTimeout(() => {
+//       timer = false
+//     }, t)
+    
+//   }
+// }
+
+// const Throttelf = (callback, limit = 10) => {
+
+//   const [offset, setOff] = useState(5)
+//   const [data, setD] = useState([])
+//   const [error, setE] = useState(false)
+//   const [loading, setL] = useState(false)
+//   const [hasData, setH] = useState(true)
+
+// useEffect(()=> {
+//       const f = async(offset, limit) => {  
+//         const D = await callback(offset, limit)
+//         setD((data) => [...data, ...D])
+       
+//   }
+
+//   f(offset, limit)
+// }, []) 
+
+//   const getD = useCallback(async() => {
+//     if(loading || !hasData){
+//       return null
+//     }
+
+//     setL(true)
+
+//     try{
+//       const D = await callback(offset, limit)
+
+//       if(D.length === 0){
+//         setH(false)
+//       }
+//       setD((data) => [...data, ...D])
+//       setOff((offset) => offset + 5)
+//     }
+//     catch(error){
+//       console.error(error.message)
+//       setE(true)
+//     }
+//     finally{
+//       setL(false)
+//     }
+//   }, [hasData, loading, offset, callback])
+
+
+//     const getDT = useMemo(() => {return Th(() => {
+//       const {scrollTop, clientHeight, scrollHeight} = document.documentElement
+
+//       if(scrollTop + clientHeight >= scrollHeight - 300){
+//         getD()
+//       }
+
+//     }, 3000)}, [getD])
+  
+//   useEffect(() => {
+
+//     document.addEventListener('scroll', getDT)
+
+//     return () => document.removeEventListener('scroll', getDT)
+//   }, [getDT])
+
+
+//   return {data, error, loading, hasData}
+// }
+
+
+
+
+
+
+
 
 import {useEffect, useState, useCallback, useMemo} from 'react'
 
-const Th = (fn, t) => {
-  let timer = false
+const throttel = (fn, t) => {
+  let time = false
 
-  return (...args) =>{
 
+  return (...args) => {
     if(timer){
       return null
     }
-    fn(...args)
 
     timer = true
 
-    setTimeout(() => {
+    fn(...args)
+
+    setTimeout(()=>{
       timer = false
-    }, t)
-    
+    })
   }
 }
 
-const Throttelf = (callback, limit = 10) => {
+const De = (callback, limit = 10) => {
 
-  const [offset, setOff] = useState(5)
-  const [data, setD] = useState([])
-  const [error, setE] = useState(false)
-  const [loading, setL] = useState(false)
-  const [hasData, setH] = useState(true)
+  // const [moreD, setMd] = useState(true)
+  const [D, setD] = useState([])
+  const [E, setE] = useState(false)
+  const [L, setL] = useState(false)
+  const [offset, setF] = useState(5)
 
-useEffect(()=> {
-      const f = async(offset, limit) => {  
-        const D = await callback(offset, limit)
-        setD((data) => [...data, ...D])
-       
-  }
-
-  f(offset, limit)
-}, []) 
-
-  const getD = useCallback(async() => {
-    if(loading || !hasData){
-      return null
-    }
-
-    setL(true)
-
-    try{
-      const D = await callback(offset, limit)
-
-      if(D.length === 0){
-        setH(false)
-      }
-      setD((data) => [...data, ...D])
-      setOff((offset) => offset + 5)
-    }
-    catch(error){
-      console.error(error.message)
-      setE(true)
-    }
-    finally{
-      setL(false)
-    }
-  }, [hasData, loading, offset, callback])
-
-
-    const getDT = useMemo(() => {return Th(() => {
-      const {scrollTop, clientHeight, scrollHeight} = document.documentElement
-
-      if(scrollTop + clientHeight >= scrollHeight - 300){
-        getD()
-      }
-
-    }, 3000)}, [getD])
-  
   useEffect(() => {
+    const f = async() => {
+      try{
+          const res = await callback(`https://dummyjson.com/products?skip=${offset}&limit=${limit}`)
+          // const data = await res.json()
+          setD(data)
+          setE(false)
+        }
+        catch(error){
+          console.error(error.message)
+          setE(true)
+        }
+        finally{
+          setL(false)
+        }
+    }
+    f()
+  }, [offset])
 
-    document.addEventListener('scroll', getDT)
-
-    return () => document.removeEventListener('scroll', getDT)
-  }, [getDT])
 
 
-  return {data, error, loading, hasData}
-}
-
+  
+} 
 
 
 
