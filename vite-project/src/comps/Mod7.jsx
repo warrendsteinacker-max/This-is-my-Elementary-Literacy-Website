@@ -35,19 +35,7 @@ const Mod7 = () => {
         </a>
       </div>
 
-      {/* --- Section 2 --- */}
-      <iframe 
-        className="pdf-viewer"
-        src={pdfPath2} 
-        title="PDF 2"
-      ></iframe>
-      <div style={{ textAlign: 'center' }}>
-        <a href={pdfPath2} download>
-          <button className="download-btn">
-            Download Part of Assigment 
-          </button>
-        </a>
-      </div>
+      
     </div>
   );
 };
