@@ -4,7 +4,7 @@
 
 import React from 'react';
 import './App.css';
-import Demo from './comps/Demo';
+// import Demo from './comps/Demo';
 import {Demo2} from './comps/Demo2';
 import Mod1 from './comps/Mod1';
 import Mod2 from './comps/Mod2';
@@ -69,7 +69,7 @@ function App() {
             <Route path="/mod4" element={<Mod4 />} />
             <Route path="/mod5" element={<Mod5 />}/>
             <Route path="/mod6" element={<Mod6 />}/>
-            <Route path="/demo" element={<Demo />}/>
+            {/* <Route path="/demo" element={<Demo />}/> */}
             <Route path="/demo2" element={<Demo2/>}/>
             <Route path="/MEAI" element={<MeAI/>}/>
             
