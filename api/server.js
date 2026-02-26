@@ -34,6 +34,10 @@ app.use(express.json());
 
 app.use('/api', routers)
 
+app.get('/', (req, res) => {
+  res.send('Server is live!');
+});
+
 // ONLY run app.listen if we are NOT on Vercel
 // if (process.env.NODE_ENV !== 'production') {
 // } 
