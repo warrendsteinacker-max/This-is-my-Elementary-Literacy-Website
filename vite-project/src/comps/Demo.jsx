@@ -793,6 +793,7 @@ export default Demo
 //         </>)
 // }
 
+// file one
 
 import {throttelf} from './throttelf'
 
@@ -811,13 +812,23 @@ const Newc = () => {
 
   const {data, error, loading, hasData} = throttelf(fetchd, 10)
 
-  return(<></>)
+  if(loading){
+    return <h3>...loading</h3>
+  }
+
+  return(<>
+
+          {error && <h3>error happened</h3>}
+          {hasData && <h3>no more items</h3>}
+          {data.map((item) => <div key={item.id}>{item.name}</div>)}
+
+        </>)
 
 }
 
 
 
-
+// file two
 
 import {useEffect, useState, useCallback} from 'react'
 
@@ -840,10 +851,58 @@ const Th = (fn, t) => {
   }
 }
 
-const Throttelf = () => {
+const Throttelf = (callback, limit = 10) => {
+
+  const [offset, setOff] = useState(0)
+  const [data, setD] = useState([])
+  const [error, setE] = useState(false)
+  const [loading, setL] = useState(false)
+  const [hasData, setH] = useState(true)
+
+  const getD = useCallback(async() => {
+    if(loading || !hasData){
+      return null
+    }
+
+    setL(true)
+
+    try{
+      const D = await callback(offset, limit)
+
+      if(D.length === 0){
+        setH(false)
+      }
+      setD((data) => [...data, ...D])
+      setOff((offset) => offset + 5)
+    }
+    catch(error){
+      console.error(error.message)
+      setE(true)
+    }
+    finally{
+      setL(false)
+    }
+  }, [hasData, loading, offset, callback])
 
 
-  return{data, error, loading, hasData}
+    const getDT = Th(() => {
+      const {scrollTop, clientHeight, scrollHeight} = document.documentElement
+
+      if(scrollTop + clientHeight >= scrollHeight - 300){
+        getD()
+      }
+
+    }, 3000)
+  
+  useEffect(() => {
+
+    document.addEventListener('scroll', getDT)
+
+    return () => document.removeEventListener('scroll', getDT)
+  }, [getD])
+
+
+  return {data, error, loading, hasData}
 }
 
 
