@@ -922,44 +922,26 @@
 
 
 
-import {useEffect, useState} from 'react'
+import {useEffect, useState, useMemo} from 'react'
 
-// const throttel = (fn, t) => {
-//   let time = false
+const throttel = (fn, t) => {
+  let time = false
 
 
-//   return (...args) => {
-//     if(timer){
-//       return null
-//     }
+  return (...args) => {
+    if(timer){
+      return null
+    }
 
-//     timer = true
+    timer = true
 
-//     fn(...args)
+    fn(...args)
 
-//     setTimeout(()=>{
-//       timer = false
-//     })
-//   }
-// }
-
-//   const callback = async(x, y) => {
-//     try{
-//       const res = await fetch(`https://dummyjson.com/products?skip=${x}&limit=${y}`)
-      
-//       return res.json()
-//     }
-//     catch(error){
-//       console.error(error.message)
-//     }
-//   }
-
-const De = (offset, limit = 10) => {
-
-  // const [moreD, setMd] = useState(true)
-  const [D, setD] = useState([])
-  const [E, setE] = useState(false)
-  const [L, setL] = useState(false)
+    setTimeout(()=>{
+      timer = false
+    }, t)
+  }
+}
 
   // const callback = async(x, y) => {
   //   try{
@@ -972,13 +954,31 @@ const De = (offset, limit = 10) => {
   //   }
   // }
 
-  useEffect(() => {
-    const f = async() => {
+const De = (offset, limit = 10) => {
+
+  // const [moreD, setMd] = useState(true)
+  const [D, setD] = useState([])
+  const [E, setE] = useState(false)
+  const [L, setL] = useState(false)
+  const [offset, setF] = useState(0)
+
+  // const callback = async(x, y) => {
+  //   try{
+  //     const res = await fetch(`https://dummyjson.com/products?skip=${x}&limit=${y}`)
+      
+  //     return res.json()
+  //   }
+  //   catch(error){
+  //     console.error(error.message)
+  //   }
+  // }
+
+  const f = async(offset, limit) => {
       try{
           const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_start=${offset}&_limit=${limit}`)
           const data = await res.json()
           console.log(data)
-          setD((pre) => [...pre, ...data])
+          setD((pre) => [...data])
           console.log(D)
           setE(false)
         }
@@ -990,7 +990,43 @@ const De = (offset, limit = 10) => {
           setL(false)
         }
     }
-    f()
+
+const Fh = () => {
+  const {Topscroll, clientHeight, scrollHeight} = document.documentElement
+
+  if(Topscroll + clientHeight >= scrollHeight - 300){
+    setF((pre)=>pre+5)
+    f(offset, 10)
+  }
+
+}
+
+
+
+
+
+  useEffect(() => {
+    // const f = async() => {
+    //   try{
+    //       const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_start=${offset}&_limit=${limit}`)
+    //       const data = await res.json()
+    //       console.log(data)
+    //       setD((pre) => [...data])
+    //       console.log(D)
+    //       setE(false)
+    //     }
+    //     catch(error){
+    //       console.error(error.message)
+    //       setE(true)
+    //     }
+    //     finally{
+    //       setL(false)
+    //     }
+    // }
+    // f()
+
+    window.addEventListener('scroll', Fh)
+    return () => window.removeEventListener('scroll', Fh)
   }, [offset])
 
 
@@ -1003,7 +1039,7 @@ const De = (offset, limit = 10) => {
 
 const Del = () => {
 
-  const [offset, setF] = useState(0)
+  
   const {D, E, L} = De(offset)
 
 
@@ -1012,8 +1048,9 @@ const Del = () => {
   }
   return(<>
           {E && <h3>there has been a error</h3>}
-          {D.map((item, i)=><div key={i}>{item.title}</div>)}
-          <button onClick={(pre) => setF(pre+5)}>fetch D</button>
+          {offset > 0 && D.map((item, i)=><div key={i}>{item.title}</div>)}
+          {/* <button onClick={() => setF((pre)=>pre+5)}>fetch next D</button>
+          <button onClick={() => setF((pre)=>pre-5)}>fetch befor D</button> */}
         </>)
 }
 
