@@ -830,7 +830,7 @@ const Newc = () => {
 
 // file two
 
-import {useEffect, useState, useCallback} from 'react'
+import {useEffect, useState, useCallback, useMemo} from 'react'
 
 const Th = (fn, t) => {
   let timer = false
@@ -853,11 +853,21 @@ const Th = (fn, t) => {
 
 const Throttelf = (callback, limit = 10) => {
 
-  const [offset, setOff] = useState(0)
+  const [offset, setOff] = useState(5)
   const [data, setD] = useState([])
   const [error, setE] = useState(false)
   const [loading, setL] = useState(false)
   const [hasData, setH] = useState(true)
+
+useEffect(()=> {
+      const f = async(offset, limit) => {  
+        const D = await callback(offset, limit)
+        setD((data) => [...data, ...D])
+       
+  }
+
+  f(offset, limit)
+}, []) 
 
   const getD = useCallback(async() => {
     if(loading || !hasData){
@@ -885,21 +895,21 @@ const Throttelf = (callback, limit = 10) => {
   }, [hasData, loading, offset, callback])
 
 
-    const getDT = Th(() => {
+    const getDT = useMemo(() => {return Th(() => {
       const {scrollTop, clientHeight, scrollHeight} = document.documentElement
 
       if(scrollTop + clientHeight >= scrollHeight - 300){
         getD()
       }
 
-    }, 3000)
+    }, 3000)}, [getD])
   
   useEffect(() => {
 
     document.addEventListener('scroll', getDT)
 
     return () => document.removeEventListener('scroll', getDT)
-  }, [getD])
+  }, [getDT])
 
 
   return {data, error, loading, hasData}
