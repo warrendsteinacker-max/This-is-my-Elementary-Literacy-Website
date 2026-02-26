@@ -1,4 +1,4 @@
-// import MeAI from './MeAI'
+import MeAI from './MeAI'
 
 const Home = () => {
   return (
@@ -11,9 +11,11 @@ const Home = () => {
         <div>
             <p style={{color: 'black'}}>This website is a comprehensive overview that documents the literacy training process covered in this class. It tracks the progression from the synthesis of assignments across eight distinct ones, part 1 through part 8. Ask me any question you would like below.</p>
         </div>
-        {/* <MeAI/> */}
+        <MeAI/>
     </div>
   )
 }
 
 export default Home
+
+//////
