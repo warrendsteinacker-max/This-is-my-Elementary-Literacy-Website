@@ -1,35 +1,35 @@
-import React from 'react'
+// import React from 'react'
 
-const Demo = () => {
-  return (
-    <div 
-      style={{
-        height: '100vh', 
-        width: '100vw', 
-        backgroundColor: 'whitesmoke', 
-        position: 'relative', // Fixed spelling
-        overflow: 'hidden'    // Prevents scrollbars if the dot hits the edge
-      }}
-    >
-      {/* This is your moving dot */}
-      <div className="sin"></div>
+// const Demo = () => {
+//   return (
+//     <div 
+//       style={{
+//         height: '100vh', 
+//         width: '100vw', 
+//         backgroundColor: 'whitesmoke', 
+//         position: 'relative', // Fixed spelling
+//         overflow: 'hidden'    // Prevents scrollbars if the dot hits the edge
+//       }}
+//     >
+//       {/* This is your moving dot */}
+//       <div className="sin"></div>
 
-      {/* Optional: Add a subtle path line or text */}
-      <div style={{
-        position: 'absolute', 
-        top: '50%', 
-        width: '100%', 
-        textAlign: 'center', 
-        color: '#ccc',
-        zIndex: 0
-      }}>
-        <h2>Wave Loading...</h2>
-      </div>
-    </div>
-  )
-}
+//       {/* Optional: Add a subtle path line or text */}
+//       <div style={{
+//         position: 'absolute', 
+//         top: '50%', 
+//         width: '100%', 
+//         textAlign: 'center', 
+//         color: '#ccc',
+//         zIndex: 0
+//       }}>
+//         <h2>Wave Loading...</h2>
+//       </div>
+//     </div>
+//   )
+// }
 
-export default Demo
+// export default Demo
 
 
 
@@ -922,41 +922,62 @@ export default Demo
 
 
 
-import {useEffect, useState, useCallback, useMemo} from 'react'
+import {useEffect, useState} from 'react'
 
-const throttel = (fn, t) => {
-  let time = false
+// const throttel = (fn, t) => {
+//   let time = false
 
 
-  return (...args) => {
-    if(timer){
-      return null
-    }
+//   return (...args) => {
+//     if(timer){
+//       return null
+//     }
 
-    timer = true
+//     timer = true
 
-    fn(...args)
+//     fn(...args)
 
-    setTimeout(()=>{
-      timer = false
-    })
-  }
-}
+//     setTimeout(()=>{
+//       timer = false
+//     })
+//   }
+// }
 
-const De = (callback, limit = 10) => {
+//   const callback = async(x, y) => {
+//     try{
+//       const res = await fetch(`https://dummyjson.com/products?skip=${x}&limit=${y}`)
+      
+//       return res.json()
+//     }
+//     catch(error){
+//       console.error(error.message)
+//     }
+//   }
+
+const De = (offset, limit = 10) => {
 
   // const [moreD, setMd] = useState(true)
   const [D, setD] = useState([])
   const [E, setE] = useState(false)
   const [L, setL] = useState(false)
-  const [offset, setF] = useState(5)
+
+  // const callback = async(x, y) => {
+  //   try{
+  //     const res = await fetch(`https://dummyjson.com/products?skip=${x}&limit=${y}`)
+      
+  //     return res.json()
+  //   }
+  //   catch(error){
+  //     console.error(error.message)
+  //   }
+  // }
 
   useEffect(() => {
     const f = async() => {
       try{
-          const res = await callback(`https://dummyjson.com/products?skip=${offset}&limit=${limit}`)
-          // const data = await res.json()
-          setD(data)
+          const res = await fetch(`https://dummyjson.com/products?skip=${offset}&limit=${limit}`)
+          const data = await res.json()
+          setD((D) => [...data, ...D])
           setE(false)
         }
         catch(error){
@@ -971,9 +992,32 @@ const De = (callback, limit = 10) => {
   }, [offset])
 
 
+  return{D, E, L}
 
-  
 } 
+
+
+
+
+const Del = () => {
+
+  const [offset, setF] = useState(0)
+  const {D, E, L} = De(offset)
+
+
+  if(L){
+    return <h3>Loading...</h3>
+  }
+  return(<>
+          {E && <h3>there has been a error</h3>}
+          {D.map((item)=><div key={i}>{item.name}</div>)}
+          <button onClick={(pre) => setF(pre+5)}>fetch D</button>
+        </>)
+}
+
+export default Del
+
+
 
 
 
