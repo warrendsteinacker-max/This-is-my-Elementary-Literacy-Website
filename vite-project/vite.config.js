@@ -17,6 +17,6 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/This-is-my-Elementary-Literacy-Website/', // This matches your repo name exactly
-  // base: '/'
+  // This is the correct base for GitHub Pages hosting on a project repo
+  base: '/This-is-my-Elementary-Literacy-Website/', 
 })
