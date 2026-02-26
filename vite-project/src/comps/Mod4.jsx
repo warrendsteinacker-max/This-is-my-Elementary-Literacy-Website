@@ -78,7 +78,7 @@ const Mod4 = () => {
       
       <div className="glass-box">
         <p>
-          This assignment focuses on the creation of a professional Literacy Instructional Guide website...
+          This assignment includes a comprehensive lesson plan and assessment strategy focused on integrating word recognition, vocabulary, and comprehension for third grade students. The lesson is designed around the theme of community helpers, where students use complex word recognition strategies to build decoding skills while simultaneously expanding their academic vocabulary. By engaging in a picture walk and partner reading, students practice using prior knowledge to make sense of texts, which directly supports their developing reading fluency. The project utilizes a story map as a summative assessment to track how well students can organize key details and apply new vocabulary words in context. Through the use of leveled materials and immediate feedback, the lesson demonstrates how to scaffold instruction to ensure that readers can bridge the gap between recognizing individual words and understanding the deep meaning and themes of a story.
           {/* (Your text continues here) */}
         </p>
       </div>

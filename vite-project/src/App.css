@@ -157,6 +157,7 @@ select.black-input {
   padding: 20px;
   margin-bottom: 20px;
   color: white; /* Changed to white to match your AI theme */
+  /* position: 'absulot'; */
 }
 
 /* The PDF iframe */

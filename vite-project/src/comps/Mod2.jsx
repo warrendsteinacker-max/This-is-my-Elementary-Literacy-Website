@@ -216,7 +216,7 @@ const Mod2 = () => {
       
       <div className="glass-box">
         <p>
-          This assignment focuses on the creation of a professional Literacy Instructional Guide website...
+          This assignment consists of a detailed lesson plan and a reflective analysis focused on teaching phonemic awareness to kindergarten students. The lesson plan outlines specific instructional strategies for sound isolation, where students learn to identify the beginning, middle, and ending sounds in spoken words. These activities are designed to be grade appropriate and aligned with evidence based practices that promote early reading development. The reflective portion of the assignment emphasizes the use of multisensory tools like Elkonin boxes to support diverse learners, including those with cognitive differences or those who are learning English. By providing structured practice in blending and segmenting sounds, the project aims to build a solid foundation for future phonics and spelling success.
           {/* (Your text continues here) */}
         </p>
       </div>

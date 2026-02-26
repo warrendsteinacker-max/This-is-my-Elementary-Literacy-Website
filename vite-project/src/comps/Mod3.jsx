@@ -86,7 +86,7 @@ const Mod3 = () => {
       
       <div className="glass-box">
         <p>
-          This assignment focuses on the creation of a professional Literacy Instructional Guide website...
+          This assignment consists of a comprehensive lesson plan and a reflective analysis focused on teaching phonics and word recognition to kindergarten students. The lesson plan implements explicit phonics instruction to help students understand the relationship between letters and sounds, specifically focusing on decoding strategies to figure out unfamiliar words. Key instructional strategies include word building activities with letter tiles and the use of decodable text practice, which allow students to apply letter sound knowledge in a structured way. The accompanying reflection emphasizes the importance of systematic instruction for supporting diverse learners, including English learners and struggling readers, by providing hands on tools and visual supports like word walls. By focusing on the alphabetic principle and orthographic awareness, the project demonstrates how to help students successfully convert letters into sounds to recognize words and build reading independence.
           {/* (Your text continues here) */}
         </p>
       </div>

@@ -75,7 +75,7 @@ const Mod6 = () => {
       
       <div className="glass-box">
         <p>
-          This assignment focuses on the creation of a professional Literacy Instructional Guide website...
+          This assignment consists of a comprehensive lesson plan designed for first grade students, focusing on the development of writing skills through the creation of personal narratives. The lesson guides students in structuring their stories with a clear beginning, middle, and end by utilizing mentor texts, story grammar charts, and planning webs to organize their ideas. To support the writing process, students use transition word anchor charts and sentence frames to ensure appropriate sequencing and flow within their narratives. Assessment is integrated throughout the lesson, starting with a diagnostic picture walk and moving to formative checks through think-pair-share and teacher conferencing. The project emphasizes differentiated support by offering kinesthetic storytelling and sequence cards for students needing additional intervention, while providing enrichment options like independent multi-page book projects and choice boards for advanced learners.
           {/* (Your text continues here) */}
         </p>
       </div>

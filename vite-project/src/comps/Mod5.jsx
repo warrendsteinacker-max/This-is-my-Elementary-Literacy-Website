@@ -173,8 +173,7 @@ const Mod5 = () => {
       
       <div className="glass-box">
         <p>
-          This assignment focuses on the creation of a professional Literacy Instructional Guide website...
-          {/* (Your text continues here) */}
+        This assignment consists of a comprehensive lesson plan designed for first grade students, focusing on the development of phonological awareness, reading fluency, and comprehension through the study of r-controlled vowels. Specifically, the lesson targets the /ar/ sound by engaging students with the text Car Race by Starfall. Students practice fluency using shared and echo reading techniques, which allow them to build confidence and accuracy in their oral reading. To demonstrate comprehension, students sequence picture cards from the story and utilize specific academic vocabulary, such as race, lead, and pass, to retell key events. The lesson incorporates formative assessments like exit tickets with sentence frames and self-assessment strategies to monitor student progress. By using multisensory tools and flexible grouping, the project ensures that all learners, including those needing 1 on 1 intervention or enrichment through independent projects, can successfully master early literacy skills.          {/* (Your text continues here) */}
         </p>
       </div>
 

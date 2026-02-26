@@ -37,7 +37,7 @@ function App() {
           justifyContent: 'center', 
           background: 'linear-gradient(to right, orange, pink)', 
           padding: '10px', 
-          alignItems: 'center'
+          alignItems: 'center',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             {/* Using the imported logo variable ensures the image shows up */}
