@@ -975,9 +975,11 @@ const De = (offset, limit = 10) => {
   useEffect(() => {
     const f = async() => {
       try{
-          const res = await fetch(`https://dummyjson.com/products?skip=${offset}&limit=${limit}`)
+          const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_start=${offset}&_limit=${limit}`)
           const data = await res.json()
-          setD((D) => [...data, ...D])
+          console.log(data)
+          setD((pre) => [...pre, ...data])
+          console.log(D)
           setE(false)
         }
         catch(error){
@@ -1010,7 +1012,7 @@ const Del = () => {
   }
   return(<>
           {E && <h3>there has been a error</h3>}
-          {D.map((item)=><div key={i}>{item.name}</div>)}
+          {D.map((item, i)=><div key={i}>{item.title}</div>)}
           <button onClick={(pre) => setF(pre+5)}>fetch D</button>
         </>)
 }
