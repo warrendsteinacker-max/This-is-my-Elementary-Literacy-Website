@@ -46,13 +46,18 @@ app.get('/api/test-path', (req, res) => {
     const rootDir = process.cwd();
     const filePath = path.join(rootDir, 'api', 'assets', 'Teacher Prep Lesson Plan Format.pdf');
     
-    res.json({
+  try{
+    return res.status(200).json({
         message: "Path Check",
         processCwd: rootDir,
         expectedFilePath: filePath,
         fileExists: fs.existsSync(filePath),
         filesInApiFolder: fs.existsSync(path.join(rootDir, 'api')) ? fs.readdirSync(path.join(rootDir, 'api')) : "API folder not found"
     });
+  }
+  catch(error){
+    return res.status(500).json({error: error.message + 'somthen wrong'})
+  }
 });
 
 app.post('/', (req, res) => {
