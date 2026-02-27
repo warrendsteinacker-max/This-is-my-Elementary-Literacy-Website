@@ -38,6 +38,16 @@ app.get('/', (req, res) => {
   res.send('Server is live!');
 });
 
+app.post('/', (req, res) => {
+  const {Q} = req.body
+  try{
+   return res.status(201).json({state: Q})
+  }
+  catch(error){
+    return res.status(500).json({error: 'bad'})
+  }
+})
+
 // ONLY run app.listen if we are NOT on Vercel
 // if (process.env.NODE_ENV !== 'production') {
 // } 
