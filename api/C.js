@@ -71,9 +71,9 @@
 import fs from 'fs/promises';
 import path from 'path';
 import AI from './AIconfig.js';
-import { PDFExtract } from 'pdf.js-extract';
+import pkg from 'pdf.js-extract';
+const { PDFExtract } = pkg;
 
-///////
 
 export const post1 = async (req, res) => {
     const { Q } = req.body;
