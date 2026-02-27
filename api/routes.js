@@ -4,23 +4,25 @@ import { post1, post2, post3, post4, post5, post6, post7, post8, post9 } from '.
 const router = express.Router()
 
 
-router.post('/1', (req, res) => {
-    const {Q} = req.body
-    try{
+// router.post('/1', (req, res) => {
+//     const {Q} = req.body
+//     try{
 
-        if(Q === 'h'){
-            return res.status(401).json({message: 'not created'})
-        }
+//         if(Q === 'h'){
+//             return res.status(401).json({message: 'not created'})
+//         }
 
-        return res.status(201).json({message: 'created'})
-    }
-    catch(error){
-        return res.status(500).json({message: 'error'})
-    }
-})
+//         return res.status(201).json({message: 'created'})
+//     }
+//     catch(error){
+//         return res.status(500).json({message: 'error'})
+//     }
+// })
 
 ///
-// router.post('/1', post1)
+
+
+router.post('/1', post1)
 router.post('/2', post2)
 router.post('/3', post3)
 router.post('/4', post4)
