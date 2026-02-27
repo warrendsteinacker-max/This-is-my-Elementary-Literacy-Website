@@ -22,6 +22,9 @@
 
 
 
+import fs from 'fs';
+import path from 'path';
+
 import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
@@ -36,6 +39,20 @@ app.use('/api', routers)
 
 app.get('/', (req, res) => {
   res.send('Server is live!');
+});
+
+
+app.get('/api/test-path', (req, res) => {
+    const rootDir = process.cwd();
+    const filePath = path.join(rootDir, 'api', 'assets', 'Teacher Prep Lesson Plan Format.pdf');
+    
+    res.json({
+        message: "Path Check",
+        processCwd: rootDir,
+        expectedFilePath: filePath,
+        fileExists: fs.existsSync(filePath),
+        filesInApiFolder: fs.existsSync(path.join(rootDir, 'api')) ? fs.readdirSync(path.join(rootDir, 'api')) : "API folder not found"
+    });
 });
 
 app.post('/', (req, res) => {
