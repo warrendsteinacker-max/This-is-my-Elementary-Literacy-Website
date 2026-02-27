@@ -45,16 +45,14 @@ app.get('/', (req, res) => {
 app.get('/api/test-path', (req, res) => {
     const rootDir = process.cwd();
     const filePath = path.join(rootDir, 'api', 'assets', 'Teacher Prep Lesson Plan Format.pdf');
-    
+    const Filesincurrentdir = fs.readdirSync(process.cwd())
   try{
 
 // Add this temporarily to your post1 function to see where you are
-    console.log("Current Directory:", process.cwd());
-    console.log("Files in current dir:", fs.readdirSync(process.cwd()));
 
     return res.status(200).json({
-        CD: process.cwd(),
-        Filesincurrentdir: fs.readdirSync(process.cwd()), 
+        CD: rootDir,
+        Filesincurrentdir: Filesincurrentdir, 
         message: "Path Check",
         processCwd: rootDir,
         expectedFilePath: filePath,
