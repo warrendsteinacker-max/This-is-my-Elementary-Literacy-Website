@@ -32,7 +32,7 @@ const app = express()
 app.use(cors({origin: '*'}))
 app.use(express.json());
 
-app.use('/api', routers)
+app.use('/', routers)
 
 app.get('/', (req, res) => {
   res.send('Server is live!');
