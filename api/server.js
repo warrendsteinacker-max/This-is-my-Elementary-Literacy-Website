@@ -58,8 +58,15 @@
 import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
+import path from 'path'; // <--- ADD THIS LINE
+import { fileURLToPath } from 'url'; // <--- ADD THIS TOO
+import { PDFExtract } from 'pdf-extract'; // <--- Make sure this is imported
 import routers from './routes.js'
+import { error } from 'console';
 
+// Need these for the path to work in ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const app = express()
 
 // Set the origin to your specific GitHub Pages URL
@@ -75,16 +82,37 @@ app.use(express.json());
 // Routes
 app.use('/', routers)
 
-// app.get('/', (req, res) => {
-//   res.send('Server is live!');
-// });
+app.get('/', (req, res) => {
+  res.send('Server is live!');
+});
 
-// app.post('/api/:id', (req, res) => {
+app.post('/api/:id', (req, res) => {
 
-//   return res.json({id: req.params.id})
-// })
+  return res.json({id: req.params.id})
+})
 
-app.post('/api', async (req, res) => {
+
+app.post('/', (req, res) => {
+  const {Q} = req.body
+
+try{
+  if(Q === "h"){
+    return res.status(401).json({message: 'you are h'})
+  }
+
+  return res.status(200).json({message: 'you are somethen'})
+}
+catch(error){
+  console.error(error.message)
+  return res.status(500).json({error: 'bad'})
+}
+
+})
+
+  
+
+
+app.post('/api/1', async (req, res) => {
     // Fix: 3. Ensure 'Q' exists
     const { Q } = req.body;
     if (!Q) {
