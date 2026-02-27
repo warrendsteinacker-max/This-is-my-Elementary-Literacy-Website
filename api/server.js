@@ -84,7 +84,7 @@ app.use('/', routers)
 //   return res.json({id: req.params.id})
 // })
 
-app.post('/', async (req, res) => {
+app.post('/api', async (req, res) => {
     // Fix: 3. Ensure 'Q' exists
     const { Q } = req.body;
     if (!Q) {
