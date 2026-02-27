@@ -1,12 +1,12 @@
-// import express from 'express'
-// import { post1, post2, post3, post4, post5, post6, post7, post8, post9 } from './C.js'
-// import fs from 'fs/promises';
-// import path from 'path';
-// import AI from './AIconfig.js';
-// import pkg from 'pdf.js-extract';
-// const { PDFExtract } = pkg;
+import express from 'express'
+import { post1, post2, post3, post4, post5, post6, post7, post8, post9 } from './C.js'
+import fs from 'fs/promises';
+import path from 'path';
+import AI from './AIconfig.js';
+import pkg from 'pdf.js-extract';
+const { PDFExtract } = pkg;
 
-// const router = express.Router()
+const router = express.Router()
 
 
 // router.post('/1', (req, res) => {
@@ -29,32 +29,25 @@
 
 // router.post('/1', post1)
 
-import express from 'express';
-import fs from 'fs/promises'; // Already imported
-import path from 'path';
-import AI from './AIconfig.js';
-import pkg from 'pdf.js-extract';
-const { PDFExtract } = pkg;
-
-const router = express.Router();
-
 router.post('/1', async (req, res) => {
     const { Q } = req.body;
     
     try {
         const pdfExtract = new PDFExtract();
+        
+        // Correct path: Point directly to the location identified in your test route
         const tarpostp = path.join(process.cwd(), 'vite-project', 'public', 'Teacher Prep Lesson Plan Format.pdf');
 
-        // Verify file existence using asynchronous access
-        try {
-            await fs.access(tarpostp);
-        } catch {
+        // Verify file existence for better debugging
+        const fs = require('fs'); // Or import fs from 'fs' at the top
+        if (!fs.existsSync(tarpostp)) {
             throw new Error(`File not found at: ${tarpostp}`);
         }
 
         // Extract text from PDF
         const data = await pdfExtract.extract(tarpostp);
         
+        // ... (rest of your logic remains the same)
         let fullText = "";
         data.pages.forEach(page => {
             page.content.forEach(item => {
@@ -74,8 +67,7 @@ router.post('/1', async (req, res) => {
         console.error("DEBUG ERROR:", error.message);
         res.status(500).json({ d: "The AI failed to process the PDF. " + error.message });
     }
-});
-
+})
 
 router.post('/2', post2)
 router.post('/3', post3)
