@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
   res.send('Server is live!');
 });
 
-app.post('/', (req, res) => {
+app.post('/api', (req, res) => {
   const {Q} = req.body
   try{
    return res.status(201).json({state: Q})
