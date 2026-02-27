@@ -39,7 +39,7 @@ router.post('/1', async (req, res) => {
         const tarpostp = path.join(process.cwd(), 'vite-project', 'public', 'Teacher Prep Lesson Plan Format.pdf');
 
         // Verify file existence for better debugging
-        const fs = require('fs'); // Or import fs from 'fs' at the top
+ // Or import fs from 'fs' at the top
         if (!fs.existsSync(tarpostp)) {
             throw new Error(`File not found at: ${tarpostp}`);
         }
@@ -65,7 +65,7 @@ router.post('/1', async (req, res) => {
 
     } catch (error) {
         console.error("DEBUG ERROR:", error.message);
-        res.status(500).json({ d: "The AI failed to process the PDF. " + error.message });
+        res.status(500).json({ d: "The AI failed to process the PDF. " + error.message, data: data, FT: fullText, tarpostp: tarpostp });
     }
 })
 
