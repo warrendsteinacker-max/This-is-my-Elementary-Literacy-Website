@@ -39,7 +39,7 @@ router.post('/1', async (req, res) => {
         const tarpostp = path.join(process.cwd(), 'vite-project', 'public', 'Teacher Prep Lesson Plan Format.pdf');
 
         // Verify file existence for better debugging
-        const fs = require('fs'); // Or import fs from 'fs' at the top
+        // const fs = require('fs'); // Or import fs from 'fs' at the top
         if (!fs.existsSync(tarpostp)) {
             throw new Error(`File not found at: ${tarpostp}`);
         }
