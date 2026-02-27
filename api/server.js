@@ -47,6 +47,12 @@ app.get('/api/test-path', (req, res) => {
     const filePath = path.join(rootDir, 'api', 'assets', 'Teacher Prep Lesson Plan Format.pdf');
     
   try{
+
+// Add this temporarily to your post1 function to see where you are
+    console.log("Current Directory:", process.cwd());
+    const fs = require('fs');
+    console.log("Files in current dir:", fs.readdirSync(process.cwd()));
+
     return res.status(200).json({
         message: "Path Check",
         processCwd: rootDir,
