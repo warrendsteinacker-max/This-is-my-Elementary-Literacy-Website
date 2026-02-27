@@ -73,10 +73,50 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes
-app.use('/api', routers)
+app.use('/', routers)
 
-app.get('/', (req, res) => {
-  res.send('Server is live!');
+// app.get('/', (req, res) => {
+//   res.send('Server is live!');
+// });
+
+// app.post('/api/:id', (req, res) => {
+
+//   return res.json({id: req.params.id})
+// })
+
+app.post('/', async (req, res) => {
+    // Fix: 3. Ensure 'Q' exists
+    const { Q } = req.body;
+    if (!Q) {
+        return res.status(400).json({ d: "Question (Q) is required." });
+    }
+    
+    try {
+        // Updated path: pointing to an 'assets' folder inside your backend project
+        const tarpostp = path.join(__dirname, 'api', 'assets', 'Teacher Prep Lesson Plan Format.pdf');
+
+        const pdfExtract = new PDFExtract();
+        const data = await pdfExtract.extract(tarpostp);
+        
+        let fullText = "";
+        data.pages.forEach(page => {
+            page.content.forEach(item => {
+                fullText += item.str + " ";
+            });
+        });
+
+        const model = AI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const prompt = `Based on this document: ${fullText}\n\nAnswer this question: ${Q}`;
+        
+        const result = await model.generateContent(prompt);
+        const aiResponse = result.response.text();
+
+        res.status(200).json({ d: aiResponse });
+
+    } catch (error) {
+        console.error("DEBUG ERROR:", error.message);
+        res.status(500).json({ d: "The AI failed to process the PDF. " + error.message });
+    }
 });
 
 // Local development server listener
