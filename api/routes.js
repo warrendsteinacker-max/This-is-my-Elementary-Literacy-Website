@@ -1,5 +1,10 @@
 import express from 'express'
 import { post1, post2, post3, post4, post5, post6, post7, post8, post9 } from './C.js'
+import fs from 'fs/promises';
+import path from 'path';
+import AI from './AIconfig.js';
+import pkg from 'pdf.js-extract';
+const { PDFExtract } = pkg;
 
 const router = express.Router()
 
