@@ -73,7 +73,7 @@ import path from 'path';
 import AI from './AIconfig.js';
 import { PDFExtract } from 'pdf.js-extract';
 
-
+///////
 
 export const post1 = async (req, res) => {
     const { Q } = req.body;
