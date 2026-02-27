@@ -50,10 +50,11 @@ app.get('/api/test-path', (req, res) => {
 
 // Add this temporarily to your post1 function to see where you are
     console.log("Current Directory:", process.cwd());
-    const fs = require('fs');
     console.log("Files in current dir:", fs.readdirSync(process.cwd()));
 
     return res.status(200).json({
+        CD: process.cwd(),
+        Filesincurrentdir: fs.readdirSync(process.cwd()), 
         message: "Path Check",
         processCwd: rootDir,
         expectedFilePath: filePath,
