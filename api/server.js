@@ -64,7 +64,7 @@ const app = express()
 
 // Set the origin to your specific GitHub Pages URL
 const corsOptions = {
-  origin: 'https://warrendsteinacker-max.github.io',
+  origin: 'https://warrendsteinacker-max.github.io/This-is-my-Elementary-Literacy-Website',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true
 };
