@@ -6,7 +6,10 @@
       "destination": "server.js"
     }
   ],
-  "functions": {
+"functions": {
+    "api/**/*.js": {
+      "includeFiles": "api/data/**"
+    },
     "server.js": {
       "includeFiles": "api/data/**"
     }
