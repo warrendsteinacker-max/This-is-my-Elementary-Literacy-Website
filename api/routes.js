@@ -29,45 +29,57 @@ const router = express.Router()
 
 // router.post('/1', post1)
 
+import { readdir } from 'fs/promises'; // Import readdir for debugging
+
 router.post('/1', async (req, res) => {
     const { Q } = req.body;
-    
+    let data; 
+    let fullText = "";
+    const tarpostp = path.join(process.cwd(), 'api', 'data', 'Teacher Prep Lesson Plan Format.pdf');
+
     try {
         const pdfExtract = new PDFExtract();
         
-        // Correct path: Point directly to the location identified in your test route
-        const tarpostp = path.join(process.cwd(), 'api', 'data', 'Teacher Prep Lesson Plan Format.pdf');
+        // 1. Verify existence
+        await fs.access(tarpostp).catch(async (err) => {
+            // Debug: List files if it fails
+            let files = [];
+            try {
+                files = await readdir(path.join(process.cwd(), 'api', 'data'));
+            } catch (e) {
+                files = ["Directory not accessible"];
+            }
+            throw new Error(`File not found at: ${tarpostp}. Files in directory: ${JSON.stringify(files)}`);
+        });
 
-        // Verify file existence for better debugging
- // Or import fs from 'fs' at the top
-        if (!fs.existsSync(tarpostp)) {
-            throw new Error(`File not found at: ${tarpostp}`);
-        }
-
-        // Extract text from PDF
-        const data = await pdfExtract.extract(tarpostp);
+        // 2. Extract PDF
+        data = await pdfExtract.extract(tarpostp);
         
-        // ... (rest of your logic remains the same)
-        let fullText = "";
         data.pages.forEach(page => {
             page.content.forEach(item => {
                 fullText += item.str + " ";
             });
         });
 
+        // 3. AI Processing
         const model = AI.getGenerativeModel({ model: "gemini-1.5-flash" });
         const prompt = `Based on this document: ${fullText}\n\nAnswer this question: ${Q}`;
         
         const result = await model.generateContent(prompt);
-        const aiResponse = result.response.text();
-
-        res.status(200).json({ d: aiResponse });
+        res.status(200).json({ d: result.response.text() });
 
     } catch (error) {
-        console.error("DEBUG ERROR:", error.message);
-        res.status(500).json({ d: "The AI failed to process the PDF. " + error.message, data: data, FT: fullText, tarpostp: tarpostp });
+        console.error("DEBUG ERROR:", error);
+        res.status(500).json({ 
+            message: "The AI failed to process the PDF.", 
+            error: error.message,
+            debugInfo: { 
+                pathChecked: tarpostp,
+                fileExists: !!data 
+            }
+        });
     }
-})
+});
 
 router.post('/2', post2)
 router.post('/3', post3)

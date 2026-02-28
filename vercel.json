@@ -6,6 +6,11 @@
       "destination": "server.js"
     }
   ],
+  "functions": {
+    "server.js": {
+      "includeFiles": "api/data/**"
+    }
+  },
   "headers": [
     {
       "source": "/api/(.*)",
