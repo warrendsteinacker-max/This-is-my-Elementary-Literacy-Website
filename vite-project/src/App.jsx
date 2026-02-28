@@ -5,7 +5,7 @@
 import React from 'react';
 import './App.css';
 // import Demo from './comps/Demo';
-import {Demo2} from './comps/Demo2';
+import PostP from './comps/PostP';
 import Mod1 from './comps/Mod1';
 import Mod2 from './comps/Mod2';
 import Mod3 from './comps/Mod3';
@@ -14,7 +14,6 @@ import Mod5 from './comps/Mod5';
 import Mod6 from './comps/Mod6';
 import Mod7 from './comps/Mod7';
 import Home from './comps/Home';
-import MeAI from './comps/MeAI';
 // Import your logo at the top so Vite handles the path correctly
 
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
@@ -55,6 +54,7 @@ function App() {
           <Link to="/mod5" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Module 5</Link> 
           <Link to="/mod6" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Module 6</Link>
           <Link to="/mod7" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Module 7</Link>
+          <Link to="/postP" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Post Page</Link>
           {/* <Link to="/demo2" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Module demo 2</Link>
           <Link to="/MEAI" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Module demo 2</Link>         */}
         </nav>
@@ -71,6 +71,7 @@ function App() {
             <Route path="/mod5" element={<Mod5 />}/>
             <Route path="/mod6" element={<Mod6 />}/>
             <Route path="/mod7" element={<Mod7 />}/>
+            <Route path="/postP" element={<PostP />}/>
             {/* <Route path="/demo" element={<Demo />}/> */}
             {/* <Route path="/demo2" element={<Demo2/>}/>
             <Route path="/MEAI" element={<MeAI/>}/> */}

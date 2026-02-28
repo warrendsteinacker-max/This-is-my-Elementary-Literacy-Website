@@ -46,24 +46,30 @@ const MeAI = () => {
         }
     };
 
-    if (L) {
-        return (
-            <div style={{ 
-                display: 'flex', 
-                justifyContent: 'center', 
-                alignItems: 'center', 
-                height: '400px', 
-                flexDirection: 'column', 
-                gap: '15px' 
-            }}>
-                <img 
-                    src="/loading-spinner.gif" 
-                    alt="Loading..." 
-                    style={{ width: '100px', height: '100px' }} 
-                />
-            </div>
-        );
-    }
+if (L) {
+    return (
+        <div style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            height: '400px', 
+            flexDirection: 'column', 
+            gap: '15px' 
+        }}>
+            <img 
+                src="Me.png" 
+                alt="Loading..." 
+                style={{ 
+                    width: '300px', 
+                    height: '300px', 
+                    borderRadius: '10px', 
+                    // objectFit: 'cover',
+                    // display: 'block' // Removes default inline whitespace
+                }} 
+            />
+        </div>
+    );
+}
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', padding: '40px' }}>
