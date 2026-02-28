@@ -9,7 +9,7 @@ const Home = () => {
             <p style={{fontSize: '1rem', color: 'black'}}>Hello, my name is Warren Steinacker. Welcome to my Elementary Literacy Skills Website!</p>
         </div>
         <div>
-            <p style={{color: 'black'}}>This website is a comprehensive overview that documents the literacy training process covered in this class. It tracks the progression from the synthesis of assignments across distinct Modules, Module 1 through Module 7. Ask my AI assistent any question you would like below, and Ask me any qustion you like in the post page.</p>
+            <p style={{color: 'black'}}>This website is a comprehensive overview that documents the literacy training process covered in this class. It tracks the progression from the synthesis of assignments across distinct Modules, Module 1 through Module 7. Ask my AI assistent any question you would like below, and Ask me any qustion you like in the post page. You may also communicate to others and comment on there posts</p>
         </div>
         <MeAI/>
     </div>
