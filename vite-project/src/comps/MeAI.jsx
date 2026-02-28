@@ -7,7 +7,7 @@ const MeAI = () => {
     const [L, setL] = useState(false);
 
     const BASE_URL = 'https://this-is-my-elementary-literacy-webs.vercel.app';
-/////
+
     const submiteToB = async (e) => {
         e.preventDefault();
         setL(true);
