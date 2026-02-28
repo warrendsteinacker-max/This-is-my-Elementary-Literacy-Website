@@ -182,6 +182,122 @@
 
 
 
+// import React, { useState } from 'react';
+
+// const MeAI = () => {
+//     const [M, setM] = useState('mod1');
+//     const [D, setD] = useState('');
+//     const [Q, setQ] = useState('');
+//     const [L, setL] = useState(false);
+
+//     const submiteToB = async (e) => {
+//         e.preventDefault();
+//         setL(true);
+//         try {
+//             const endpointMap = {
+//                 'mod1': '1', 'mod2': '2', 'mod3': '3', 
+//                 'mod4': '4', 'mod5': '5', 'mod6': '6', 
+//                 'mod7': '7', 'mod8': '8', 'mod': '9'
+//             };
+//             const route = endpointMap[M];
+
+//             // const res = await fetch(`http://localhost:3002/${route}`, {
+//             //     method: 'POST',
+//             //     headers: { 'Content-Type': 'application/json' },
+//             //     body: JSON.stringify({ Q: Q })
+//             // });
+
+//             const res = await fetch(`/api/${route}`, {
+//                 method: 'POST',
+//                 headers: { 'Content-Type': 'application/json' },
+//                 body: JSON.stringify({ Q: Q })
+//             });
+//             const data = await res.json();
+//             setD(data.d || data); 
+//         } catch (error) {
+//             console.error("Frontend Error:", error.message);
+//         } finally {
+//             setL(false);
+//         }
+//     };
+// ////////////////////////change this to img/////////////////////////////////////////////////
+//     if (L) {
+//     return (
+//         <div style={{ 
+//             display: 'flex', 
+//             justifyContent: 'center', 
+//             alignItems: 'center', 
+//             height: '400px',
+//             flexDirection: 'column',
+//             gap: '15px'
+//         }}>
+//             <img 
+//                 src="/spinner.png" 
+//                 alt="Loading..." 
+//                 style={{ width: '50px', height: '50px' }} 
+//             />
+//             <p style={{ color: 'white', letterSpacing: '1px' }}>ANALYZING DATA...</p>
+//         </div>
+//     );
+// }
+//     return (
+//         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', padding: '40px' }}>
+            
+//             {/* Styled Dropdown */}
+//             <h3 style={{color: 'black'}}>Use the Dropdown Below to Select What Module you Want to Learn About</h3>
+//             <select 
+//                 className="black-input" 
+//                 value={M} 
+//                 onChange={(e) => setM(e.target.value)}
+//                 style={{ width: '200px' }}
+//             >
+//                 <option value='mod1'>mod1</option>
+//                 <option value='mod2'>mod2</option>
+//                 <option value='mod3'>mod3</option>
+//                 <option value='mod'>Summary</option>
+//             </select>
+
+//             {/* Response Box */}
+//             <div style={{ 
+//                 width: '800px', 
+//                 height: '400px', 
+//                 backgroundColor: 'black', 
+//                 border: '1px solid #333', 
+//                 overflowY: 'auto', 
+//                 borderRadius: '10px' 
+//             }}>
+//                 {D ? (
+//                     <pre style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word', color: 'white', padding: '20px', fontFamily: 'Avenir', display: 'flex', width: '90%' }}>{D}</pre>
+//                 ) : (
+//                     <h3 style={{ color: '#666', padding: '20px', textAlign: 'center' }}>
+//                         Ask Me Anything About These Assignments
+//                     </h3>
+//                 )}
+//             </div>
+
+//             {/* Input Area */}
+//             <form onSubmit={submiteToB} style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '10px' }}>
+//                 <textarea 
+//                     className="black-input"
+//                     value={Q} 
+//                     placeholder="Type your question..."
+//                     onChange={(e) => setQ(e.target.value)} 
+//                     style={{ width: '800px', height: '100px' }}
+//                 />
+//                 <button type='submit' className="black-button">
+//                     Submit
+//                 </button>
+//             </form>
+//         </div>
+//     );
+// };
+
+// export default MeAI;
+
+
+
+
+
 import React, { useState } from 'react';
 
 const MeAI = () => {
@@ -189,6 +305,9 @@ const MeAI = () => {
     const [D, setD] = useState('');
     const [Q, setQ] = useState('');
     const [L, setL] = useState(false);
+
+    // Hardcoded production URL from your Vercel dashboard
+    const BASE_URL = 'https://this-is-my-elementary-literacy-webs.vercel.app';
 
     const submiteToB = async (e) => {
         e.preventDefault();
@@ -201,49 +320,44 @@ const MeAI = () => {
             };
             const route = endpointMap[M];
 
-            // const res = await fetch(`http://localhost:3002/${route}`, {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify({ Q: Q })
-            // });
-
-            const res = await fetch(`/api/${route}`, {
+            const res = await fetch(`${BASE_URL}/api/${route}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ Q: Q })
             });
+            
             const data = await res.json();
             setD(data.d || data); 
         } catch (error) {
             console.error("Frontend Error:", error.message);
+            setD("Error connecting to server. Please ensure the backend is active.");
         } finally {
             setL(false);
         }
     };
-////////////////////////change this to img/////////////////////////////////////////////////
+
     if (L) {
-    return (
-        <div style={{ 
-            display: 'flex', 
-            justifyContent: 'center', 
-            alignItems: 'center', 
-            height: '400px',
-            flexDirection: 'column',
-            gap: '15px'
-        }}>
-            <img 
-                src="/spinner.png" 
-                alt="Loading..." 
-                style={{ width: '50px', height: '50px' }} 
-            />
-            <p style={{ color: 'white', letterSpacing: '1px' }}>ANALYZING DATA...</p>
-        </div>
-    );
-}
+        return (
+            <div style={{ 
+                display: 'flex', 
+                justifyContent: 'center', 
+                alignItems: 'center', 
+                height: '400px',
+                flexDirection: 'column',
+                gap: '15px'
+            }}>
+                {/* Replaced text with your loading image */}
+                <img 
+                    src="/loading-spinner.gif" 
+                    alt="Loading..." 
+                    style={{ width: '100px', height: '100px' }} 
+                />
+            </div>
+        );
+    }
+
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', padding: '40px' }}>
-            
-            {/* Styled Dropdown */}
             <h3 style={{color: 'black'}}>Use the Dropdown Below to Select What Module you Want to Learn About</h3>
             <select 
                 className="black-input" 
@@ -257,7 +371,6 @@ const MeAI = () => {
                 <option value='mod'>Summary</option>
             </select>
 
-            {/* Response Box */}
             <div style={{ 
                 width: '800px', 
                 height: '400px', 
@@ -275,7 +388,6 @@ const MeAI = () => {
                 )}
             </div>
 
-            {/* Input Area */}
             <form onSubmit={submiteToB} style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '10px' }}>
                 <textarea 
                     className="black-input"

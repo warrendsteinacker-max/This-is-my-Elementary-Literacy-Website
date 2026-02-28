@@ -1060,4 +1060,101 @@
 
 
 
+///////file for throttel
+
+const th = (fn, t) => {
+    let timer = false;
+
+    return (...args) => {
+  
+        if(timer){
+            return null
+        }
+        fn(...args)
+        setTimeout(() => {
+            timer = false
+        }, t)
+    }
+}
+
+
+////////comp file
+
+
+import useScrollFetch from 'wereever'
+import th from 'wereever'
+
+import { useState, useEffect, useMemo } from 'react';
+
+
+const Comp = () => {
+
+    const [ofsset, setF] = useState(0)
+
+    const {data, moreD, error, loading, fetchd} = useScrollFetch(ofsset)
+
+    const funcforF = useMemo(() => {th(() => {
+        
+        const {scrollTop, clientHeight, scrollHeight} = document.documentElement
+
+        if(scrollTop + clientHeight >= scrollHeight - 300){
+            fetchd(ofsset, 10)
+            setF((pre) => pre + 10)
+        }
+        
+        }, 3000)}, [fetchd])
+
+
+
+        useEffect(() => {
+            window.addEventListener('scroll', funcforF)
+
+            return () => window.removeEventListener('scroll', funcforF)
+        }, [loading, fetchd])
+
+    return the html that uses everything
+}
+
+
+
+//////file for custom hook infinit scroll
+ 
+import { useState, useCallback } from "react";
+
+
+const useScrollFetch = (offset, limit = 10) => {
+
+    const [data, setD] = useState([])
+    const [error, setE] = useState(false)
+    const [moreD, setMd] = useState(true)
+    const [loading, setL] = useState(false)
+
+    const fetchd = useCallback(async() => {
+        setL(true)
+        try{
+           const res = await fetch(`api_url?off=${offset}&L=${limit}`)
+           const d = await res.json()
+
+           if(d.length === 0){
+            setMd(false)
+           }
+
+           setD((pre)=>[...pre, ...d])
+           setE(false)
+        }
+        catch(error){
+            console.error(error.message)
+            setE(true)
+        }
+        finally{
+            setL(false)
+        }
+    }, [limit])
+
+
+    return{data, moreD, error, loading, fetchd}
+}
+
+
+
 
