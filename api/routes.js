@@ -6,8 +6,8 @@ const router = express.Router()
 
 
 router.get("/getall", getAllP);
-router.post('/delete', deleteP)
-router.post('/edit', editP)
+router.post('/delete/:id', deleteP)
+router.post('/edit/:id', editP)
 router.post('/make', makeP)
 router.post('/1', post1)
 router.post('/2', post2)
@@ -17,6 +17,6 @@ router.post('/5', post5)
 router.post('/6', post6)
 router.post('/7', post7)
 
-
+////
 
 export default router
