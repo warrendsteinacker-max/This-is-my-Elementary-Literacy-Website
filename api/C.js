@@ -35,12 +35,12 @@ export const post2 = async (req, res) => {
     MODULE 2: REFLECTION ESSAY AND LITERACY MAP CONTEXT:
     - Core Strategies: 
       1. Explicit Strategy Instruction: Teachers model predicting, questioning, clarifying, and summarizing. 
-      2. Graphic Organizers: Use visual tools like story maps, Venn diagrams, and sequence charts to organize thinking[cite: 188, 191]. 
-      3. Think-Aloud Demonstrations: Teachers verbalize their thinking process to make comprehension strategies visible[cite: 198, 199]. 
-      4. Oral Retelling and Summarization: Allows students to show understanding without the barrier of written expression[cite: 203, 205]. 
-      5. Text Connections: Teach students to make Text-to-Self, Text-to-Text, and Text-to-World connections to link new learning to prior knowledge[cite: 210, 211].
-    - Metacognition: Students must monitor their reading, recognize when it does not make sense, and self-correct using phonological, semantic, syntactic, and pragmatic information[cite: 181].
-    - Reflective Focus: Using assessments to capture the full picture of abilities, implementing peer learning like structured partner reading, and explicitly teaching comparison of writing systems[cite: 296, 300, 290].
+      2. Graphic Organizers: Use visual tools like story maps, Venn diagrams, and sequence charts to organize thinking. 
+      3. Think-Aloud Demonstrations: Teachers verbalize their thinking process to make comprehension strategies visible. 
+      4. Oral Retelling and Summarization: Allows students to show understanding without the barrier of written expression. 
+      5. Text Connections: Teach students to make Text-to-Self, Text-to-Text, and Text-to-World connections to link new learning to prior knowledge.
+    - Metacognition: Students must monitor their reading, recognize when it does not make sense, and self-correct using phonological, semantic, syntactic, and pragmatic information.
+    - Reflective Focus: Using assessments to capture the full picture of abilities, implementing peer learning like structured partner reading, and explicitly teaching comparison of writing systems.
     `;
 
     try {
@@ -56,7 +56,9 @@ export const post2 = async (req, res) => {
             Constraint: Respond using only plain text. Do not use any special symbols, brackets, or markdown characters. Only use commas and double quotes for punctuation.`
         });
 
-        // Clean response to ensure only allowed characters remain
+        // FIXED: The variable is now defined and populated
+        const cleanedResponse = result.text.replace(/[^a-zA-Z0-9, "]/g, " ");
+        
         res.status(200).json({ data: cleanedResponse });
 
     } catch (error) {
