@@ -8,8 +8,23 @@ html, body, #root {
 
 /* Make your main background container fixed to the screen */
 body {
-  background: linear-gradient(135deg, #667eea 0%, #ff4757 100%);
-  background-attachment: fixed; /* This stops the background from cutting off */
+  /* Set a large gradient background */
+  background: linear-gradient(135deg, #667eea, #ff4757, #667eea);
+  background-size: 300% 300%;
+  
+  /* Apply the animation */
+  animation: gradientWave 10s ease infinite;
+  
+  /* Ensure it covers the whole screen and stays fixed */
+  background-attachment: fixed;
+  min-height: 100vh;
+  margin: 0;
+}
+
+@keyframes gradientWave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 
@@ -128,7 +143,7 @@ select.black-input {
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 12px;
   border-radius: 8px;
-  color: white;
+  color: rgb(12, 12, 12);
   width: 100%;
 }
 
@@ -150,7 +165,7 @@ select.black-input {
 }
 
 .post-title { font-size: 1.5rem; margin-bottom: 5px; color: #ff4757; }
-.post-meta { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 10px; }
+.post-meta { font-size: 0.85rem; color: rgba(19, 18, 18, 0.6); margin-bottom: 10px; }
 
 
 

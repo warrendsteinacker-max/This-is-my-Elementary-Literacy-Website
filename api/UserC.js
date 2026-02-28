@@ -1,6 +1,5 @@
 import Posts from "./schema.js";
 
-import connectDB from "./db.js"
 
 export const getAllP = async (req, res) => {
     try {

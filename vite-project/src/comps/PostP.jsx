@@ -48,7 +48,11 @@ const PostP = () => {
 
   return (
     <div className="mod-container">
-      <h2 className="mod-title">{editingId ? "Edit Post" : "Community Board"}</h2>
+      <div style={{padding: '10px', border: '10px solid black', borderRadius: '5px'}}>
+        <h3 style={{fontSize: '3rem', textDecoration: 'underline'}}>Edit or comment on posts by clicking a edit button and scrolling up here or make a post</h3>
+      </div>
+      
+      <h2 className="mod-title" style={{marginTop: '15px'}}>{editingId ? "Edit or Comment on Post" : "Post page"}</h2>
 
       {/* Form handles both Create and Update */}
       <form onSubmit={handleSubmit} className="post-form-glass">
