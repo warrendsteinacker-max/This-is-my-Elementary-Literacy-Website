@@ -71,49 +71,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import AI from './AIconfig.js';
-import pkg from 'pdf.js-extract';
-const { PDFExtract } = pkg;
 
-
-// export const post1 = async (req, res) => {
-//     const { Q } = req.body;
-    
-//     try {
-//         const pdfExtract = new PDFExtract();
-        
-//         // Correct path: Point directly to the location identified in your test route
-//         const tarpostp = path.join(process.cwd(), 'vite-project', 'public', 'Teacher Prep Lesson Plan Format.pdf');
-
-//         // Verify file existence for better debugging
-//         const fs = require('fs'); // Or import fs from 'fs' at the top
-//         if (!fs.existsSync(tarpostp)) {
-//             throw new Error(`File not found at: ${tarpostp}`);
-//         }
-
-//         // Extract text from PDF
-//         const data = await pdfExtract.extract(tarpostp);
-        
-//         // ... (rest of your logic remains the same)
-//         let fullText = "";
-//         data.pages.forEach(page => {
-//             page.content.forEach(item => {
-//                 fullText += item.str + " ";
-//             });
-//         });
-
-//         const model = AI.getGenerativeModel({ model: "gemini-1.5-flash" });
-//         const prompt = `Based on this document: ${fullText}\n\nAnswer this question: ${Q}`;
-        
-//         const result = await model.generateContent(prompt);
-//         const aiResponse = result.response.text();
-
-//         res.status(200).json({ d: aiResponse });
-
-//     } catch (error) {
-//         console.error("DEBUG ERROR:", error.message);
-//         res.status(500).json({ d: "The AI failed to process the PDF. " + error.message });
-//     }
-// };
 
 
 // export const post1 = async (req, res) => {
@@ -149,62 +107,72 @@ const { PDFExtract } = pkg;
 //     }
 // };
 
+const cleanResponse = (text) => {
+    // Keeps only alphanumeric characters, commas, and double quotes
+    return text.replace(/[^a-zA-Z0-9, "]/g, " ");
+};
+
+// --- Module 1 Controller ---
 export const post1 = async (req, res) => {
     const { Q } = req.body;
-
-    // Assignment context embedded directly as a constant
-    const assignmentContext = `
-    LITERACY CHECKLIST AND STUDENT PROFILE:
-    - Five Components: Phonemic Awareness, Phonics, Fluency, Vocabulary, Comprehension.
-    - Student Profile: Aaliyah, Grade 2, bilingual (Arabic/English). 
-    - Strengths: High motivation, strong listening comprehension, oral retelling, collaborative learning.
-    - Needs: Phonics, word recognition, spelling (transitioning from right-to-left Arabic script).
-    - Recommended Strategies: Multisensory Sound Boxes, Explicit Phonics, Choral Reading, Echo Reading, Visual Vocabulary Supports, Oral Retelling, Graphic Organizers.
-    - Reflective Analysis: Aaliyah benefits from strategies that leverage her oral strengths while explicitly bridging the gap between Arabic script/phonology and English orthography.
-    `;
+    const assignmentContext = `LITERACY CHECKLIST AND STUDENT PROFILE: 
+    Five Components: Phonemic Awareness, Phonics, Fluency, Vocabulary, Comprehension. 
+    Student: Aaliyah, Grade 2, bilingual. 
+    Strengths: Listening comprehension, oral retelling, collaborative learning. 
+    Needs: English phonics, spelling, word recognition. 
+    Strategies: Multisensory Sound Boxes, Explicit Phonics, Choral Reading, Graphic Organizers.`;
 
     try {
-        // Send the hardcoded context + the user's specific question
         const result = await AI.models.generateContent({
             model: 'gemini-2.5-flash',
-            contents: `You are an expert literacy education assistant. 
-            Here is the assignment context:
-            ${assignmentContext}
-            
-            Answer this specific question/prompt based on the context above: 
-            ${Q}`
+            contents: `Answer the following question based on this context: ${assignmentContext}. 
+            Question: ${Q}. 
+            Constraint: Use only plain text, commas, and double quotes.`
         });
 
-        res.status(200).json({ d: result.text });
-
+        res.status(200).json({ d: cleanResponse(result.text) });
     } catch (error) {
-        console.error("AI CONNECTION ERROR:", error);
-        res.status(500).json({ 
-            d: "The AI failed to process your request. " + error.message 
-        });
+        res.status(500).json({ d: "The AI failed to process the request." });
     }
 };
 
-export const post2 = async(req, res) => {
-    
-    const {Q} = req.body
+export const post2 = async (req, res) => {
+    const { Q } = req.body;
 
-    try{
-        const tarpostp = path.join(process.cwd(), 'second-part-2b-reflection-essay-and-link-to-map-1-1.pdf')
-        const data2 = await fs.readFile(tarpostp)
-        const dataB2 = await pdf(data2)
-        const prompt = Q + ' ' + 'this is data to answer Q' + ' ' + dataB2.text
-        const result = await AI.getGenerativeModel({ model: "gemini-1.5-flash" }).generateContent(prompt);
-        const aiResponse = result.response.text();
-        res.status(200).json({data: aiResponse})
-    }
-    catch(error){
-        console.error(error.message)
-        console.log('lost AI connect')
-        res.status(500).json({status: false})
-    }
+    const module2Context = `
+    MODULE 2: REFLECTION ESSAY AND LITERACY MAP CONTEXT:
+    - Core Strategies: 
+      1. Explicit Strategy Instruction: Teachers model predicting, questioning, clarifying, and summarizing. 
+      2. Graphic Organizers: Use visual tools like story maps, Venn diagrams, and sequence charts to organize thinking[cite: 188, 191]. 
+      3. Think-Aloud Demonstrations: Teachers verbalize their thinking process to make comprehension strategies visible[cite: 198, 199]. 
+      4. Oral Retelling and Summarization: Allows students to show understanding without the barrier of written expression[cite: 203, 205]. 
+      5. Text Connections: Teach students to make Text-to-Self, Text-to-Text, and Text-to-World connections to link new learning to prior knowledge[cite: 210, 211].
+    - Metacognition: Students must monitor their reading, recognize when it does not make sense, and self-correct using phonological, semantic, syntactic, and pragmatic information[cite: 181].
+    - Reflective Focus: Using assessments to capture the full picture of abilities, implementing peer learning like structured partner reading, and explicitly teaching comparison of writing systems[cite: 296, 300, 290].
+    `;
 
-    } 
+    try {
+        const result = await AI.models.generateContent({
+            model: 'gemini-2.5-flash',
+            contents: `You are an expert literacy education assistant. 
+            Use the following context from the Module 2 reflection and mapping assignment: 
+            ${module2Context}
+            
+            Answer this question or request: 
+            ${Q}
+            
+            Constraint: Respond using only plain text. Do not use any special symbols, brackets, or markdown characters. Only use commas and double quotes for punctuation.`
+        });
+
+        // Clean response to ensure only allowed characters remain
+        const cleanedResponse = result.text.replace(/[^a-zA-Z0-9, "]/g, " ");
+        res.status(200).json({ data: cleanedResponse });
+
+    } catch (error) {
+        console.error("DEBUG ERROR:", error);
+        res.status(500).json({ status: false, message: "Lost AI connection" });
+    }
+};
 
 
 export const post3 = async(req, res) => {
