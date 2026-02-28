@@ -1,5 +1,7 @@
 import Posts from "./schema.js";
 
+import connectDB from "./db.js"
+
 export const makeP = async (req, res) => {
     try {
         await connectDB(); // Ensure we are connected first
