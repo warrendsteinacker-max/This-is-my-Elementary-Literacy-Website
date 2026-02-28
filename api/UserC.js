@@ -1,21 +1,32 @@
 import Posts from "./schema.js";
 
 export const makeP = async (req, res) => {
-    const { name, title, descript } = req.body;
-    
-    // Check if required fields are provided
-    if (!name || !title || !descript) {
-        return res.status(400).json({ error: "All fields are required" });
-    }
-
     try {
+        await connectDB(); // Ensure we are connected first
+        const { name, title, descript } = req.body;
         const newPost = await Posts.create({ name, title, descript });
         return res.status(201).json({ status: 'created', data: newPost });
     } catch (error) {
-        console.error(error.message);
-        return res.status(500).json({ error: "Server failed to create post" });
+        return res.status(500).json({ error: error.message });
     }
 };
+
+// export const makeP = async (req, res) => {
+//     const { name, title, descript } = req.body;
+    
+//     // Check if required fields are provided
+//     if (!name || !title || !descript) {
+//         return res.status(400).json({ error: "All fields are required" });
+//     }
+
+//     try {
+//         const newPost = await Posts.create({ name, title, descript });
+//         return res.status(201).json({ status: 'created', data: newPost });
+//     } catch (error) {
+//         console.error(error.message);
+//         return res.status(500).json({ error: "Server failed to create post" });
+//     }
+// };
 
 export const editP = async (req, res) => {
     const { name, title, descript } = req.body;
