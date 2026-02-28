@@ -36,7 +36,7 @@ router.post('/1', async (req, res) => {
         const pdfExtract = new PDFExtract();
         
         // Correct path: Point directly to the location identified in your test route
-        const tarpostp = path.join(process.cwd(), 'vite-project', 'public', 'Teacher Prep Lesson Plan Format.pdf');
+        const tarpostp = path.join(process.cwd(), 'api', 'data', 'Teacher Prep Lesson Plan Format.pdf');
 
         // Verify file existence for better debugging
  // Or import fs from 'fs' at the top
