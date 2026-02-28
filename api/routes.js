@@ -29,6 +29,30 @@ const router = express.Router()
 
 // router.post('/1', post1)
 
+
+router.post('/test-ai', async (req, res) => {
+    const { Q } = req.body;
+    
+    try {
+        // Simple test: Send a direct prompt to Gemini
+        const model = AI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const result = await model.generateContent(`Just reply with the word 'Success' and repeat this user input: ${Q}`);
+        
+        res.status(200).json({ 
+            status: "Connection established", 
+            aiResponse: result.response.text(),
+            receivedInput: Q 
+        });
+    } catch (error) {
+        console.error("DEBUG ERROR:", error);
+        res.status(500).json({ 
+            message: "AI connection failed", 
+            error: error.message 
+        });
+    }
+});
+
+
 import { readdir } from 'fs/promises'; // Import readdir for debugging
 
 router.post('/1', async (req, res) => {
