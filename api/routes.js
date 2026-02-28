@@ -27,61 +27,61 @@ const router = express.Router()
 ///
 //////
 
-// router.post('/1', post1)
+router.post('/1', post1)
 
 
 
-import { readdir } from 'fs/promises'; // Import readdir for debugging
+// import { readdir } from 'fs/promises'; // Import readdir for debugging
 
-router.post('/1', async (req, res) => {
-    const { Q } = req.body;
-    let data; 
-    let fullText = "";
-    const tarpostp = path.join(process.cwd(), 'api', 'data', 'Teacher Prep Lesson Plan Format.pdf');
+// router.post('/1', async (req, res) => {
+//     const { Q } = req.body;
+//     let data; 
+//     let fullText = "";
+//     const tarpostp = path.join(process.cwd(), 'api', 'data', 'Teacher Prep Lesson Plan Format.pdf');
 
-    try {
-        const pdfExtract = new PDFExtract();
+//     try {
+//         const pdfExtract = new PDFExtract();
         
-        // 1. Verify existence
-        await fs.access(tarpostp).catch(async (err) => {
-            // Debug: List files if it fails
-            let files = [];
-            try {
-                files = await readdir(path.join(process.cwd(), 'api', 'data'));
-            } catch (e) {
-                files = ["Directory not accessible"];
-            }
-            throw new Error(`File not found at: ${tarpostp}. Files in directory: ${JSON.stringify(files)}`);
-        });
+//         // 1. Verify existence
+//         await fs.access(tarpostp).catch(async (err) => {
+//             // Debug: List files if it fails
+//             let files = [];
+//             try {
+//                 files = await readdir(path.join(process.cwd(), 'api', 'data'));
+//             } catch (e) {
+//                 files = ["Directory not accessible"];
+//             }
+//             throw new Error(`File not found at: ${tarpostp}. Files in directory: ${JSON.stringify(files)}`);
+//         });
 
-        // 2. Extract PDF
-        data = await pdfExtract.extract(tarpostp);
+//         // 2. Extract PDF
+//         data = await pdfExtract.extract(tarpostp);
         
-        data.pages.forEach(page => {
-            page.content.forEach(item => {
-                fullText += item.str + " ";
-            });
-        });
+//         data.pages.forEach(page => {
+//             page.content.forEach(item => {
+//                 fullText += item.str + " ";
+//             });
+//         });
 
-        // 3. AI Processing
-        const model = AI.getGenerativeModel({ model: "gemini-1.5-flash" });
-        const prompt = `Based on this document: ${fullText}\n\nAnswer this question: ${Q}`;
+//         // 3. AI Processing
+//         const model = AI.getGenerativeModel({ model: "gemini-1.5-flash" });
+//         const prompt = `Based on this document: ${fullText}\n\nAnswer this question: ${Q}`;
         
-        const result = await model.generateContent(prompt);
-        res.status(200).json({ d: result.response.text() });
+//         const result = await model.generateContent(prompt);
+//         res.status(200).json({ d: result.response.text() });
 
-    } catch (error) {
-        console.error("DEBUG ERROR:", error);
-        res.status(500).json({ 
-            message: "The AI failed to process the PDF.", 
-            error: error.message,
-            debugInfo: { 
-                pathChecked: tarpostp,
-                fileExists: !!data 
-            }
-        });
-    }
-});
+//     } catch (error) {
+//         console.error("DEBUG ERROR:", error);
+//         res.status(500).json({ 
+//             message: "The AI failed to process the PDF.", 
+//             error: error.message,
+//             debugInfo: { 
+//                 pathChecked: tarpostp,
+//                 fileExists: !!data 
+//             }
+//         });
+//     }
+// });
 
 
 router.post('/test-ai', async (req, res) => {

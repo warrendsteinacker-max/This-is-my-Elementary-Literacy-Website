@@ -75,45 +75,45 @@ import pkg from 'pdf.js-extract';
 const { PDFExtract } = pkg;
 
 
-export const post1 = async (req, res) => {
-    const { Q } = req.body;
+// export const post1 = async (req, res) => {
+//     const { Q } = req.body;
     
-    try {
-        const pdfExtract = new PDFExtract();
+//     try {
+//         const pdfExtract = new PDFExtract();
         
-        // Correct path: Point directly to the location identified in your test route
-        const tarpostp = path.join(process.cwd(), 'vite-project', 'public', 'Teacher Prep Lesson Plan Format.pdf');
+//         // Correct path: Point directly to the location identified in your test route
+//         const tarpostp = path.join(process.cwd(), 'vite-project', 'public', 'Teacher Prep Lesson Plan Format.pdf');
 
-        // Verify file existence for better debugging
-        const fs = require('fs'); // Or import fs from 'fs' at the top
-        if (!fs.existsSync(tarpostp)) {
-            throw new Error(`File not found at: ${tarpostp}`);
-        }
+//         // Verify file existence for better debugging
+//         const fs = require('fs'); // Or import fs from 'fs' at the top
+//         if (!fs.existsSync(tarpostp)) {
+//             throw new Error(`File not found at: ${tarpostp}`);
+//         }
 
-        // Extract text from PDF
-        const data = await pdfExtract.extract(tarpostp);
+//         // Extract text from PDF
+//         const data = await pdfExtract.extract(tarpostp);
         
-        // ... (rest of your logic remains the same)
-        let fullText = "";
-        data.pages.forEach(page => {
-            page.content.forEach(item => {
-                fullText += item.str + " ";
-            });
-        });
+//         // ... (rest of your logic remains the same)
+//         let fullText = "";
+//         data.pages.forEach(page => {
+//             page.content.forEach(item => {
+//                 fullText += item.str + " ";
+//             });
+//         });
 
-        const model = AI.getGenerativeModel({ model: "gemini-1.5-flash" });
-        const prompt = `Based on this document: ${fullText}\n\nAnswer this question: ${Q}`;
+//         const model = AI.getGenerativeModel({ model: "gemini-1.5-flash" });
+//         const prompt = `Based on this document: ${fullText}\n\nAnswer this question: ${Q}`;
         
-        const result = await model.generateContent(prompt);
-        const aiResponse = result.response.text();
+//         const result = await model.generateContent(prompt);
+//         const aiResponse = result.response.text();
 
-        res.status(200).json({ d: aiResponse });
+//         res.status(200).json({ d: aiResponse });
 
-    } catch (error) {
-        console.error("DEBUG ERROR:", error.message);
-        res.status(500).json({ d: "The AI failed to process the PDF. " + error.message });
-    }
-};
+//     } catch (error) {
+//         console.error("DEBUG ERROR:", error.message);
+//         res.status(500).json({ d: "The AI failed to process the PDF. " + error.message });
+//     }
+// };
 
 
 // export const post1 = async (req, res) => {
@@ -149,6 +149,41 @@ export const post1 = async (req, res) => {
 //     }
 // };
 
+export const post1 = async (req, res) => {
+    const { Q } = req.body;
+
+    // Assignment context embedded directly as a constant
+    const assignmentContext = `
+    LITERACY CHECKLIST AND STUDENT PROFILE:
+    - Five Components: Phonemic Awareness, Phonics, Fluency, Vocabulary, Comprehension.
+    - Student Profile: Aaliyah, Grade 2, bilingual (Arabic/English). 
+    - Strengths: High motivation, strong listening comprehension, oral retelling, collaborative learning.
+    - Needs: Phonics, word recognition, spelling (transitioning from right-to-left Arabic script).
+    - Recommended Strategies: Multisensory Sound Boxes, Explicit Phonics, Choral Reading, Echo Reading, Visual Vocabulary Supports, Oral Retelling, Graphic Organizers.
+    - Reflective Analysis: Aaliyah benefits from strategies that leverage her oral strengths while explicitly bridging the gap between Arabic script/phonology and English orthography.
+    `;
+
+    try {
+        // Send the hardcoded context + the user's specific question
+        const result = await AI.models.generateContent({
+            model: 'gemini-2.5-flash',
+            contents: `You are an expert literacy education assistant. 
+            Here is the assignment context:
+            ${assignmentContext}
+            
+            Answer this specific question/prompt based on the context above: 
+            ${Q}`
+        });
+
+        res.status(200).json({ d: result.text });
+
+    } catch (error) {
+        console.error("AI CONNECTION ERROR:", error);
+        res.status(500).json({ 
+            d: "The AI failed to process your request. " + error.message 
+        });
+    }
+};
 
 export const post2 = async(req, res) => {
     
