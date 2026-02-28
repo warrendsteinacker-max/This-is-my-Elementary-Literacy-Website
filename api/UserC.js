@@ -1,5 +1,5 @@
 
-import Posts from "./schema"
+import Posts from "./schema.js"
 
 
 export const makeP = async(req, res) => {
