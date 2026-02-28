@@ -2,7 +2,6 @@
 // import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 //will use this fir creating actual website
 
-import React from 'react';
 import './App.css';
 // import Demo from './comps/Demo';
 import PostP from './comps/PostP';
@@ -22,7 +21,7 @@ function App() {
   return (
     <>
       <Router>
-        <div style={{backgroundColor: 'black', borderRadius: '10px'}}> 
+        <div style={{backgroundColor: 'black', padding: '30px'}}> 
         <p style={{fontWeight: 'bold' , color: 'whitesmoke'}}>
         Navigation
         </p>
@@ -31,12 +30,14 @@ function App() {
           borderRadius: '10px', 
           position: 'sticky', 
           top: 0,  
+          zIndex: 1000,
           display: 'flex', 
           gap: '20px', 
           justifyContent: 'center', 
           background: 'linear-gradient(to right, orange, pink)', 
           padding: '10px', 
           alignItems: 'center',
+          marginTop: '5px',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             {/* Using the imported logo variable ensures the image shows up */}

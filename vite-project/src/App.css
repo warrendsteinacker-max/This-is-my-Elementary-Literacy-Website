@@ -1,106 +1,17 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Ensure the body and html take up the full screen */
+html, body, #root {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
-
-.cir{
-  top: 5px;
-  left: 0px;
-  position: absolute;
-  animation: spin;
-  animation-iteration-count: infinite;
-  animation-duration: 20s;
-  animation-direction: alternate;
-  animation-play-state: running;
-  animation-timing-function: linear;
-  border-radius: 100%;
-  border-left: dotted;
-  background-color: #ff4757;
+/* Make your main background container fixed to the screen */
+body {
+  background: linear-gradient(135deg, #667eea 0%, #ff4757 100%);
+  background-attachment: fixed; /* This stops the background from cutting off */
 }
 
-@keyframes spin{
-  from{
-    margin-left: 0%;
-    transform: rotate(0deg);
-  }
-  to{
-    margin-left: 90%;
-    transform: rotate(1080deg)
-  } 
-}
-
-.sin {
-  width: 15px;
-  height: 15px;
-  background-color: #ff4757; /* A nice coral red */
-  border-radius: 50%;
-  position: absolute;
-  
-  /* 4s duration makes the wave visible; ease-in-out makes the curves smooth */
-  animation: sineWave 4s ease-in-out infinite alternate;
-  
-  /* The trailing shadow (The "tail") */
-  box-shadow: 
-    -10px 0px 10px rgba(255, 71, 87, 0.6),
-    -20px 0px 15px rgba(255, 71, 87, 0.4),
-    -35px 0px 20px rgba(255, 71, 87, 0.2);
-}
-
-@keyframes sineWave {
-  0% {
-    left: 5%;
-    top: 20%; /* Top of the screen */
-    transform: scale(1);
-  }
-  50% {
-    top: 80%; /* Bottom of the wave */
-    transform: scale(1.2); /* Slight pulse in the middle */
-  }
-  100% {
-    left: 90%;
-    top: 20%; /* Back to the top height but at the right side */
-    transform: scale(1);
-  }
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
 
 /* The Black-out Theme */
 .black-input {
@@ -197,16 +108,49 @@ select.black-input {
   text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
+/* --- Optimized Post Page Styles --- */
 
-.spinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid rgba(255, 255, 255, 0.1);
-  border-left-color: #ffffff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+/* The Post Form Container */
+.post-form-glass {
+  background: rgba(255, 255, 255, 0.05); /* Lighter glass for inputs */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 25px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 40px;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.post-input {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 8px;
+  color: white;
+  width: 100%;
 }
+
+/* Individual Post Card */
+.post-card {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  border-left: 4px solid #ff4757; /* Accenting your brand color */
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  transition: transform 0.2s;
+  text-align: left;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.post-title { font-size: 1.5rem; margin-bottom: 5px; color: #ff4757; }
+.post-meta { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 10px; }
+
+
+
