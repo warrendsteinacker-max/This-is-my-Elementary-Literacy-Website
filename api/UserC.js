@@ -2,6 +2,17 @@ import Posts from "./schema.js";
 
 import connectDB from "./db.js"
 
+export const getAllP = async (req, res) => {
+    try {
+        // Ensure the database is connected
+        const allPosts = await Posts.find({}); // Empty object finds everything
+        return res.status(200).json({ status: 'success', data: allPosts });
+    } catch (error) {
+        console.error(error.message);
+        return res.status(500).json({ error: "Server failed to fetch posts" });
+    }
+};
+
 export const makeP = async (req, res) => {
     try {
         await connectDB(); // Ensure we are connected first

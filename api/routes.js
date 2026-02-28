@@ -1,9 +1,11 @@
 import express from 'express'
 import { post1, post2, post3, post4, post5, post6, post7 } from './AIC.js'
-import { makeP, editP, deleteP } from './UserC.js'
+import { getAllP, makeP, editP, deleteP } from './UserC.js'
 
 const router = express.Router()
 
+
+router.get("/getall", getAllP);
 router.post('/delete', deleteP)
 router.post('/edit', editP)
 router.post('/make', makeP)
