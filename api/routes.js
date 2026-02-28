@@ -90,9 +90,9 @@ router.post('/test-ai', async (req, res) => {
     try {
         console.log("Attempting to call AI.models.generateContent...");
         
-        // This is the direct call for the @google/genai library
+        // Use 'gemini-2.5-flash' specifically
         const result = await AI.models.generateContent({
-            model: 'gemini-1.5-flash',
+            model: 'gemini-2.5-flash',
             contents: Q || "Hello, are you working?"
         });
         
