@@ -6,8 +6,8 @@ const router = express.Router()
 
 
 router.get("/getall", getAllP);
-router.post('/delete/:id', deleteP)
-router.post('/edit/:id', editP)
+router.delete('/delete/:id', deleteP)
+router.put('/edit/:id', editP)
 router.post('/make', makeP)
 router.post('/1', post1)
 router.post('/2', post2)
