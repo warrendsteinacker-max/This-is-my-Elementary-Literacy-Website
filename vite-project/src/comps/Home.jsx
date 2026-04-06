@@ -1,7 +1,10 @@
 import MeAI from './MeAI'
+import NavForH from './NavForH.jsx'
 
 const Home = () => {
   return (
+    <>
+    <NavForH/>
     <div style={{fontFamily: 'Georgia'}}>
         <h1 style={{color: 'black', fontWeight: 'bold', fontSize: '6rem', textDecoration: 'underline'}}> My Elementary Literacy Skills Website</h1>
         <div style={{display: 'flex', alignItems: 'center', gap: '100px', borderRadius: '10px', border: '10px solid black', padding: '5px'}}>
@@ -13,6 +16,7 @@ const Home = () => {
         </div>
         <MeAI/>
     </div>
+    </>
   )
 }
 
