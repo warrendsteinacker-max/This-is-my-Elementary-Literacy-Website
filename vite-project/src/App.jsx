@@ -15,6 +15,11 @@ import Mod5 from './comps/Mod5';
 import Mod6 from './comps/Mod6';
 import Mod7 from './comps/Mod7';
 import Home from './comps/Home';
+import GmindSet from './comps/GmindSet';
+import MindMapviaGoogle from './comps/MindMapviaGoogle';
+import MatDisPosters from './comps/MatDisPosters';
+import NstandAndDinst from './comps/NstandAndDinst';
+import VgalWalk from './comps/VgalWalk';
 // Import your logo at the top so Vite handles the path correctly
 
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
@@ -38,6 +43,14 @@ function App() {
             <Route path="/postP" element={<PostP />}/>
             <Route path="/EL1" element={<ElitOne />}/>
             <Route path="/EM2" element={<EmathTwo />}/>
+            <Route path="/A Growth Mindset" element={<GmindSet/>}/>
+            <Route path="/Mind map using Google Drawing" element={<MindMapviaGoogle/>}/>
+            <Route path="/Building Mathematical Dispositions Posters" element={<MatDisPosters/>}/>
+            <Route path="/Naming Standards and Diversifying Instruction" element={<NstandAndDinst/>}/>
+            <Route path="/Virtual Gallery Walk: Rubrics Analyzed: Good, Bad, and Ugly" element={<VgalWalk/>}/>
+
+
+
             {/* <Route path="/demo" element={<Demo />}/> */}
             {/* <Route path="/demo2" element={<Demo2/>}/>
             <Route path="/MEAI" element={<MeAI/>}/> */}
