@@ -8,11 +8,13 @@ const MatDisPosters = () => {
     <>
         <NavForMtwo/>
         <div className="mod-container">
-      <h2 className="mod-title">Module 1 Part 1 Assignment</h2>
+      <h2 className="mod-title">Module 3 Assignment</h2>
       
       <div className="glass-box">
         <p>
-          This assignment focuses on the creation of a professional Literacy Instructional Guide website centered on the five essential components of reading instruction for students in grades K through 3. The first portion of the project establishes a research based checklist of instructional strategies for phonemic awareness, phonics, fluency, vocabulary, and comprehension. These strategies include activities such as sound isolation, explicit phonics modeling, repeated reading, and the use of graphic organizers to support diverse learners. The second portion of the assignment requires a detailed analysis of a specific student profile named Aaliyah, who is a second grade bilingual learner transitioning from an Arabic literacy background. While she demonstrates strong listening comprehension and oral storytelling skills, she exhibits significant gaps in English phonics and word recognition. The project concludes with a reflective essay that evaluates how specific checklist strategies like multisensory sound boxes and choral reading support her needs, while also identifying the necessity for more culturally responsive practices such as explicit comparisons between right to left and left to right writing systems.
+            The Building Mathematical Dispositions Posters assignment aims to help educators create classroom environments where students feel confident to tackle new concepts and engage in deep reflection. The purpose is to foster resilience and problem solving skills by encouraging students to think differently and ask meaningful questions. This project requires the creation of three distinct posters using digital design tools like Canva or Piktochart, with the finished products being uploaded to specific folders within a shared drive.
+
+            The first poster must focus on building brave mathematicians by visually representing themes of perseverance, the value of making mistakes, risk taking, and self reliance. The second poster should emphasize how great minds think differently by highlighting the process of reaching an answer, making connections between various ideas, and utilizing multiple strategies. The third poster addresses the importance of thinking through questioning, which includes the use of teacher talk moves, assessment of understanding, and the distinction between questions and statements. Each poster must be submitted in a digital format with the required naming convention and personal identifying information included on the document.
         </p>
       </div>
 

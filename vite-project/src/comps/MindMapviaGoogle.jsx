@@ -9,11 +9,13 @@ const MindMapviaGoogle = () => {
     <>
     <NavForMtwo/>
         <div className="mod-container">
-      <h2 className="mod-title">Module 1 Part 1 Assignment</h2>
+      <h2 className="mod-title">Module 2 Assignment</h2>
       
       <div className="glass-box">
         <p>
-          This assignment focuses on the creation of a professional Literacy Instructional Guide website centered on the five essential components of reading instruction for students in grades K through 3. The first portion of the project establishes a research based checklist of instructional strategies for phonemic awareness, phonics, fluency, vocabulary, and comprehension. These strategies include activities such as sound isolation, explicit phonics modeling, repeated reading, and the use of graphic organizers to support diverse learners. The second portion of the assignment requires a detailed analysis of a specific student profile named Aaliyah, who is a second grade bilingual learner transitioning from an Arabic literacy background. While she demonstrates strong listening comprehension and oral storytelling skills, she exhibits significant gaps in English phonics and word recognition. The project concludes with a reflective essay that evaluates how specific checklist strategies like multisensory sound boxes and choral reading support her needs, while also identifying the necessity for more culturally responsive practices such as explicit comparisons between right to left and left to right writing systems.
+            The Mind Map Using Google Drawing assignment is designed to help students demonstrate their understanding of effective mathematical communities by organizing key concepts into a visual hierarchy. The purpose is to integrate pedagogical knowledge from the first two chapters of the text Thinking Together with digital proficiency. While the assignment title specifically highlights Google Drawing as the primary tool, students are expected to submit their work in a digital format, which allows for the use of other applications as long as the final product meets the structural and content requirements of the project.
+
+            The instructions require students to watch a specific tutorial on mind mapping to understand how to express and organize ideas effectively. The resulting map must focus on what a positive mathematical community looks like, sounds like, and feels like based on the assigned readings. To meet the evidence expectations, the map must be specific and detailed, featuring at least three layers of information extending beyond the central bubble. The final digital submission must follow the designated naming convention and include the student name and date to ensure proper credit and organization.
         </p>
       </div>
 

@@ -10,11 +10,13 @@ const VgalWalk = () => {
     <>
     <NavForMtwo/>
     <div className="mod-container">
-      <h2 className="mod-title">Module 1 Part 1 Assignment</h2>
+      <h2 className="mod-title">Module 4 Assignment</h2>
       
       <div className="glass-box">
         <p>
-          This assignment focuses on the creation of a professional Literacy Instructional Guide website centered on the five essential components of reading instruction for students in grades K through 3. The first portion of the project establishes a research based checklist of instructional strategies for phonemic awareness, phonics, fluency, vocabulary, and comprehension. These strategies include activities such as sound isolation, explicit phonics modeling, repeated reading, and the use of graphic organizers to support diverse learners. The second portion of the assignment requires a detailed analysis of a specific student profile named Aaliyah, who is a second grade bilingual learner transitioning from an Arabic literacy background. While she demonstrates strong listening comprehension and oral storytelling skills, she exhibits significant gaps in English phonics and word recognition. The project concludes with a reflective essay that evaluates how specific checklist strategies like multisensory sound boxes and choral reading support her needs, while also identifying the necessity for more culturally responsive practices such as explicit comparisons between right to left and left to right writing systems.
+        The Virtual Gallery Walk Rubrics Analyzed assignment focuses on developing the critical skills necessary for educators to evaluate and implement effective assessment tools. The purpose of the activity is to understand how rubrics maintain objective grading standards while providing students with concrete criteria to guide their learning and focus on specific objectives. Students must analyze various examples to identify characteristics that distinguish high quality assessment tools from those that are poorly constructed or confusing.
+
+        The process begins with a review of a designated slideshow to establish a foundation in the qualities of effective rubrics. Following this review, students access a digital gallery via Padlet to conduct their analysis using their school accounts. Each rubric must be evaluated based on clarity, specificity, fairness, alignment with learning standards, and the ability to provide actionable feedback. The final task requires classifying each example as good, bad, or ugly based on whether the rubric successfully guides student performance or fails due to a lack of detail and misalignment with educational goals.
         </p>
       </div>
 

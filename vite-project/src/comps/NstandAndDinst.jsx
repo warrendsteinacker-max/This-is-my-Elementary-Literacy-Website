@@ -10,11 +10,13 @@ const NstandAndDinst = () => {
 
         <NavForMtwo/>
         <div className="mod-container">
-      <h2 className="mod-title">Module 1 Part 1 Assignment</h2>
+      <h2 className="mod-title">Module 4 Assignment</h2>
       
       <div className="glass-box">
         <p>
-          This assignment focuses on the creation of a professional Literacy Instructional Guide website centered on the five essential components of reading instruction for students in grades K through 3. The first portion of the project establishes a research based checklist of instructional strategies for phonemic awareness, phonics, fluency, vocabulary, and comprehension. These strategies include activities such as sound isolation, explicit phonics modeling, repeated reading, and the use of graphic organizers to support diverse learners. The second portion of the assignment requires a detailed analysis of a specific student profile named Aaliyah, who is a second grade bilingual learner transitioning from an Arabic literacy background. While she demonstrates strong listening comprehension and oral storytelling skills, she exhibits significant gaps in English phonics and word recognition. The project concludes with a reflective essay that evaluates how specific checklist strategies like multisensory sound boxes and choral reading support her needs, while also identifying the necessity for more culturally responsive practices such as explicit comparisons between right to left and left to right writing systems.
+        The Mathematical Standards and Practices assignment requires students to analyze state education requirements and integrate them into a functional lesson plan. The primary purpose is to help future teachers connect formal mathematical standards with practical, engaging classroom activities. This process ensures that instructional methods are aligned with the Michigan K 12 Standards for Mathematics while focusing specifically on the developmental needs of fifth or sixth grade students.
+
+        To complete the requirements, students must review the fifth and sixth grade mathematical overviews and select a single standard to serve as the focus of the activity. This standard is then copied into the official Baker College Teacher Prep Lesson Plan Format. The assignment further requires that the selected standard be rewritten in student friendly language to ensure it is accessible to the target age group. Additionally, students must identify one mathematical practice that complements the standard and design an original, engaging activity that bridges the two. All components must be documented within the specified lesson plan template, completing all active sections while leaving the grayed out portions untouched.
         </p>
       </div>
 
