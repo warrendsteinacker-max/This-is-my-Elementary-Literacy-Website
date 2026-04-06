@@ -3,6 +3,8 @@
 //will use this fir creating actual website
 
 import './App.css';
+import ElitOne from "./comps/ElitOne";
+import EmathTwo from "./comps/EmathTwo"
 // import Demo from './comps/Demo';
 import PostP from './comps/PostP';
 import Mod1 from './comps/Mod1';
@@ -34,6 +36,8 @@ function App() {
             <Route path="/mod6" element={<Mod6 />}/>
             <Route path="/mod7" element={<Mod7 />}/>
             <Route path="/postP" element={<PostP />}/>
+            <Route path="/EL1" element={<ElitOne />}/>
+            <Route path="/EM2" element={<EmathTwo />}/>
             {/* <Route path="/demo" element={<Demo />}/> */}
             {/* <Route path="/demo2" element={<Demo2/>}/>
             <Route path="/MEAI" element={<MeAI/>}/> */}
