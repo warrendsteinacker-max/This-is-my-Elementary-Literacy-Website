@@ -17,7 +17,7 @@ const Auth = () => {
 
     const [pass, setP] = useState("")
 
-    const D = {password: pass, username: user}
+    const D = {pass: pass, user: user}
 
     
    async function FUNC(e) {
@@ -29,15 +29,15 @@ const Auth = () => {
                
                 console.log(res)
 
-               if(!res.ok){
-                setE(true)
-                throw new Error("Server Down")
-               }
-
                if(res.status === 403){
                 alert("User not found. Try again or create account.")
                 setE(false)
                 return
+               }
+
+               if(!res.ok){
+                setE(true)
+                throw new Error("Server Down")
                }
 
                setE(false)
@@ -48,16 +48,18 @@ const Auth = () => {
                 
                 console.log(res)
 
+
+               if(res.status === 403){
+                alert("User already exists. Try a diffrent username or password.")
+                setE(false)
+                return
+               }
+
                if(!res.ok){
                 setE(true)
                 throw new Error("Server Down")
                }
 
-               if(res.status === 403){
-                alert("User not found. Try again or create account.")
-                setE(false)
-                return
-               }
 
                setE(false)
                nav("/postP")
@@ -71,6 +73,7 @@ const Auth = () => {
 
   return (
         <>
+        <Link to="/" style={{textDecoration: "none", color: "blue", position: "fixed"}}>Go Back to Home Page</Link>
         <div style={{justifyContent: "center", alignItems: "center", display: "flex", flexDirection: "column", minHeight: "100vh"}}>
         {create ? <h1>Create Account</h1> : <h1>Login</h1>}
         <form onSubmit={FUNC} style={{justifyContent: "center", alignItems: "center", display: "flex", flexDirection: "column"}}>
