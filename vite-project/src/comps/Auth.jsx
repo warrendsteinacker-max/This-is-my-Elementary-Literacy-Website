@@ -20,12 +20,15 @@ const Auth = () => {
     const D = {password: pass, username: user}
 
     
-   async function FUNC() {
+   async function FUNC(e) {
 
+    e.preventDefault()
         try{
             if(login){
                const res = await fetch(`${BASE_URL}/api/login`, {method: "POST", headers: {"Content-Type" : "application/json"}, body: JSON.stringify(D)})
                
+                console.log(res)
+
                if(!res.ok){
                 setE(true)
                 throw new Error("Server Down")
@@ -42,7 +45,9 @@ const Auth = () => {
             }
             else if(create){
                 const res = await fetch(`${BASE_URL}/api/makeA`, {method: "POST", headers: {"Content-Type" : "application/json"}, body: JSON.stringify(D)})
-               
+                
+                console.log(res)
+
                if(!res.ok){
                 setE(true)
                 throw new Error("Server Down")
@@ -81,7 +86,7 @@ const Auth = () => {
             }}>
                 Have a Account? Login?
             </button>
-            <button style={{margin: "35px"}}onClick={() => {
+            <button style={{margin: "35px"}} onClick={() => {
                 setC(true)
                 setL(false)
             }}>
