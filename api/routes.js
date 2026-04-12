@@ -1,6 +1,7 @@
 import express from 'express'
 import { post1, post2, post3, post4, post5, post6, post7 } from './AIC.js'
-import { getAllP, makeP, editP, deleteP } from './UserC.js'
+import { getAllP, makeP, editP, deleteP, MakeAcount, LogIn } from './UserC.js'
+
 
 const router = express.Router()
 
@@ -9,6 +10,8 @@ router.get("/getall", getAllP);
 router.delete('/delete/:id', deleteP)
 router.put('/edit/:id', editP)
 router.post('/make', makeP)
+router.post('/login', LogIn)
+router.post('/makeA', MakeAcount)
 router.post('/1', post1)
 router.post('/2', post2)
 router.post('/3', post3)

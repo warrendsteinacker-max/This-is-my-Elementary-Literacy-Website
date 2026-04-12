@@ -1,5 +1,55 @@
 import Posts from "./schema.js";
+import Users from './schematwo.js';
+import bcrypt from "bcrypt"
 
+
+
+
+export const LogIn = async(req, res) => {
+
+    const {pass, user} = req.body
+
+
+    const User = await Users.findOne({username: user})
+
+
+    if(!User){
+        return res.status(403).json({state: false})
+    }
+
+    const isMatch = await bcrypt.compare(pass, User.password)
+
+    if(!isMatch){
+        return res.status(403).json({state: false})
+    }
+
+    return res.status(200).json({state: true})
+
+}
+
+export const MakeAcount = async(req, res) => {
+    const {pass, user} = req.body
+
+    console.log(pass)
+    console.log(user)
+
+    const User = await Users.findOne({username: user})
+
+    if(User){
+        return res.status(403).json({status: false})
+    }
+
+    console.log(User)
+
+    const haspass = await bcrypt.hash(pass, 10)
+
+    const newUser = new Users({password: haspass, username: user})
+
+    await newUser.save()
+
+    return res.status(201).json({status: true})
+
+}
 
 export const getAllP = async (req, res) => {
     try {
