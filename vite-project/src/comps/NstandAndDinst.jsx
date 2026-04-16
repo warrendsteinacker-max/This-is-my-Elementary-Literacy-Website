@@ -2,7 +2,7 @@ import NavForMtwo from "./NavForMtwo"
 
 const NstandAndDinst = () => {
 
-    const pdfPath = "./Math two Teacher Prep Lesson Plan Format.pdf";
+    const pdfPath = "./first math lesson for math 2.pdf";
 
   return (
 
