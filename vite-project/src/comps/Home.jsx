@@ -25,6 +25,14 @@ const Home = () => {
     <hr/>
         <p>Phone Number: 231-878-0753</p>
         <p>Email: warrendsteinacker@gmail.com</p>
+    <hr/>
+    <hr/>
+
+    <h1>Educational Philosophy:</h1>
+    <hr/>
+    <p>
+      I believe that every student is an architect of their own understanding. Just as a software application requires a robust backend to handle data and a clean frontend to engage the user, an elementary education must provide children with both the foundational logic, the backend of literacy and numeracy, and the creative interface, exploration and expression, to navigate the world
+    </p>
     </div>
     </>
   )
