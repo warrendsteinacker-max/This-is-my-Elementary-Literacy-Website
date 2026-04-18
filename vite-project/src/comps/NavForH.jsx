@@ -30,7 +30,7 @@ const NavForH = () => {
               </div>
               
                 <Link to="/EL1" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Go to Elementary Literacy Section</Link>
-                <Link to="/EM2" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Go to Elementary Math Section</Link>
+                <Link to="/Elementary_Mathematics_Home" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Go to Elementary Math Section</Link>
                 <Link to="/Auth" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Post Page</Link>
             </nav>
             </>

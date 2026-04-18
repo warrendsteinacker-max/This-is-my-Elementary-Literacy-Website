@@ -21,6 +21,7 @@ import MatDisPosters from './comps/MatDisPosters';
 import NstandAndDinst from './comps/NstandAndDinst';
 import VgalWalk from './comps/VgalWalk';
 import Auth from './comps/Auth'
+import Elementary_Mathematics_Home from './comps/Elementary_Mathematics_Home'
 // Import your logo at the top so Vite handles the path correctly
 
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
@@ -50,6 +51,7 @@ function App() {
             <Route path="/Building Mathematical Dispositions Posters" element={<MatDisPosters/>}/>
             <Route path="/Naming Standards and Diversifying Instruction" element={<NstandAndDinst/>}/>
             <Route path="/Virtual Gallery Walk: Rubrics Analyzed: Good, Bad, and Ugly" element={<VgalWalk/>}/>
+            <Route path="/Elementary_Mathematics_Home" element={<Elementary_Mathematics_Home/>}/>
 
 
 

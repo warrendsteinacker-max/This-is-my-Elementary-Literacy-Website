@@ -1,7 +1,19 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const NavForMtwo = () => {
-  return (
+  
+    const nav = useNavigate()
+
+    const FUNC = (e) => {
+
+        e.stopPropagation()
+
+        nav("/Virtual Gallery Walk: Rubrics Analyzed: Good, Bad, and Ugly")
+
+    }
+  
+  
+    return (
         <>
             <div style={{backgroundColor: 'black', padding: '30px'}}> 
             <p style={{fontWeight: 'bold' , color: 'whitesmoke'}}>
@@ -26,6 +38,10 @@ const NavForMtwo = () => {
                 Welcome to my Elementary Mathematics Two Section!
                 </p>
             </div>
+
+            <select>
+                <option onClick={FUNC}>Gallary walk</option>
+            </select>
             
             <Link to="/" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Home</Link>
             <Link to="/A Growth Mindset" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>A Growth Mindset</Link>
