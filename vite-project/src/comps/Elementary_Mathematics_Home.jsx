@@ -28,7 +28,8 @@ const Elementary_Mathematics_Home = () => {
                 <p style={{ margin: 0, fontSize: '14px', color: 'black' }}>
                   Welcome to my Elementary Math Skills Section!
                 </p>
-              </div>      
+              </div>
+                <Link to="/" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Home</Link>      
                 <Link to="/EM2" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Go to Elementary Math Two Section</Link>
             </nav>
         <div style={{fontFamily: 'Georgia'}}>
@@ -41,15 +42,21 @@ const Elementary_Mathematics_Home = () => {
             <p style={{color: 'black'}}>
               This Elementary Math section is a comprehensive overview that documents the Elementary Mathematics training process covered in Elementary Math courses. It tracks the progression from the synthesis of assignments across modules. 
             </p>
-            <h1>
+            <h1 style={{color: "black"}}>
               
               What Literacy Means to me and how I value my Self as a Math Educator
 
             </h1>
-            <p>
+            <p style={{color: "black"}}>
 
              Literacy is the essential foundation that allows students to decode the world, serving as the logical structure that supports all critical thinking and communication. As a math educator, I value myself as an architect of understanding, bridging technical fluency with creative problem-solving to help students build a robust framework for navigating complex ideas. 
 
+            </p>
+            <h1 style={{color: "black"}}>
+              What Elementary Mathematics Means to me and how I Value Myself as a Math Educator
+            </h1>
+            <p style={{color: "black"}}>
+              Elementary mathematics is the fundamental language of logic that empowers students to deconstruct problems and engineer their own unique solutions. I value myself as an architect of understanding who provides the essential framework for children to build both technical precision and the creative confidence to explore the world through a numerical lens.
             </p>
         </div>
         </div>
