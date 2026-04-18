@@ -9,26 +9,31 @@ const Home = () => {
         <h1 style={{color: 'black', fontWeight: 'bold', fontSize: '6rem', textDecoration: 'underline'}}> My Elementary Literacy Skills Website</h1>
         <div style={{display: 'flex', alignItems: 'center', gap: '100px', borderRadius: '10px', border: '10px solid black', padding: '5px'}}>
             <img src="me.jpg" alt="Logo" style={{width: '300px', height: '300px', borderRadius: '10px'}}/>
-            <p style={{fontSize: '1rem', color: 'black'}}>Hello, my name is Warren Steinacker. Welcome to my Elementary Skills Website! I am a student at Baker College how is studying to become a elementary teacher.</p>
+            <p style={{fontSize: '1rem', color: 'black'}}>Hello, my name is Warren Steinacker. Welcome to my Elementary Skills Website! I am a student at Baker College who is studying to become a elementary teacher. Ask my </p>
         </div>
         <div>
+          <h1 style={{color: "black"}}>Who I am and Career Asperations</h1>
+          <p style={{color: "black"}}>
+            I am a student at Baker College who loves the process of learning and teaching others what I know, which is why I want to become an elementary teacher. I also love coding in languages like javascript and python and I am  expert with front end frameworks to build website Graphical User Interfaces, such as React. I am also proficient with backend skills, such as node.js, and I am very good at creating CI/CD pipelines via YAML files and GitHub Actions. I am also proficient with Git and Git Hub for working in production ready coding environments, and I am also very proficient with the subjects of math Algebra, Geometry, Pre-Calc, and Calculus. 
+          </p>
+          <h1 style={{color: "black"}}>What This Website is About</h1>
             <p style={{color: 'black'}}>
               This website is a comprehensive overview that documents the Elementary training process covered through Backer College. It tracks the progression from the synthesis of assignments across curriculum for teaching grades Pk-6. Ask my AI assistant any question you would like below, and ask me any question you like in the post page. You may also communicate to others by commenting on there posts.
             </p>
         </div>
         <MeAI/>
 
-        <h1>Resume:</h1>
+        <h1>Resume</h1>
     <hr/>
     <hr/>
-        <h1>Contact Information:</h1>
+        <h1>Contact Information</h1>
     <hr/>
         <p>Phone Number: 231-878-0753</p>
         <p>Email: warrendsteinacker@gmail.com</p>
     <hr/>
     <hr/>
 
-    <h1>Educational Philosophy:</h1>
+    <h1>My General Educational Philosophy</h1>
     <hr/>
     <p>
       I believe that every student is an architect of their own understanding. Just as a software application requires a robust backend to handle data and a clean frontend to engage the user, an elementary education must provide children with both the foundational logic, the backend of literacy and numeracy, and the creative interface, exploration and expression, to navigate the world

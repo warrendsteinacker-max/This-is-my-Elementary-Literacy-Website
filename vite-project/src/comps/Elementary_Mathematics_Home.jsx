@@ -35,14 +35,42 @@ const Elementary_Mathematics_Home = () => {
         <h1 style={{color: 'black', fontWeight: 'bold', fontSize: '6rem', textDecoration: 'underline'}}> Elementary Math Section</h1>
         <div style={{display: 'flex', alignItems: 'center', gap: '100px', borderRadius: '10px', border: '10px solid black', padding: '5px'}}>
             <img src="me.jpg" alt="Logo" style={{width: '300px', height: '300px', borderRadius: '10px'}}/>
-            <p style={{fontSize: '1rem', color: 'black'}}>Welcome to Elementary Math Two!</p>
+            <p style={{fontSize: '1rem', color: 'black'}}>Welcome to Elementary Math Section</p>
         </div>
         <div>
             <p style={{color: 'black'}}>
               This Elementary Math section is a comprehensive overview that documents the Elementary Mathematics training process covered in Elementary Math courses. It tracks the progression from the synthesis of assignments across modules. 
             </p>
+            <h1>
+              
+              What Literacy Means to me and how I value my Self as a Math Educator
+
+            </h1>
+            <p>
+
+             Literacy is the essential foundation that allows students to decode the world, serving as the logical structure that supports all critical thinking and communication. As a math educator, I value myself as an architect of understanding, bridging technical fluency with creative problem-solving to help students build a robust framework for navigating complex ideas. 
+
+            </p>
         </div>
         </div>
+        <hr/>
+        <hr/>
+        <h1>
+          My Mathematical Educational Philosophy
+        </h1>
+        <hr/>
+        <p>
+          
+          Mathematics is not a collection of isolated rules to be memorized, but a structural language used to build understanding. This philosophy views every student as an architect of their own knowledge, where the classroom serves as the development environment for logic, patterns, and problem-solving.
+
+        </p>
+      <hr/>
+      <hr/>
+        <h1>Contact Information</h1>
+    <hr/>
+        <p>Phone Number: 231-878-0753</p>
+        <p>Email: warrendsteinacker@gmail.com</p>
+    <hr/>
     </>
   )
 }

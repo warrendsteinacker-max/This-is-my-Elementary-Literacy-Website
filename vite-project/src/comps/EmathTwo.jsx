@@ -17,6 +17,13 @@ const EmathTwo = () => {
             </p>
         </div>
         </div>
+              <hr/>
+      <hr/>
+        <h1>Contact Information</h1>
+    <hr/>
+        <p>Phone Number: 231-878-0753</p>
+        <p>Email: warrendsteinacker@gmail.com</p>
+    <hr/>
     </>
   )
 }
