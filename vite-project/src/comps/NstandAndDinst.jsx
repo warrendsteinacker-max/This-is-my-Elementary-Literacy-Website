@@ -10,7 +10,7 @@ const NstandAndDinst = () => {
 
         <NavForMtwo/>
         <div className="mod-container">
-      <h2 className="mod-title">Module 4 Assignment</h2>
+      <h2 className="mod-title">Naming Standards and Diversifying Instruction Assignment</h2>
       
       <div className="glass-box">
         <p>
@@ -21,7 +21,7 @@ const NstandAndDinst = () => {
       </div>
 
       <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)', marginBottom: '10px' }}>
-        Preview of Module 1 Part 1 Assignment 
+        Preview Assignment 
       </p>
       
       <iframe 
