@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 const NavForH = () => {
   return (
             <>
-            <div style={{backgroundColor: 'black', padding: '30px'}}> 
+            <div style={{backgroundColor: 'black', padding: '30px', borderRadius: "5px"}}> 
             <p style={{fontWeight: 'bold' , color: 'whitesmoke'}}>
             Navigation
             </p>
@@ -29,9 +29,9 @@ const NavForH = () => {
                 </p>
               </div>
               
-                <Link to="/EL1" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Go to Elementary Literacy Section</Link>
-                <Link to="/Elementary_Mathematics_Home" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Go to Elementary Math Section</Link>
-                <Link to="/Auth" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Post Page</Link>
+                <Link to="/EL1" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold', border: "1px solid black", borderRadius: "5px", padding: "2px", backgroundColor: "black", width: "140px", height: "50px", display: "grid", justifyContent: "center", alignItems: "center" }}>Go to Elementary Literacy Section</Link>
+                <Link to="/Elementary_Mathematics_Home" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold', border: "1px solid black", borderRadius: "5px", padding: "2px", backgroundColor: "black", width: "140px", height: "50px", display: "grid", justifyContent: "center", alignItems: "center" }}>Go to Elementary Math Section</Link>
+                <Link to="/Auth" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold', border: "1px solid black", borderRadius: "5px", padding: "2px", backgroundColor: "black", width: "50px", height: "50px", display: "grid", justifyContent: "center", alignItems: "center" }}>Post Page</Link>
             </nav>
             </>
   )
