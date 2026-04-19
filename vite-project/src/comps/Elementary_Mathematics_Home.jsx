@@ -29,8 +29,8 @@ const Elementary_Mathematics_Home = () => {
                   Welcome to my Elementary Math Skills Section!
                 </p>
               </div>
-                <Link to="/" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Home</Link>      
-                <Link to="/EM2" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Go to Elementary Math Two Section</Link>
+                <Link to="/" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold', border: "1px solid black", borderRadius: "5px", padding: "2px", backgroundColor: "black", width: "140px", height: "50px", display: "grid", justifyContent: "center", alignItems: "center" }}>Home</Link>      
+                <Link to="/EM2" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold', border: "1px solid black", borderRadius: "5px", padding: "2px", backgroundColor: "black", width: "140px", height: "50px", display: "grid", justifyContent: "center", alignItems: "center" }}>Go to Elementary Math Two Section</Link>
             </nav>
         <div style={{fontFamily: 'Georgia'}}>
         <h1 style={{color: 'black', fontWeight: 'bold', fontSize: '6rem', textDecoration: 'underline'}}> Elementary Math Section</h1>

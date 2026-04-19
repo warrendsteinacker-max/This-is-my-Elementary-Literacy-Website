@@ -11,7 +11,7 @@ const GmindSet = () => {
     <>
     <NavForMtwo/>
     <div className="mod-container">
-      <h2 className="mod-title">A Growth Mindset</h2>
+      <h2 className="mod-title">A Growth Mindset Assignment</h2>
       
       <div className="glass-box">
         <p>
@@ -40,7 +40,7 @@ const GmindSet = () => {
       </div>
     </div>
     <div>
-      <h2 className="mod-title">Building Mathematical Dispositions Posters</h2>
+      <h2 className="mod-title">Building Mathematical Dispositions Posters Assignment</h2>
     <div className="glass-box">
         <p>
             The Building Mathematical Dispositions Posters assignment aims to help educators create classroom environments where students feel confident to tackle new concepts and engage in deep reflection. The purpose is to foster resilience and problem solving skills by encouraging students to think differently and ask meaningful questions. This project requires the creation of three distinct posters using digital design tools like Canva or Piktochart, with the finished products being uploaded to specific folders within a shared drive.
