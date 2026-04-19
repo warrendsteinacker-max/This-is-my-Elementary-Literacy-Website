@@ -26,7 +26,7 @@ const NavForMtwo = () => {
             top: 0,  
             zIndex: 1000,
             display: 'flex', 
-            gap: '20px', 
+            gap: '10px', 
             justifyContent: 'center', 
             background: 'linear-gradient(to right, orange, pink)', 
             padding: '10px', 
@@ -54,7 +54,7 @@ const NavForMtwo = () => {
             <Link to="/MDE Refs" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>MDE References</Link>
             <Link to="/Lesson P" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Lesson Planning</Link>
             <Link to="Tech" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Technology</Link>
-            <Link to="FieldW" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Fieldwork</Link>
+            <Link to="FieldW" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold', border: "1px solid black", borderRadius: "5px", padding: "2px"}}>Fieldwork</Link>
             </nav>
         </>
 
