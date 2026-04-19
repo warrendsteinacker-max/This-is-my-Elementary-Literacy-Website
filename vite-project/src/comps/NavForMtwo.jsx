@@ -51,6 +51,10 @@ const NavForMtwo = () => {
             <Link to="/Naming Standards and Diversifying Instruction" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Diversifying Instruction</Link>
             <Link to="/Virtual Gallery Walk: Rubrics Analyzed: Good, Bad, and Ugly" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Assessment</Link>
             <Link to="/Auth" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Post Page</Link>
+            <Link to="" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}/>
+            <Link to="" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}/>
+            <Link to="" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}/>
+            <Link to="" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}/>
             </nav>
         </>
 
