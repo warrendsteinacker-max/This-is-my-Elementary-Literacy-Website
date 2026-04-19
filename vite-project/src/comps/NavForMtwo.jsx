@@ -1,21 +1,13 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const NavForMtwo = () => {
   
-    const nav = useNavigate()
 
-    const FUNC = (e) => {
-
-        e.stopPropagation()
-
-        nav("/Virtual Gallery Walk: Rubrics Analyzed: Good, Bad, and Ugly")
-
-    }
   ///////
   
     return (
         <>
-            <div style={{backgroundColor: 'black', padding: '30px'}}> 
+            <div style={{backgroundColor: 'black', padding: '30px', borderRadius: "5px"}}> 
             <p style={{fontWeight: 'bold' , color: 'whitesmoke'}}>
             Navigation
             </p>
