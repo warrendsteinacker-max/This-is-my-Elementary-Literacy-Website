@@ -5,7 +5,7 @@ import MeAI from './MeAI'
 const ElitOne = () => {
   return (
     <>
-            <div style={{backgroundColor: 'black', padding: '30px'}}> 
+            <div style={{backgroundColor: 'black', padding: '30px', borderRadius: "5px"}}> 
                 <p style={{fontWeight: 'bold' , color: 'whitesmoke'}}>
                 Navigation
                 </p>
