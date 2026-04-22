@@ -3,6 +3,7 @@
 //will use this fir creating actual website
 
 import './App.css';
+import ElLitH from './comps/ElLitH';
 import ElitOne from "./comps/ElitOne";
 import EmathTwo from "./comps/EmathTwo"
 // import Demo from './comps/Demo';
@@ -52,6 +53,7 @@ function App() {
             <Route path="/Naming Standards and Diversifying Instruction" element={<NstandAndDinst/>}/>
             <Route path="/Virtual Gallery Walk: Rubrics Analyzed: Good, Bad, and Ugly" element={<VgalWalk/>}/>
             <Route path="/Elementary_Mathematics_Home" element={<Elementary_Mathematics_Home/>}/>
+            <Route path="/ELH" element={<ElLitH/>}/>
 
 
 

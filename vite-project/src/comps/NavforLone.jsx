@@ -21,13 +21,7 @@ const NavforL = () => {
               alignItems: 'center',
               marginTop: '5px',
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                {/* Using the imported logo variable ensures the image shows up */}
-                {/* <img src={logo} alt="Logo" style={{ width: '50px', height: '50px' }} /> */}
-                <p style={{ margin: 0, fontSize: '14px', color: 'black' }}>
-                  Welcome to my Elementary Literacy One Section!
-                </p>
-              </div>
+
               
               <Link to="/" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold', border: "1px solid black", borderRadius: "5px", padding: "2px", backgroundColor: "black", width: "70px", height: "50px", display: "grid", justifyContent: "center", alignItems: "center" }}>Home</Link>
               <Link to="/mod1" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold', border: "1px solid black", borderRadius: "5px", padding: "2px", backgroundColor: "black", width: "70px", height: "50px", display: "grid", justifyContent: "center", alignItems: "center" }}>Module 1</Link>
