@@ -1,12 +1,10 @@
-
-import {Link} from "react-router-dom"
 import MeAI from './MeAI'
-import NavforL from "./NavforLone"
+import NavforLone from "./NavforLone"
 
 const ElitOne = () => {
   return (
     <>
-    <NavforL/>
+    <NavforLone/>
     <div style={{fontFamily: 'Georgia'}}>
         <h1 style={{color: 'black', fontWeight: 'bold', fontSize: '6rem', textDecoration: 'underline'}}>Elementary Literacy One</h1>
         <div style={{display: 'flex', alignItems: 'center', gap: '100px', borderRadius: '10px', border: '10px solid black', padding: '5px'}}>

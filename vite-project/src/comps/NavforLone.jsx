@@ -25,7 +25,7 @@ const NavforL = () => {
                 {/* Using the imported logo variable ensures the image shows up */}
                 {/* <img src={logo} alt="Logo" style={{ width: '50px', height: '50px' }} /> */}
                 <p style={{ margin: 0, fontSize: '14px', color: 'black' }}>
-                  Welcome to my Elementary Literacy Section!
+                  Welcome to my Elementary Literacy One Section!
                 </p>
               </div>
               
