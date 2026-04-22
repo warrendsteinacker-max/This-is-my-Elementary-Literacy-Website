@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const NavforLH = () => {
   return (
@@ -29,7 +30,7 @@ const NavforLH = () => {
               </div> */}
               
               <Link to="/" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold', border: "1px solid black", borderRadius: "5px", padding: "2px", backgroundColor: "black", width: "70px", height: "50px", display: "grid", justifyContent: "center", alignItems: "center" }}>Home</Link>
-              <Link to="/ELH" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold', border: "1px solid black", borderRadius: "5px", padding: "2px", backgroundColor: "black", width: "100px", height: "50px", display: "grid", justifyContent: "center", alignItems: "center" }}>Elementary Literacy One</Link>
+              <Link to="/EL1" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold', border: "1px solid black", borderRadius: "5px", padding: "2px", backgroundColor: "black", width: "100px", height: "50px", display: "grid", justifyContent: "center", alignItems: "center" }}>Elementary Literacy One</Link>
               <Link to="/Auth" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold', border: "1px solid black", borderRadius: "5px", padding: "2px", backgroundColor: "black", width: "70px", height: "50px", display: "grid", justifyContent: "center", alignItems: "center" }}>Post Page</Link>
               {/* <Link to="/demo2" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Module demo 2</Link>
               <Link to="/MEAI" style={{ textDecoration: 'none', color: 'blue', fontWeight: 'bold' }}>Module demo 2</Link>         */}
