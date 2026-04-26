@@ -54,6 +54,7 @@ function App() {
             <Route path="/Virtual Gallery Walk: Rubrics Analyzed: Good, Bad, and Ugly" element={<VgalWalk/>}/>
             <Route path="/Elementary_Mathematics_Home" element={<Elementary_Mathematics_Home/>}/>
             <Route path="/ELH" element={<ElLitH/>}/>
+            <Route path="/Lesson P" element={}/>
 
 
 
