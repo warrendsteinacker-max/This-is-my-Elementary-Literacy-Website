@@ -3,6 +3,13 @@ import NavForMtwo from './NavForMtwo'
 
 
 export const LessonPlaning = () => {
+
+
+  const pdfPath = '/assets/1-2-1.pdf';  
+  const pdfPath1 = '/assets/1-2-2.pdf';
+  const pdfPath2 = '/assets/1-2-3.pdf';
+  const pdfPath3 = '/assets/1-2-4.pdf';
+
   return (
   <>
     <NavForMtwo/>
