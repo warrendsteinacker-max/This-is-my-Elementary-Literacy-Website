@@ -3,7 +3,7 @@ import NavForMtwo from './NavForMtwo';
 
 const Technology = () => {
  
- const pdfPath = "./math two assig for 3 posters.pdf";
+ const pdfPath = "./img doc from feild work.pdf";
 
   return (
     <>
@@ -30,7 +30,7 @@ This section consists of all of the images and samples I have collected during o
       <div style={{ textAlign: 'center' }}>
         <a href={pdfPath} download="project-1-2-1.pdf">
           <button className="download-btn">
-            Download Assignment
+            Download Samples
           </button>
         </a>
       </div>
