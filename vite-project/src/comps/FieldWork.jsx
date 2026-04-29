@@ -1,19 +1,21 @@
 import React from 'react'
+import NavForMtwo from './NavForMtwo';
+
 
 const FieldWork = () => {
 
 
 
-    const pdfPath = "./Math Two Think Puzzle Explore Template.pdf";
-    const pdfPath1 = "./math two assig for 3 posters.pdf";
-    const pdfPath2 = "./Math 2 Mind Map Assignment.pdf";
+    const pdfPath = "./Field Reflection Journal I Template (1).pdf";
+    const pdfPath1 = "./Field Reflection Journal II – Manipulatives.pdf";
+
 
   return (
 
     <>
     <NavForMtwo/>
     <div className="mod-container">
-      <h2 className="mod-title">A Growth Mindset Assignment</h2>
+      <h2 className="mod-title">Field Reflection Journal I Assignment</h2>
       
       <div className="glass-box">
         <p>
@@ -42,7 +44,7 @@ const FieldWork = () => {
       </div>
     </div>
     <div>
-      <h2 className="mod-title">Building Mathematical Dispositions Posters Assignment</h2>
+      <h2 className="mod-title">Field Reflection Journal II Assignment</h2>
     <div className="glass-box">
         <p>
             The Building Mathematical Dispositions Posters assignment aims to help educators create classroom environments where students feel confident to tackle new concepts and engage in deep reflection. The purpose is to foster resilience and problem solving skills by encouraging students to think differently and ask meaningful questions. This project requires the creation of three distinct posters using digital design tools like Canva or Piktochart, with the finished products being uploaded to specific folders within a shared drive.
@@ -69,35 +71,7 @@ const FieldWork = () => {
         </a>
       </div>
     </div>
-           <div className="mod-container">
-      <h2 className="mod-title">Mind map Using Goolge Drawing Assignment</h2>
-      
-      <div className="glass-box">
-        <p>
-            The Mind Map Using Google Drawing assignment is designed to help students demonstrate their understanding of effective mathematical communities by organizing key concepts into a visual hierarchy. The purpose is to integrate pedagogical knowledge from the first two chapters of the text Thinking Together with digital proficiency. While the assignment title specifically highlights Google Drawing as the primary tool, students are expected to submit their work in a digital format, which allows for the use of other applications as long as the final product meets the structural and content requirements of the project.
-
-            The instructions require students to watch a specific tutorial on mind mapping to understand how to express and organize ideas effectively. The resulting map must focus on what a positive mathematical community looks like, sounds like, and feels like based on the assigned readings. To meet the evidence expectations, the map must be specific and detailed, featuring at least three layers of information extending beyond the central bubble. The final digital submission must follow the designated naming convention and include the student name and date to ensure proper credit and organization.
-        </p>
-      </div>
-
-      <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)', marginBottom: '10px' }}>
-        Preview of Assignment 
-      </p>
-      
-      <iframe 
-        className="pdf-viewer"
-        src={pdfPath2}  
-        title="Assignment Preview"
-      ></iframe>
-
-      <div style={{ textAlign: 'center' }}>
-        <a href={pdfPath2} download="project-1-2-1.pdf">
-          <button className="download-btn">
-            Download Assignment
-          </button>
-        </a>
-      </div>
-    </div>
+           
     </>
 
   )
