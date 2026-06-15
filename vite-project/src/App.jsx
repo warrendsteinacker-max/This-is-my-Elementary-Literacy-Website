@@ -29,7 +29,7 @@ import FieldWork from './comps/FieldWork';
 import Technology from './comps/Technology';
 
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-
+///////
 function App() {
   return (
     <>
