@@ -7,6 +7,7 @@ const PostP = () => {
   const [editingId, setEditingId] = useState(null);
   const formRef = useRef(null); // Ref for auto-scrolling
   const BASE_URL = 'https://this-is-my-elementary-literacy-webs.vercel.app';
+  const tokan = JSON.stringfy(localStorage.getItem("data"))
 
   useEffect(() => {
     fetch(`${BASE_URL}/api/getall`)
@@ -21,11 +22,17 @@ const PostP = () => {
     const url = editingId ? `${BASE_URL}/api/edit/${editingId}` : `${BASE_URL}/api/make`;
     const method = editingId ? 'PUT' : 'POST';
 
-    await fetch(url, {
+    const rez = await fetch(url, {
       method: method,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', authorization: 'Beare ${tokan}'},
       body: JSON.stringify(formData)
     });
+
+    if(rez.status === 401){
+
+      window.location.href = ""
+
+    }
 
     setEditingId(null);
     setFormData({ name: '', title: '', descript: '' });
@@ -38,7 +45,12 @@ const PostP = () => {
 
   const handleDelete = async (id) => {
     // API call to the deleteP controller
-    const response = await fetch(`${BASE_URL}/api/delete/${id}`, { method: 'DELETE' });
+    const response = await fetch(`${BASE_URL}/api/delete/${id}`, { method: 'DELETE', authorization: 'Beare ${tokan}');
+    if(response.status === 401){
+
+      window.location.href = ""
+
+    }
     if (response.ok) {
       setPosts(posts.filter(p => p._id !== id));
     }
