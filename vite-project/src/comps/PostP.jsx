@@ -45,7 +45,7 @@ const PostP = () => {
 
   const handleDelete = async (id) => {
     // API call to the deleteP controller
-    const response = await fetch(`${BASE_URL}/api/delete/${id}`, { method: 'DELETE', authorization: 'Beare ${tokan}');
+    const response = await fetch(`${BASE_URL}/api/delete/${id}`, { method: 'DELETE', authorization: 'Beare ${tokan}'});
     if(response.status === 401){
 
       window.location.href = ""
