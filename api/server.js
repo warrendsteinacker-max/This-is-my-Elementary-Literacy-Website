@@ -14,6 +14,16 @@ app.use(express.json());
 
 app.use('/api', routers)
 
-export default app;
+///backend deployment for vercel
+
+// export default app;
+
+//////
+
+
+
+//backend deployment for render
+
+app.listen(10000, () => {console.log("Backend running on port 10000")})
 
 
