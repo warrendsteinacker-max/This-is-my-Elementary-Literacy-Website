@@ -16,7 +16,7 @@ app.use('/api', routers)
 
 ///backend deployment for vercel
 
-export default app;
+// export default app;
 
 //////
 
