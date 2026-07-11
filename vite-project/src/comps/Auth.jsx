@@ -41,7 +41,10 @@ const Auth = () => {
                }
 
                setE(false)
+                const data = await res.json()
+                localStorage.setItem("data", JSON.parse(data.token))
                nav("/postP")
+    
             }
             else if(create){
                 const res = await fetch(`${BASE_URL}/api/makeA`, {method: "POST", headers: {"Content-Type" : "application/json"}, body: JSON.stringify(D)})
