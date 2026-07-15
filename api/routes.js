@@ -1,7 +1,7 @@
 import express from 'express'
 import { post1, post2, post3, post4, post5, post6, post7 } from './AIC.js'
 import { getAllP, makeP, editP, deleteP, MakeAcount, LogIn } from './UserC.js'
-import protection from "middlefunctions.js"
+import protection from "./middlefunctions.js"
 
 const router = express.Router()
 
