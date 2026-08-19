@@ -1,7 +1,7 @@
 import Posts from "./schema.js";
 import Users from './schematwo.js';
 import bcrypt from "bcrypt"
-
+import jwt from "jsonwebtoken"
 
 
 
@@ -23,7 +23,9 @@ export const LogIn = async(req, res) => {
         return res.status(403).json({state: false})
     }
 
-    return res.status(200).json({state: true})
+    const token = jwt.sing({userId: User.id}, process.env.AUTH_KEY, {expiresIn: "15m"})
+
+    return res.status(200).json({state: true, token: token})
 
 }
 
