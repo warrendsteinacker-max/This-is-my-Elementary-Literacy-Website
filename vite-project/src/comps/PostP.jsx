@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
+
 
 const PostP = () => {
+  const nav = useNavigate()
   const [posts, setPosts] = useState([]);
   const [formData, setFormData] = useState({ name: '', title: '', descript: '' });
   const [editingId, setEditingId] = useState(null);
@@ -30,7 +32,7 @@ const PostP = () => {
 
     if(rez.status === 401){
 
-      window.location.href = ""
+      nav("/Auth")
 
     }
 
@@ -48,7 +50,7 @@ const PostP = () => {
     const response = await fetch(`${BASE_URL}/api/delete/${id}`, { method: 'DELETE', authorization: 'Beare ${tokan}'});
     if(response.status === 401){
 
-      window.location.href = ""
+      nav("/Auth")
 
     }
     if (response.ok) {

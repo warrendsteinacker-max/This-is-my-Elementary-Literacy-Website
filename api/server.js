@@ -16,7 +16,7 @@ app.use('/api', routers)
 
 ///backend deployment for vercel
 
-export default app;
+
 
 //////
 
@@ -24,7 +24,7 @@ export default app;
 
 //backend deployment for render
 
-// app.listen(10000, () => {console.log("Backend running on port 10000")})
+app.listen(10000, () => {console.log("Backend running on port 10000")})
 
 
 //////

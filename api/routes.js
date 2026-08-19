@@ -1,15 +1,15 @@
 import express from 'express'
 import { post1, post2, post3, post4, post5, post6, post7 } from './AIC.js'
 import { getAllP, makeP, editP, deleteP, MakeAcount, LogIn } from './UserC.js'
-
+import protection from "./middlefunctions.js"
 
 const router = express.Router()
 
 
-router.get("/getall", getAllP);
-router.delete('/delete/:id', deleteP)
-router.put('/edit/:id', editP)
-router.post('/make', makeP)
+router.get("/getall", protection, getAllP);
+router.delete('/delete/:id', protection, deleteP)
+router.put('/edit/:id', protection, editP)
+router.post('/make', protection, makeP)
 router.post('/login', LogIn)
 router.post('/makeA', MakeAcount)
 router.post('/1', post1)
