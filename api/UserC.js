@@ -122,3 +122,5 @@ export const deleteP = async (req, res) => {
         return res.status(500).json({ error: "Server failed to delete post" });
     }
 };
+
+//
